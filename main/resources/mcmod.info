@@ -1,0 +1,16 @@
+[
+{
+  "modid": "Magic Crusade",
+  "name": "Magic Crusade Mod",
+  "description": "Time to play RPG! choose a class and faces dangerous ennemies with friends, have fun :)",
+  "version": "1.0",
+  "mcversion": "1.8",
+  "url": "http://minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1291229-magic-crusade-rpg-mods-forge-universal",
+  "updateUrl": "",
+  "authorList": ["Toss", "Gelbar"],
+  "credits": "Toss, Gelbar, Forge guys and players <3",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["Forge", "Player API"]
+}
+]
