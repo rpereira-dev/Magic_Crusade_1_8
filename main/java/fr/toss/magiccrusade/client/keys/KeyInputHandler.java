@@ -61,7 +61,7 @@ public class KeyInputHandler {
 	        				return ;
 	        			}
 	        			player.get_classe().set_energy(player.get_classe().get_energy() - enum_spell.cost);
-	        			spell.send_spell_to_server(player);
+	        			EnumSpell.send_spell_to_server(player, spell);
                 	}
                 	else
                 	{

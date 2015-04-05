@@ -1,4 +1,4 @@
-package fr.toss.magiccrusade.client.render;
+package fr.toss.magiccrusade.client.gui;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

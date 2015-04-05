@@ -1,6 +1,6 @@
 package fr.toss.magiccrusade.common;
 
-import fr.toss.magiccrusade.client.render.CreativeTabsLoader;
+import fr.toss.magiccrusade.client.gui.CreativeTabsLoader;
 import fr.toss.magiccrusade.common.achievement.AchievementLoader;
 import fr.toss.magiccrusade.common.blocks.BlockLoader;
 import fr.toss.magiccrusade.common.events.EventLoader;

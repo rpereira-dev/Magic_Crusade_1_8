@@ -30,9 +30,6 @@ public interface ISpell
 	/** do spell, only executed server side */
 	public void			do_spell(Entity caster, Entity target);
 	
-	/** send spell to server */
-	public void			send_spell_to_server(ClientPlayer client);
-	
 	/** return entity target id */
 	public int			get_target_id(ClientPlayer client);
 

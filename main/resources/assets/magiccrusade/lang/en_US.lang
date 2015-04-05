@@ -18,7 +18,7 @@ message.outdated=A new version of the mod is available.
 
 #   Global
 not.enough=Not enough
-required.level=You're level is too low for this
+required.level=Your level is too low for this
 
 stats.conseil=Advices
 stats.hp=HP

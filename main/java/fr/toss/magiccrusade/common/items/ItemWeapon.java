@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import fr.toss.magiccrusade.client.gui.ChatColor;
-import fr.toss.magiccrusade.client.render.CreativeTabsLoader;
+import fr.toss.magiccrusade.client.gui.CreativeTabsLoader;
 
 public class ItemWeapon extends ItemSword
 {	

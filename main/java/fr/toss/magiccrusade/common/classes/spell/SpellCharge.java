@@ -48,15 +48,6 @@ public class SpellCharge implements ISpell
     		Minecraft.getMinecraft().effectRenderer.addEffect(particles);
         }
 	}
-
-	@Override
-	public void send_spell_to_server(ClientPlayer client)
-	{
-		PacketSpellServer	packet;
-		
-		packet = new PacketSpellServer(this.get_enum_spell().id, client.get_player().getEntityId(), get_target_id(client));
-		Packets.network.sendToServer(packet);
-	}
 	
 	@Override
 	public int	get_target_id(ClientPlayer client)

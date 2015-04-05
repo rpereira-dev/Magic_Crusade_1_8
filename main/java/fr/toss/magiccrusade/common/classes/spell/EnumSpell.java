@@ -1,17 +1,18 @@
 package fr.toss.magiccrusade.common.classes.spell;
 
 import net.minecraft.client.resources.I18n;
-
-import com.sun.imageio.plugins.common.I18N;
-
+import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.common.classes.EnumClasse;
 import fr.toss.magiccrusade.common.classes.IClasse;
+import fr.toss.magiccrusade.common.network.PacketSpellServer;
+import fr.toss.magiccrusade.common.network.Packets;
 import fr.toss.magiccrusade.utils.MagicLogger;
 
 public enum EnumSpell
 {	
 	CHARGE(0, 0, "charge", 1, 100, EnumClasse.CHAMPION, SpellCharge.class),
-	SHOCKWAVE(1, 1, "shockwave", 1, 180, EnumClasse.CHAMPION, SpellShockwave.class);
+	SHOCKWAVE(1, 1, "shockwave", 1, 180, EnumClasse.CHAMPION, SpellShockwave.class),
+	IRONSKIN(2, 2, "ironskin", 4, 240, EnumClasse.CHAMPION, SpellIronskin.class),;
 	
 	
 	public int			id;
@@ -63,5 +64,14 @@ public enum EnumSpell
 				return (spell);
 		}
 		return (null);
+	}
+	
+	/** send spell to server */
+	public static void send_spell_to_server(ClientPlayer client, ISpell spell)
+	{
+		PacketSpellServer	packet;
+		
+		packet = new PacketSpellServer(spell.get_enum_spell().id, client.get_player().getEntityId(), spell.get_target_id(client));
+		Packets.network.sendToServer(packet);
 	}
 }
