@@ -47,7 +47,7 @@ public class KeyInputHandler {
         			enum_spell = EnumSpell.get_spell_by_id_and_classe(player.get_classe(), i);
                 	if (enum_spell == null)
                 		return ;
-                	else if (enum_spell.get_spell_level() > player.level)
+                	else if (enum_spell.get_spell_level() > player.get_level())
                 	{
                 		GuiIngameOverlay.add_message(I18n.format("required.level"), GuiString.TIMER_SHORT, GuiString.RED);
                 	}

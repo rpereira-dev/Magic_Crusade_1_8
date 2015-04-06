@@ -91,8 +91,8 @@ public class GuiIngameOverlay
 		
     	this.mc.getTextureManager().bindTexture(CHARGE_BARRE);
     	GuiUtils.drawTexturedModalRect(x - 17, y + 30, 130, 0, 81, 5, 0);
-    	GuiUtils.drawTexturedModalRect(x - 17, y + 30, 130, 5, (int) (81.0f / this.player.experience_to_next_level * this.player.experience), 5, 0);
-    	str = "Level: " + this.player.level;
+    	GuiUtils.drawTexturedModalRect(x - 17, y + 30, 130, 5, (int) (81.0f / this.player.get_total_experience() * this.player.get_experience()), 5, 0);
+    	str = "Level: " + this.player.get_level();
     	this.mc.fontRendererObj.drawStringWithShadow(str, x + 28 - this.mc.fontRendererObj.getStringWidth(str) / 2, y + 28,  0xffffffff);
 	}
 

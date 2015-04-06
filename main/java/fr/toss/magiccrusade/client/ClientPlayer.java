@@ -8,6 +8,7 @@ import fr.toss.magiccrusade.client.gui.ChatColor;
 import fr.toss.magiccrusade.client.gui.GuiIngameOverlay;
 import fr.toss.magiccrusade.client.gui.GuiString;
 import fr.toss.magiccrusade.common.classes.ClasseChampion;
+import fr.toss.magiccrusade.common.classes.EnumClasse;
 import fr.toss.magiccrusade.common.classes.IClasse;
 
 public class ClientPlayer extends ClientPlayerBase
@@ -17,14 +18,14 @@ public class ClientPlayer extends ClientPlayerBase
 	private IClasse classe;
 	
 	/** amount of experience the player has */
-	public int	experience;
-	public int	experience_to_receive;
+	private int	experience;
+	private int	experience_to_receive;
 
 	/** player experience to achieve next level */
-	public int	experience_to_next_level;
+	private int	experience_to_next_level;
 	
 	/** player current level */
-	public int	level;
+	private int	level;
 
 
 	public ClientPlayer(ClientPlayerAPI playerapi)
@@ -71,16 +72,38 @@ public class ClientPlayer extends ClientPlayerBase
 		return (this.level * 20 * (this.level + 1));
 	}
 
+	/** return player max health */
 	public float	getMaxHealth()
 	{
 		return (this.player.getMaxHealth());
 	}
 
+	/** return player health */
 	public float	getHealth()
 	{
 		return (this.player.getHealth());
 	}
 	
+	 @Override
+	public void readEntityFromNBT(net.minecraft.nbt.NBTTagCompound nbt)
+	{
+		 super.readEntityFromNBT(nbt);
+		 this.level			= nbt.getInteger("level"); 
+		 this.experience	= nbt.getInteger("experience");
+		 this.classe		= EnumClasse.load_classe_from_id(nbt.getInteger("classe_id"));
+		 this.classe.read_from_nbt(nbt);
+	}
+		
+	 @Override
+	 public void writeEntityToNBT(net.minecraft.nbt.NBTTagCompound nbt)
+	 {
+		 super.writeEntityToNBT(nbt);
+		 nbt.setInteger("level", this.level); 
+		 nbt.setInteger("experience", this.experience);
+		 this.classe.write_to_nbt(nbt);
+	 }
+	
+	/** add a messege to player chat */
 	public void		add_chat_message(String str)
 	{
 		this.player.addChatMessage(new ChatComponentText(str));
@@ -91,8 +114,38 @@ public class ClientPlayer extends ClientPlayerBase
 		return (this.classe);
 	}
 	
+	/** return player current level */
+	public int get_level()
+	{
+		return (this.level);
+	}
+	
+	/** get entity player client side */
 	public EntityPlayerSP	get_player()
 	{
 		return (this.player);
+	}
+
+	/** add experience to the player */
+	public void add_experience(int exp)
+	{
+		this.experience_to_receive += exp;		
+	}
+
+	/** set player level */
+	public void set_level(int lvl)
+	{
+		this.level = lvl;
+	}
+
+	/** return experience to achieve next level */
+	public int	get_total_experience()
+	{
+		return (this.experience_to_next_level);
+	}
+
+	public float get_experience()
+	{
+		return (this.experience);
 	}
 }

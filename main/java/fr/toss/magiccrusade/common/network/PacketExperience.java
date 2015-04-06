@@ -43,7 +43,7 @@ public class PacketExperience implements IMessage
 			ClientPlayer	player;
 			
 			player = ClientPlayer.instance();
-			player.experience_to_receive += message.experience;
+			player.add_experience(message.experience);
 			return (null);
 		}
    }
