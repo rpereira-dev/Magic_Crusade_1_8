@@ -10,6 +10,7 @@ import fr.toss.magiccrusade.client.gui.GuiString;
 import fr.toss.magiccrusade.common.classes.ClasseChampion;
 import fr.toss.magiccrusade.common.classes.EnumClasse;
 import fr.toss.magiccrusade.common.classes.IClasse;
+import fr.toss.magiccrusade.utils.MagicLogger;
 
 public class ClientPlayer extends ClientPlayerBase
 {
@@ -32,7 +33,7 @@ public class ClientPlayer extends ClientPlayerBase
 	{
 		super(playerapi);
 		ClientPlayer.instance = this;
-		this.classe = new ClasseChampion();
+		this.classe = EnumClasse.load_classe_from_id(-1);
 		this.level = 1;
 		this.experience_to_next_level = this.calcul_next_level_experience();
 		this.experience = 0;
@@ -98,6 +99,7 @@ public class ClientPlayer extends ClientPlayerBase
 	 public void writeEntityToNBT(net.minecraft.nbt.NBTTagCompound nbt)
 	 {
 		 super.writeEntityToNBT(nbt);
+		 MagicLogger.log("SAVING ENTITY PLAYER");
 		 nbt.setInteger("level", this.level); 
 		 nbt.setInteger("experience", this.experience);
 		 this.classe.write_to_nbt(nbt);
@@ -131,21 +133,35 @@ public class ClientPlayer extends ClientPlayerBase
 	{
 		this.experience_to_receive += exp;		
 	}
-
-	/** set player level */
-	public void set_level(int lvl)
-	{
-		this.level = lvl;
-	}
-
+	
 	/** return experience to achieve next level */
 	public int	get_total_experience()
 	{
 		return (this.experience_to_next_level);
 	}
 
-	public float get_experience()
+	/** get player current experience */
+	public int	get_experience()
 	{
 		return (this.experience);
+	}
+	
+	/** set player level */
+	public void set_level(int lvl)
+	{
+		this.level = lvl;
+	}
+
+
+	/** set player current amount of experience */
+	public void set_experience(int exp)
+	{
+		this.experience = exp;
+	}
+
+	/** set playe current class */
+	public void set_classe(int id)
+	{
+		this.classe = EnumClasse.load_classe_from_id(id);
 	}
 }

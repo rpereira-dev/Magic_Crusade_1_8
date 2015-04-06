@@ -1,7 +1,6 @@
 package fr.toss.magiccrusade.client.gui;
 
-import org.lwjgl.input.Keyboard;
-
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiInventory;
@@ -9,6 +8,9 @@ import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.keys.KeyBindingsLoader;
+import fr.toss.magiccrusade.common.network.PacketInteraction;
+import fr.toss.magiccrusade.common.network.Packets;
+import fr.toss.magiccrusade.utils.MagicLogger;
 
 public class GuiClasseInformation extends GuiScreen {
 	
@@ -93,12 +95,20 @@ public class GuiClasseInformation extends GuiScreen {
     @Override
     protected void actionPerformed(GuiButton b)
     {
-		GuiSelectClass	gui;
-
+    	ClientPlayer		player;
+		GuiSelectClass		gui;
+		PacketInteraction	packet;
+		
     	if (b.id == 42)
     	{
-    		ClientPlayer.instance().add_chat_message("You can press " + ChatColor.RED + KeyBindingsLoader.get_key_char(KeyBindingsLoader.KEY_STATS) + ChatColor.RESET + " on your keyboard to see more informations about " + classe + ChatColor.RESET + " and it spells.");
-    		ClientPlayer.instance().add_chat_message("Don't forget to configure your controls!");
+    		player = ClientPlayer.instance();
+    		packet = new PacketInteraction(this.classe_id, PacketInteraction.PacketId.INTERACT_SET_CLASSE.ordinal());
+    		Packets.network.sendToServer(packet);
+    		player.add_chat_message("You can press " + ChatColor.RED + KeyBindingsLoader.get_key_char(KeyBindingsLoader.KEY_STATS) + ChatColor.RESET + " on your keyboard to see more informations about " + classe + ChatColor.RESET + " and it spells.");
+    		player.add_chat_message("Don't forget to configure your controls!");
+    		player.set_classe(this.classe_id);
+			MagicLogger.log(player.get_classe().toString() + " id : " + this.classe_id);
+
     	}
     	else if (b.id == 43)
     	{    		

@@ -8,6 +8,7 @@ import api.player.server.ServerPlayerBase;
 import fr.toss.magiccrusade.common.classes.ClasseChampion;
 import fr.toss.magiccrusade.common.classes.EnumClasse;
 import fr.toss.magiccrusade.common.classes.IClasse;
+import fr.toss.magiccrusade.utils.MagicLogger;
 
 public class ServerPlayer extends ServerPlayerBase
 {
@@ -26,10 +27,11 @@ public class ServerPlayer extends ServerPlayerBase
 	public ServerPlayer(ServerPlayerAPI playerapi)
 	{
 		super(playerapi);
-		this.classe = new ClasseChampion();
+		this.classe = EnumClasse.load_classe_from_id(-1);
 		this.level = 1;
 		this.experience_to_next_level = this.calcul_next_level_experience();
-		this.experience = 0;	}
+		this.experience = 0;
+	}
 	
 	public void onUpdate()
 	{
@@ -101,5 +103,24 @@ public class ServerPlayer extends ServerPlayerBase
 	public int get_level()
 	{
 		return (this.level);
+	}
+	
+	/** set player level */
+	public void set_level(int lvl)
+	{
+		this.level = lvl;
+	}
+
+
+	/** set player current amount of experience */
+	public void set_experience(int exp)
+	{
+		this.experience = exp;
+	}
+
+	/** set playe current class */
+	public void set_classe(int id)
+	{
+		this.classe = EnumClasse.load_classe_from_id(id);
 	}
 }

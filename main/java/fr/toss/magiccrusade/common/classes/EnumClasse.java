@@ -1,6 +1,5 @@
 package fr.toss.magiccrusade.common.classes;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +7,7 @@ import fr.toss.magiccrusade.client.gui.ChatColor;
 
 public enum EnumClasse
 {	
+	FARMER("Farmer", "Energy", ChatColor.WHITE, -1, ClasseFarmer.class),
 	CHAMPION("Champion", "Rage", ChatColor.RED, 0, ClasseChampion.class),
 	ROGUE("Rogue", "Energy", ChatColor.YELLOW, 1, ClasseRogue.class),
 	NECROMANCER("Necromancer", "Mana", ChatColor.DARK_PURPLE, 2, ClasseNecromancer.class),
@@ -78,10 +78,10 @@ public enum EnumClasse
 				try {
 					return ((IClasse) (enum_classe.get_classe().getConstructor().newInstance()));
 				} catch (Exception e) {
-					return (null);
+					return (new ClasseFarmer());
 				}
 			}
 		}
-		return null;
+		return (new ClasseFarmer());
 	}
 }
