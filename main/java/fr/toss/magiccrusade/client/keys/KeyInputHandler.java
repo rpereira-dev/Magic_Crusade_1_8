@@ -47,25 +47,25 @@ public class KeyInputHandler {
         			enum_spell = EnumSpell.get_spell_by_id_and_classe(player.get_classe(), i);
                 	if (enum_spell == null)
                 		return ;
-                	else if (enum_spell.level > player.level)
+                	else if (enum_spell.get_spell_level() > player.level)
                 	{
-                		GuiIngameOverlay.add_message(I18n.format("required.level"), 120, 0xffff0000);
+                		GuiIngameOverlay.add_message(I18n.format("required.level"), GuiString.TIMER_SHORT, GuiString.RED);
                 	}
-                	else if (enum_spell.cost <= player.get_classe().get_energy())
+                	else if (enum_spell.get_spell_cost() <= player.get_classe().get_energy())
                 	{
 	        			try {
-	        				spell = (ISpell)enum_spell.spell_class.getConstructor().newInstance();
+	        				spell = (ISpell)enum_spell.get_spell_class().getConstructor().newInstance();
 	        			} catch (Exception e) {
 	        				e.printStackTrace();
 	        				MagicLogger.log("Error while sending spell packet: wrong spell class type");
 	        				return ;
 	        			}
-	        			player.get_classe().set_energy(player.get_classe().get_energy() - enum_spell.cost);
+	        			player.get_classe().set_energy(player.get_classe().get_energy() - enum_spell.get_spell_cost());
 	        			EnumSpell.send_spell_to_server(player, spell);
                 	}
                 	else
                 	{
-                		GuiIngameOverlay.add_message(I18n.format("not.enough") + " " + player.get_classe().get_enum_classe().energy, GuiString.TIMER_SHORT, GuiString.RED_SMOOTH);
+                		GuiIngameOverlay.add_message(I18n.format("not.enough") + " " + player.get_classe().get_enum_classe().get_energy_name(), GuiString.TIMER_SHORT, GuiString.RED_SMOOTH);
                 	}
         		}
         	}

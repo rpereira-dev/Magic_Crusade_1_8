@@ -11,7 +11,7 @@ public class Spell implements ISpell
 	{
 		PacketSpellServer	packet;
 		
-		packet = new PacketSpellServer(this.get_enum_spell().id, client.get_player().getEntityId(), get_target_id(client));
+		packet = new PacketSpellServer(this.get_enum_spell().get_spell_id(), client.get_player().getEntityId(), get_target_id(client));
 		Packets.network.sendToServer(packet);
 	}
 

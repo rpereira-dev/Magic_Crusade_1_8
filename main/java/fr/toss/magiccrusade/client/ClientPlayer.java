@@ -5,6 +5,8 @@ import net.minecraft.util.ChatComponentText;
 import api.player.client.ClientPlayerAPI;
 import api.player.client.ClientPlayerBase;
 import fr.toss.magiccrusade.client.gui.ChatColor;
+import fr.toss.magiccrusade.client.gui.GuiIngameOverlay;
+import fr.toss.magiccrusade.client.gui.GuiString;
 import fr.toss.magiccrusade.common.classes.ClasseChampion;
 import fr.toss.magiccrusade.common.classes.IClasse;
 
@@ -61,7 +63,7 @@ public class ClientPlayer extends ClientPlayerBase
 		this.level++;
 		this.experience = 0;
 		this.experience_to_next_level = this.calcul_next_level_experience();
-		this.add_chat_message(ChatColor.GREEN + "You have reached level " + this.level + ChatColor.RESET);
+		GuiIngameOverlay.add_message("You have reached level " + this.level, GuiString.TIMER_NORMAL, GuiString.GREEN_SMOOTH);
 	}
 	
 	private int	calcul_next_level_experience()

@@ -1,9 +1,12 @@
 package fr.toss.magiccrusade.common.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import fr.toss.magiccrusade.client.gui.ChatColor;
 
 public interface IClasse
 {
@@ -13,6 +16,10 @@ public interface IClasse
 	public static final ResourceLocation DRAGON_SLAYER = new ResourceLocation("magiccrusade:textures/spells/dragon_slayer.png");
 	public static final ResourceLocation NECROMANCER = new ResourceLocation("magiccrusade:textures/spells/necromancer.png");
 	public static final ResourceLocation ROGUE = new ResourceLocation("magiccrusade:textures/spells/rogue.png");
+	
+	/** list of every classes */
+	public static final List<EnumClasse> list_class = new ArrayList<EnumClasse>();
+	
 	
 	/** Return class enum */
 	public EnumClasse	get_enum_classe();
@@ -35,4 +42,10 @@ public interface IClasse
 	/** When the player hit and entity */
 	public void			hit_entity(Entity target);
 
+	/** save classe to nbt */
+	public void write_to_nbt(NBTTagCompound nbt);
+
+	/** load classe from nbt */
+	public void read_from_nbt(NBTTagCompound nbt);
+	
 }

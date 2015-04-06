@@ -46,4 +46,5 @@ public class AttackEventRegister
 			player.get_classe().hit_entity(event.target);
 		}
 	}
+	
 }

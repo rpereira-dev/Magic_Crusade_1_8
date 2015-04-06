@@ -59,27 +59,27 @@ public class PacketSpellServer implements IMessage
 
 			player = ServerPlayer.from_player_mp(ctx.getServerHandler().playerEntity);
 			enum_spell = EnumSpell.get_spell_by_id(message.id);
-			MagicLogger.log("Server received spell: " + enum_spell.name);
-			if (player.level < enum_spell.level)
+			MagicLogger.log("Server received spell: " + enum_spell.get_spell_name());
+			if (player.get_level() < enum_spell.get_spell_level())
 			{
 				MagicLogger.log("Too low level");
 			}
-			else if (player.get_classe().get_energy() < enum_spell.cost)
+			else if (player.get_classe().get_energy() < enum_spell.get_spell_cost())
 			{
-				MagicLogger.log("Not enough energy: " + player.get_classe().get_energy() + " / " + enum_spell.cost);
+				MagicLogger.log("Not enough energy: " + player.get_classe().get_energy() + " / " + enum_spell.get_spell_cost());
 			}
 			else
 			{
 				world = ctx.getServerHandler().playerEntity.worldObj;
 				try {
-					spell = (ISpell)enum_spell.spell_class.getConstructor().newInstance();
+					spell = (ISpell)enum_spell.get_spell_class().getConstructor().newInstance();
 				} catch (Exception e) {
 					e.printStackTrace();
 					MagicLogger.log("Error while reading server packet: wrong spell class type");
 					return (null);
 				}
 				spell.do_spell(world.getEntityByID(message.caster), world.getEntityByID(message.target));
-				player.get_classe().set_energy(player.get_classe().get_energy() - enum_spell.cost);
+				player.get_classe().set_energy(player.get_classe().get_energy() - enum_spell.get_spell_cost());
 				point = new TargetPoint(player.get_player().dimension, player.get_player().posX, player.get_player().posY, player.get_player().posZ, 40.0D);
 				Packets.network.sendToAllAround(new PacketSpellClient(message), point);
 				

@@ -62,9 +62,9 @@ public class PacketSpellClient implements IMessage
 			EnumSpell	enum_spell;
 			
 			enum_spell = EnumSpell.get_spell_by_id(message.id);
-			MagicLogger.log("Client received spell: " + enum_spell.name);
+			MagicLogger.log("Client received spell: " + enum_spell.get_spell_name());
 			try {
-				spell = (ISpell)enum_spell.spell_class.getConstructor().newInstance();
+				spell = (ISpell)enum_spell.get_spell_class().getConstructor().newInstance();
 			} catch (Exception e) {
 				e.printStackTrace();
 				MagicLogger.log("Error while reading server packet: wrong spell class type");

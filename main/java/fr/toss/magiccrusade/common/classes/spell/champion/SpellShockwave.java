@@ -1,4 +1,4 @@
-package fr.toss.magiccrusade.common.classes.spell;
+package fr.toss.magiccrusade.common.classes.spell.champion;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
@@ -7,6 +7,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.render.EntityFX_Colored;
+import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
+import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.network.PacketSpellServer;
 import fr.toss.magiccrusade.common.network.Packets;
 

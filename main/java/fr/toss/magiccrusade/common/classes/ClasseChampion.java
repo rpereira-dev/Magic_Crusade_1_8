@@ -2,6 +2,7 @@ package fr.toss.magiccrusade.common.classes;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.gui.ChatColor;
@@ -72,6 +73,20 @@ public class ClasseChampion implements IClasse
     	GuiUtils.drawTexturedModalRect(x, y + 15, 0, 14, 65, 13, 0);
     	GuiUtils.drawTexturedModalRect(x, y + 15, 65, 70, (int) (65.0f / this.get_default_max_energy() * this.rage), 13, 0);
     	minecraft.fontRendererObj.drawStringWithShadow(str, x + 32 - minecraft.fontRendererObj.getStringWidth(str) / 2, y + 17, 0xffffffff);
+	}
+
+	@Override
+	public void write_to_nbt(NBTTagCompound nbt)
+	{
+		 nbt.setInteger("rage", this.rage); 
+		 nbt.setLong("last_hit", this.last_hit); 
+	}
+
+	@Override
+	public void read_from_nbt(NBTTagCompound nbt)
+	{
+		 this.rage		= nbt.getInteger("rage");
+		 this.last_hit	= nbt.getInteger("last_hit");
 	}
 
 }
