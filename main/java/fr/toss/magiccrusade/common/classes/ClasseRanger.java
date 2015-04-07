@@ -1,5 +1,6 @@
 package fr.toss.magiccrusade.common.classes;
 
+import fr.toss.magiccrusade.common.player.Stats;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
@@ -61,4 +62,33 @@ public class ClasseRanger implements IClasse
 		
 	}
 
+	@Override
+	public Stats get_default_stats()
+	{
+		Stats	stats;
+		
+		stats = new Stats();
+		stats.set_endurance(40);
+		stats.set_strength(20);
+		stats.set_stamina(10);
+		stats.set_spirit(10);
+		stats.set_clarity(10);
+		stats.set_magic(5);
+		return (stats);
+	}
+
+	@Override
+	public Stats get_stats_per_lvl()
+	{
+		Stats	stats;
+
+		stats = new Stats();
+		stats.set_endurance(2);
+		stats.set_strength(2);
+		stats.set_stamina(5);
+		stats.set_spirit(1);
+		stats.set_clarity(1);
+		stats.set_magic(1);
+		return (stats);
+	}
 }

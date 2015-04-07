@@ -4,8 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.client.config.GuiUtils;
-import fr.toss.magiccrusade.client.ClientPlayer;
-import fr.toss.magiccrusade.client.gui.ChatColor;
+import fr.toss.magiccrusade.common.player.Stats;
 
 public class ClasseChampion implements IClasse
 {	
@@ -87,6 +86,36 @@ public class ClasseChampion implements IClasse
 	{
 		 this.rage		= nbt.getInteger("rage");
 		 this.last_hit	= nbt.getInteger("last_hit");
+	}
+
+	@Override
+	public Stats get_default_stats()
+	{
+		Stats	stats;
+		
+		stats = new Stats();
+		stats.set_endurance(50);
+		stats.set_strength(20);
+		stats.set_stamina(0);
+		stats.set_spirit(20);
+		stats.set_clarity(25);
+		stats.set_magic(0);
+		return (stats);
+	}
+
+	@Override
+	public Stats get_stats_per_lvl()
+	{
+		Stats	stats;
+
+		stats = new Stats();
+		stats.set_endurance(5);
+		stats.set_strength(2);
+		stats.set_stamina(1);
+		stats.set_spirit(1);
+		stats.set_clarity(1);
+		stats.set_magic(0);
+		return (stats);
 	}
 
 }

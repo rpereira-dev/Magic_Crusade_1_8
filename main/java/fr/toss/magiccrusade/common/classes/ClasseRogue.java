@@ -1,5 +1,6 @@
 package fr.toss.magiccrusade.common.classes;
 
+import fr.toss.magiccrusade.common.player.Stats;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
@@ -67,5 +68,35 @@ public class ClasseRogue implements IClasse
 	public void read_from_nbt(NBTTagCompound nbt)
 	{
 		 this.energy = nbt.getInteger("energy");
+	}
+	
+	@Override
+	public Stats get_default_stats()
+	{
+		Stats	stats;
+		
+		stats = new Stats();
+		stats.set_endurance(36);
+		stats.set_strength(16);
+		stats.set_stamina(20);
+		stats.set_spirit(10);
+		stats.set_clarity(10);
+		stats.set_magic(5);
+		return (stats);
+	}
+
+	@Override
+	public Stats get_stats_per_lvl()
+	{
+		Stats	stats;
+
+		stats = new Stats();
+		stats.set_endurance(2);
+		stats.set_strength(4);
+		stats.set_stamina(8);
+		stats.set_spirit(0);
+		stats.set_clarity(0);
+		stats.set_magic(0);
+		return (stats);
 	}
 }

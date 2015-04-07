@@ -5,12 +5,11 @@ import net.minecraft.util.ChatComponentText;
 import api.player.server.IServerPlayerAPI;
 import api.player.server.ServerPlayerAPI;
 import api.player.server.ServerPlayerBase;
-import fr.toss.magiccrusade.common.classes.ClasseChampion;
 import fr.toss.magiccrusade.common.classes.EnumClasse;
 import fr.toss.magiccrusade.common.classes.IClasse;
-import fr.toss.magiccrusade.utils.MagicLogger;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
 
-public class ServerPlayer extends ServerPlayerBase
+public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 {
 	/** amount of experience the player has */
 	private int	experience;
@@ -23,9 +22,6 @@ public class ServerPlayer extends ServerPlayerBase
 	
 	/** Player classe */
 	private IClasse classe;
-	
-	/** Player stats */
-	private Stats	stats;
 	
 	public ServerPlayer(ServerPlayerAPI playerapi)
 	{
@@ -113,7 +109,6 @@ public class ServerPlayer extends ServerPlayerBase
 	{
 		this.level = lvl;
 	}
-
 
 	/** set player current amount of experience */
 	public void set_experience(int exp)

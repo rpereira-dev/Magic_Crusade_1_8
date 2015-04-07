@@ -20,17 +20,20 @@ message.outdated=A new version of the mod is available.
 not.enough=Not enough
 required.level=Your level is too low for this
 
+#   Stats
 stats.conseil=Advices
-stats.hp=HP
-stats.agility=Agility
-stats.strength=Strength
-stats.mana=Mana
-stats.mana_regen=Mana Regen.
-stats.armor=Armor
-stats.clarity=Clarity
-stats.magic=Magic Power
-stats.damage=Damage Boost
-stats.critic=Critical Ratio.
+stats.name.hp=HP
+stats.name.stamina=Stamina
+stats.name.strength=Strength
+stats.name.mana=Mana
+stats.name.mana_regen=Mana Regen.
+stats.name.armor=Armor
+stats.name.clarity=Clarity
+stats.name.spirit=Spirituality
+stats.name.magic=Magical
+stats.name.damage=Damages
+stats.name.critic=Critical
+
 
 #   LANG SPELL
 spell.rogue.critic=(Passive) Acuteness

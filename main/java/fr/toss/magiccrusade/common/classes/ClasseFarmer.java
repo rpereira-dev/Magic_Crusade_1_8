@@ -1,5 +1,6 @@
 package fr.toss.magiccrusade.common.classes;
 
+import fr.toss.magiccrusade.common.player.Stats;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
@@ -59,6 +60,36 @@ public class ClasseFarmer implements IClasse
 	public void read_from_nbt(NBTTagCompound nbt) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Stats get_default_stats()
+	{
+		Stats	stats;
+		
+		stats = new Stats();
+		stats.set_endurance(0);
+		stats.set_strength(0);
+		stats.set_stamina(0);
+		stats.set_spirit(0);
+		stats.set_clarity(0);
+		stats.set_magic(0);
+		return (stats);
+	}
+
+	@Override
+	public Stats get_stats_per_lvl()
+	{
+		Stats	stats;
+
+		stats = new Stats();
+		stats.set_endurance(0);
+		stats.set_strength(0);
+		stats.set_stamina(0);
+		stats.set_spirit(0);
+		stats.set_clarity(0);
+		stats.set_magic(0);
+		return (stats);
 	}
 
 }

@@ -11,26 +11,28 @@ item.description.frostmourne=La lame est totalement gelée
 item.description.sulfuras=Cette masse est brulante!
 
 
-#   LANG
+#   LANG (ou communement appele bordel)
 button.selection=Selectionner
 button.back_selection=<- Retour a la selection
 message.outdated=Une nouvelle version du mod est disponible
-
-#   Global
 not.enough=Pas assez
 required.level=Ton niveau est trop faible
 
+
+#   Stats
 stats.conseil=Conseils
-stats.hp=PV
-stats.agility=Agilite
-stats.strength=Force
-stats.mana=Mana
-stats.mana_regen=Mana Regen.
-stats.armor=Armure
-stats.clarity=Clarité
-stats.magic=Puissance
-stats.damage=Degats
-stats.critic=Critique
+stats.name.hp=PV
+stats.name.stamina=Agilite
+stats.name.strength=Force
+stats.name.mana=Mana
+stats.name.mana_regen=Mana Regen.
+stats.name.armor=Armure
+stats.name.clarity=Clarité
+stats.name.spirit=Esprit
+stats.name.magic=Puissance
+stats.name.damage=Degats
+stats.name.critic=Critique
+
 
 
 

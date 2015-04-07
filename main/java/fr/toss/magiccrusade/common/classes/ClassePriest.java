@@ -1,5 +1,6 @@
 package fr.toss.magiccrusade.common.classes;
 
+import fr.toss.magiccrusade.common.player.Stats;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
@@ -61,4 +62,34 @@ public class ClassePriest implements IClasse
 		
 	}
 
+	@Override
+	public Stats get_default_stats()
+	{
+		Stats	stats;
+		
+		stats = new Stats();
+		stats.set_endurance(30);
+		stats.set_strength(5);
+		stats.set_stamina(0);
+		stats.set_spirit(50);
+		stats.set_clarity(25);
+		stats.set_magic(0);
+		return (stats);
+	}
+
+	@Override
+	public Stats get_stats_per_lvl()
+	{
+		Stats	stats;
+
+		stats = new Stats();
+		stats.set_endurance(2);
+		stats.set_strength(1);
+		stats.set_stamina(0);
+		stats.set_spirit(8);
+		stats.set_clarity(6);
+		stats.set_magic(2);
+		return (stats);
+	}
+	
 }

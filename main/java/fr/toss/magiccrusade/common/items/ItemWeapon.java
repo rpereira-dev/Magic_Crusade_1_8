@@ -15,12 +15,13 @@ import fr.toss.magiccrusade.common.player.Stats;
 
 public class ItemWeapon extends ItemSword
 {
-	private Stats	stats;
+	protected Stats	stats;
 	private boolean hasEffect;
 
 	public ItemWeapon(ToolMaterial material)
 	{
 		super(material);
+		this.stats = new Stats();
 	}
 	
 	@Override
@@ -36,18 +37,7 @@ public class ItemWeapon extends ItemSword
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack item, EntityPlayer player, List list, boolean bool)
     {
-    /*	if (this.stats.get_endurance() != 0)
-    		list.add(ChatColor.GREEN + "+ " + this.endurance + " Endurance");
-    	if (this.mana != 0)
-    		list.add(ChatColor.GREEN + "+ " + this.mana + " Mana");
-    	if (this.strength != 0)
-    		list.add(ChatColor.GREEN + "+ " + this.strength + " Strength");
-    	if (this.agility != 0)
-    		list.add(ChatColor.GREEN + "+ " + this.agility + " Stamina");
-    	if (this.clarity != 0)
-    		list.add(ChatColor.GREEN + "+ " + this.clarity + " Clarity");
-    	if (this.mana_regeneration != 0)
-    		list.add(ChatColor.GREEN + "+ " + this.mana_regeneration + " Mana Regen.");*/
+    	list.addAll(this.stats.to_string_list());
     }
     
 	public ItemWeapon setHasEffect()

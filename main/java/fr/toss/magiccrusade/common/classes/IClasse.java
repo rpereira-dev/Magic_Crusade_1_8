@@ -7,6 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import fr.toss.magiccrusade.common.player.Stats;
 
 public interface IClasse
 {
@@ -43,9 +44,14 @@ public interface IClasse
 	public void			hit_entity(Entity target);
 
 	/** save classe to nbt */
-	public void write_to_nbt(NBTTagCompound nbt);
+	public void 		write_to_nbt(NBTTagCompound nbt);
 
 	/** load classe from nbt */
-	public void read_from_nbt(NBTTagCompound nbt);
-	
+	public void 		read_from_nbt(NBTTagCompound nbt);
+
+	/** stats default stats for this classe */
+	public Stats		get_default_stats();
+
+	/** return stats per level for this classe */
+	public Stats		get_stats_per_lvl();
 }
