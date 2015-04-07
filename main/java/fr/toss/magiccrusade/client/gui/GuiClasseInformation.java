@@ -108,7 +108,7 @@ public class GuiClasseInformation extends GuiScreen {
     		player.add_chat_message("Don't forget to configure your controls!");
     		player.set_classe(this.classe_id);
 			MagicLogger.log(player.get_classe().toString() + " id : " + this.classe_id);
-
+    		this.mc.displayGuiScreen(null);
     	}
     	else if (b.id == 43)
     	{    		

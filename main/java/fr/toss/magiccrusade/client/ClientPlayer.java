@@ -10,6 +10,7 @@ import fr.toss.magiccrusade.client.gui.GuiString;
 import fr.toss.magiccrusade.common.classes.ClasseChampion;
 import fr.toss.magiccrusade.common.classes.EnumClasse;
 import fr.toss.magiccrusade.common.classes.IClasse;
+import fr.toss.magiccrusade.common.player.Stats;
 import fr.toss.magiccrusade.utils.MagicLogger;
 
 public class ClientPlayer extends ClientPlayerBase
@@ -27,6 +28,9 @@ public class ClientPlayer extends ClientPlayerBase
 	
 	/** player current level */
 	private int	level;
+	
+	/** Player stats */
+	private Stats	stats;
 
 
 	public ClientPlayer(ClientPlayerAPI playerapi)

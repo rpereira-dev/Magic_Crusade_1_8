@@ -24,6 +24,9 @@ public class ServerPlayer extends ServerPlayerBase
 	/** Player classe */
 	private IClasse classe;
 	
+	/** Player stats */
+	private Stats	stats;
+	
 	public ServerPlayer(ServerPlayerAPI playerapi)
 	{
 		super(playerapi);

@@ -9,10 +9,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.gui.GuiIngameOverlay;
 import fr.toss.magiccrusade.client.gui.GuiSelectClass;
+import fr.toss.magiccrusade.client.gui.GuiStats;
 import fr.toss.magiccrusade.client.gui.GuiString;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
-import fr.toss.magiccrusade.common.network.Packets;
+import fr.toss.magiccrusade.common.player.Stats;
 import fr.toss.magiccrusade.utils.MagicLogger;
 
 public class KeyInputHandler {
@@ -32,7 +33,7 @@ public class KeyInputHandler {
     	}
         else if(KeyBindingsLoader.KEY_STATS.isPressed())
         {
-
+        	Minecraft.getMinecraft().displayGuiScreen(new GuiStats());
         }
         else if(KeyBindingsLoader.KEY_GROUP.isPressed())
         {

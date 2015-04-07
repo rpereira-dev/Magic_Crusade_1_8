@@ -8,21 +8,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.Vec3;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import fr.toss.magiccrusade.client.gui.ChatColor;
-import fr.toss.magiccrusade.client.gui.CreativeTabsLoader;
+import fr.toss.magiccrusade.common.player.Stats;
 
 public class ItemWeapon extends ItemSword
-{	
-	public float	agility;
-	public float	strength;
-	public float	clarity;
-	public float	mana;
-	public float	endurance;
-	public float	mana_regeneration;
-	public boolean	hasEffect;
+{
+	private Stats	stats;
+	private boolean hasEffect;
 
 	public ItemWeapon(ToolMaterial material)
 	{
@@ -42,7 +36,7 @@ public class ItemWeapon extends ItemSword
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack item, EntityPlayer player, List list, boolean bool)
     {
-    	if (this.endurance != 0)
+    	if (this.stats.get_endurance() != 0)
     		list.add(ChatColor.GREEN + "+ " + this.endurance + " Endurance");
     	if (this.mana != 0)
     		list.add(ChatColor.GREEN + "+ " + this.mana + " Mana");
@@ -55,43 +49,7 @@ public class ItemWeapon extends ItemSword
     	if (this.mana_regeneration != 0)
     		list.add(ChatColor.GREEN + "+ " + this.mana_regeneration + " Mana Regen.");
     }
-	
-	public ItemWeapon set_agility(float i)
-	{
-		this.agility = i;
-		return (this);
-	}
-	
-	public ItemWeapon set_strenght(float i)
-	{
-		this.strength = i;
-		return (this);
-	}
-	
-	public ItemWeapon set_clarity(float i)
-	{
-		this.clarity = i;
-		return (this);
-	}
-	
-	public ItemWeapon set_mana(float i)
-	{
-		this.mana = i;
-		return (this);
-	}
-	
-	public ItemWeapon set_endurance(float i)
-	{
-		this.endurance = i;
-		return (this);
-	}
-	
-	public ItemWeapon set_mana_regen(int i)
-	{
-		this.mana_regeneration = i;
-		return (this);
-	}
-	
+    
 	public ItemWeapon setHasEffect()
 	{
 		this.hasEffect = true;

@@ -1,6 +1,7 @@
 package fr.toss.magiccrusade.common.network;
 
 import fr.toss.magiccrusade.client.ClientPlayer;
+import fr.toss.magiccrusade.common.classes.EnumClasse;
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -16,7 +17,7 @@ public class PacketPlayerData implements IMessage
 
 	public PacketPlayerData()
 	{
-		this(1, 0, 0);
+		this(1, 0, EnumClasse.FARMER.get_id());
 	}
 	
 	public PacketPlayerData(int p_level, int p_experience, int p_classe_id)
