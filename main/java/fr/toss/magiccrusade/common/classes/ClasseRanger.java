@@ -73,7 +73,8 @@ public class ClasseRanger implements IClasse
 		stats.set_stamina(10);
 		stats.set_spirit(10);
 		stats.set_clarity(10);
-		stats.set_magic(5);
+		stats.set_magic(0);
+		stats.set_mana(0);
 		return (stats);
 	}
 
@@ -89,6 +90,7 @@ public class ClasseRanger implements IClasse
 		stats.set_spirit(1);
 		stats.set_clarity(1);
 		stats.set_magic(1);
+		stats.set_mana(0);
 		return (stats);
 	}
 }

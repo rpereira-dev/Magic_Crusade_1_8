@@ -74,6 +74,7 @@ public class ClasseFarmer implements IClasse
 		stats.set_spirit(0);
 		stats.set_clarity(0);
 		stats.set_magic(0);
+		stats.set_mana(0);
 		return (stats);
 	}
 
@@ -89,6 +90,7 @@ public class ClasseFarmer implements IClasse
 		stats.set_spirit(0);
 		stats.set_clarity(0);
 		stats.set_magic(0);
+		stats.set_mana(0);
 		return (stats);
 	}
 

@@ -74,6 +74,7 @@ public class ClasseNecromancer implements IClasse
 		stats.set_spirit(50);
 		stats.set_clarity(25);
 		stats.set_magic(0);
+		stats.set_mana(0);
 		return (stats);
 	}
 
@@ -89,6 +90,7 @@ public class ClasseNecromancer implements IClasse
 		stats.set_spirit(1);
 		stats.set_clarity(2);
 		stats.set_magic(1);
+		stats.set_mana(50);
 		return (stats);
 	}
 

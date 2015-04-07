@@ -61,6 +61,13 @@ public class Stats
 		
 		stats = entity.get_classe().get_default_stats();
 		stats_per_lvl = entity.get_classe().get_stats_per_lvl();
+		stats.endurance += stats_per_lvl.endurance * entity.get_level();
+		stats.stamina += stats_per_lvl.stamina * entity.get_level();
+		stats.mana += stats_per_lvl.mana * entity.get_level();
+		stats.magic += stats_per_lvl.magic * entity.get_level();
+		stats.strength += stats_per_lvl.strength * entity.get_level();
+		stats.clarity += stats_per_lvl.clarity * entity.get_level();
+		stats.spirit += stats_per_lvl.spirit * entity.get_level();
 		return (stats);
 	}
 

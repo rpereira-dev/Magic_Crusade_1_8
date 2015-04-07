@@ -74,6 +74,7 @@ public class ClassePriest implements IClasse
 		stats.set_spirit(50);
 		stats.set_clarity(25);
 		stats.set_magic(0);
+		stats.set_mana(0);
 		return (stats);
 	}
 
@@ -89,6 +90,7 @@ public class ClassePriest implements IClasse
 		stats.set_spirit(8);
 		stats.set_clarity(6);
 		stats.set_magic(2);
+		stats.set_mana(50);
 		return (stats);
 	}
 	
