@@ -57,7 +57,7 @@ public class Stats
 	 */
 	public void	set_equipement_stats(ItemStack equipements[])
 	{
-		for (ItemStack item : player.get_player().inventory.armorInventory)
+		for (ItemStack item : equipements)
 		{
 			if (item.getItem() instanceof ItemMagicArmor)
 			{

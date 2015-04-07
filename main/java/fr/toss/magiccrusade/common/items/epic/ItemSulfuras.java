@@ -20,7 +20,7 @@ public class ItemSulfuras extends ItemWeapon
 	public ItemSulfuras()
 	{
 		super(EnumMaterial.TOOL_EPIC);
-		this.set_strenght(50.0f);
+//		this.set_strenght(50.0f);
 		this.setUnlocalizedName("sulfuras");
 		this.setHasEffect();
 	}

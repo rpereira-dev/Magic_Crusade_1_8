@@ -21,7 +21,7 @@ public class ItemFrostmourne extends ItemWeapon
 		super(EnumMaterial.TOOL_EPIC);
 		this.setUnlocalizedName("frostmourne");
 		this.setHasEffect();
-		this.set_strenght(60.0f);
+//		this.set_strenght(60.0f);
 	}
 	
 	 /**

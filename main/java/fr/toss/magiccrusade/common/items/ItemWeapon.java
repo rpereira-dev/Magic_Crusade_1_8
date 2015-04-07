@@ -36,7 +36,7 @@ public class ItemWeapon extends ItemSword
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack item, EntityPlayer player, List list, boolean bool)
     {
-    	if (this.stats.get_endurance() != 0)
+    /*	if (this.stats.get_endurance() != 0)
     		list.add(ChatColor.GREEN + "+ " + this.endurance + " Endurance");
     	if (this.mana != 0)
     		list.add(ChatColor.GREEN + "+ " + this.mana + " Mana");
@@ -47,7 +47,7 @@ public class ItemWeapon extends ItemSword
     	if (this.clarity != 0)
     		list.add(ChatColor.GREEN + "+ " + this.clarity + " Clarity");
     	if (this.mana_regeneration != 0)
-    		list.add(ChatColor.GREEN + "+ " + this.mana_regeneration + " Mana Regen.");
+    		list.add(ChatColor.GREEN + "+ " + this.mana_regeneration + " Mana Regen.");*/
     }
     
 	public ItemWeapon setHasEffect()
