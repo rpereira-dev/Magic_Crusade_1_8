@@ -31,7 +31,7 @@ public class KeyInputHandler {
     	{
         	Minecraft.getMinecraft().displayGuiScreen(new GuiSelectClass());
     	}
-        else if(KeyBindingsLoader.KEY_STATS.isPressed())
+        else if(KeyBindingsLoader.KEY_STATS.isPressed() && player.get_classe() != null)
         {
         	Minecraft.getMinecraft().displayGuiScreen(new GuiStats());
         }

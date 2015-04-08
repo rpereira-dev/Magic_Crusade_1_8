@@ -4,16 +4,15 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.ChatComponentText;
 import api.player.client.ClientPlayerAPI;
 import api.player.client.ClientPlayerBase;
-import fr.toss.magiccrusade.client.gui.ChatColor;
 import fr.toss.magiccrusade.client.gui.GuiIngameOverlay;
 import fr.toss.magiccrusade.client.gui.GuiString;
-import fr.toss.magiccrusade.common.classes.ClasseChampion;
 import fr.toss.magiccrusade.common.classes.EnumClasse;
 import fr.toss.magiccrusade.common.classes.IClasse;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
 import fr.toss.magiccrusade.common.player.Stats;
 import fr.toss.magiccrusade.utils.MagicLogger;
 
-public class ClientPlayer extends ClientPlayerBase
+public class ClientPlayer extends ClientPlayerBase implements IMagicEntity
 {
 	private static ClientPlayer	instance;
 	
@@ -37,7 +36,7 @@ public class ClientPlayer extends ClientPlayerBase
 	{
 		super(playerapi);
 		ClientPlayer.instance = this;
-		this.classe = EnumClasse.load_classe_from_id(-1);
+		this.classe = EnumClasse.load_classe_from_id(EnumClasse.FARMER.get_id());
 		this.level = 1;
 		this.experience_to_next_level = this.calcul_next_level_experience();
 		this.experience = 0;
@@ -167,5 +166,10 @@ public class ClientPlayer extends ClientPlayerBase
 	public void set_classe(int id)
 	{
 		this.classe = EnumClasse.load_classe_from_id(id);
+	}
+
+	public String	get_username()
+	{
+		return (this.get_player().getDisplayNameString());
 	}
 }

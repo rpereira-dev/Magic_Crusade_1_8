@@ -7,16 +7,17 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.player.Stats;
 
 public interface IClasse
 {
-	public static final ResourceLocation PRIEST = new ResourceLocation("magiccrusade:textures/spells/priest.png");
-	public static final ResourceLocation MAGE = new ResourceLocation("magiccrusade:textures/spells/mage.png");
-	public static final ResourceLocation CHAMPION = new ResourceLocation("magiccrusade:textures/spells/champion.png");
-	public static final ResourceLocation DRAGON_SLAYER = new ResourceLocation("magiccrusade:textures/spells/dragon_slayer.png");
-	public static final ResourceLocation NECROMANCER = new ResourceLocation("magiccrusade:textures/spells/necromancer.png");
-	public static final ResourceLocation ROGUE = new ResourceLocation("magiccrusade:textures/spells/rogue.png");
+	public static final ResourceLocation PRIEST_RES = new ResourceLocation("magiccrusade:textures/spells/priest.png");
+	public static final ResourceLocation MAGE_RES = new ResourceLocation("magiccrusade:textures/spells/mage.png");
+	public static final ResourceLocation CHAMPION_RES = new ResourceLocation("magiccrusade:textures/spells/champion.png");
+	public static final ResourceLocation RANGER_RES = new ResourceLocation("magiccrusade:textures/spells/dragon_slayer.png");
+	public static final ResourceLocation NECROMANCER_RES = new ResourceLocation("magiccrusade:textures/spells/necromancer.png");
+	public static final ResourceLocation ROGUE_RES = new ResourceLocation("magiccrusade:textures/spells/rogue.png");
 	
 	/** list of every classes */
 	public static final List<EnumClasse> list_class = new ArrayList<EnumClasse>();
@@ -54,4 +55,10 @@ public interface IClasse
 
 	/** return stats per level for this classe */
 	public Stats		get_stats_per_lvl();
+
+	/** classe spell textures png file*/
+	public ResourceLocation	get_texture();
+
+	/** a list of every classes spells */
+	public List<EnumSpell>	get_spells();
 }

@@ -1,9 +1,15 @@
 package fr.toss.magiccrusade.common.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiUtils;
+import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
+import fr.toss.magiccrusade.common.classes.spell.Spell;
 import fr.toss.magiccrusade.common.player.Stats;
 
 public class ClasseChampion implements IClasse
@@ -13,12 +19,19 @@ public class ClasseChampion implements IClasse
 	
 	/** last hit timer */
 	private static final int MILLIS_TO_LOOSE_RAGE = 2000;
-	private long	last_hit;
+	
+	private long			last_hit;
+	private List<EnumSpell> spells;
 	
 	public ClasseChampion()
 	{
 		this.rage = 0;
 		this.last_hit = 0;
+		this.spells = new ArrayList<EnumSpell>();
+		this.spells.add(EnumSpell.CHARGE);
+		this.spells.add(EnumSpell.IRONSKIN);
+		this.spells.add(EnumSpell.EARTH_SHIELD);
+		this.spells.add(EnumSpell.SHOCKWAVE);
 	}
 	
 	@Override
@@ -118,4 +131,15 @@ public class ClasseChampion implements IClasse
 		return (stats);
 	}
 
+	@Override
+	public ResourceLocation get_texture()
+	{
+		return (IClasse.CHAMPION_RES);
+	}
+
+	@Override
+	public List<EnumSpell> get_spells() 
+	{
+		return (this.spells);
+	}
 }

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.client.config.GuiUtils;
@@ -98,7 +100,7 @@ public class GuiIngameOverlay
 
 	private void	render_player_icon(int x, int y)
 	{
-		GuiInventory.drawEntityOnScreen(x + 8, y + 26, 14, 0, 0, this.mc.thePlayer);
+		GuiInventory.drawEntityOnScreen(x + 8, y + 26, 14, 0, 0, this.player.get_player());
 	}
     
 	private void	render_health_bar(int x, int y)

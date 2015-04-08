@@ -1,17 +1,28 @@
 package fr.toss.magiccrusade.common.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.player.Stats;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 
 public class ClasseNecromancer implements IClasse
 {
+	private List<EnumSpell> spells;
 
+	public ClasseNecromancer()
+	{
+		this.spells = new ArrayList<EnumSpell>();
+	}
+	
 	@Override
-	public EnumClasse get_enum_classe() {
-		// TODO Auto-generated method stub
-		return null;
+	public EnumClasse get_enum_classe()
+	{
+		return (EnumClasse.NECROMANCER);
 	}
 
 	@Override
@@ -94,4 +105,15 @@ public class ClasseNecromancer implements IClasse
 		return (stats);
 	}
 
+	@Override
+	public ResourceLocation get_texture()
+	{
+		return (IClasse.NECROMANCER_RES);
+	}
+
+	@Override
+	public List<EnumSpell> get_spells()
+	{
+		return (this.spells);
+	}
 }

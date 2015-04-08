@@ -15,9 +15,10 @@ import fr.toss.magiccrusade.utils.MagicLogger;
 public enum EnumSpell
 {	
 	CHARGE(0, 0, "charge", 1, 100, EnumClasse.CHAMPION, SpellCharge.class),
-	SHOCKWAVE(1, 1, "shockwave", 1, 180, EnumClasse.CHAMPION, SpellShockwave.class),
-	IRONSKIN(2, 2, "ironskin", 4, 240, EnumClasse.CHAMPION, SpellIronskin.class),
-	EARTH_SHIELD(3, 3, "earth_shield", 10, 460, EnumClasse.CHAMPION, SpellEarthShield.class);
+	IRONSKIN(1, 2, "ironskin", 1, 240, EnumClasse.CHAMPION, SpellIronskin.class),
+	EARTH_SHIELD(2, 3, "earth_shield", 4, 460, EnumClasse.CHAMPION, SpellEarthShield.class),
+	SHOCKWAVE(3, 1, "shockwave", 8, 180, EnumClasse.CHAMPION, SpellShockwave.class);
+
 	
 	private int			id;
 	private int			classe_id;
@@ -40,7 +41,7 @@ public enum EnumSpell
 	{
 		ISpell.spell_list.add(this);
 		this.id = p_id;
-		this.name = I18n.format("spell." + p_classe.get_name().toLowerCase() + "." + str.toLowerCase());
+		this.name = str;
 		this.level = p_level;
 		this.cost = p_cost;
 		this.classe = p_classe;
@@ -62,7 +63,7 @@ public enum EnumSpell
 	/** return spell name */
 	public String	get_spell_name()
 	{
-		return (this.name);
+		return (I18n.format("spell." + this.classe.get_name().toLowerCase() + "." + this.name.toLowerCase()));
 	}
 	
 	/** return spell minimum level */

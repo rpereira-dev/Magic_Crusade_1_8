@@ -73,7 +73,7 @@ public enum EnumClasse
 	{
 		for (EnumClasse enum_classe : IClasse.list_class)
 		{
-			if (enum_classe.id == id)
+			if (enum_classe.get_id() == id)
 			{
 				try {
 					return ((IClasse) (enum_classe.get_classe().getConstructor().newInstance()));

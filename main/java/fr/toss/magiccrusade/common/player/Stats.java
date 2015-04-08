@@ -54,7 +54,7 @@ public class Stats
 	 * @param classe:	player classe (for stats ratios*)
 	 * @param level	:	player level (to calcul per level stats)
 	 */
-	public Stats	get_default_stats(IMagicEntity entity)
+	public static Stats	get_default_stats(IMagicEntity entity)
 	{
 		Stats	stats;
 		Stats	stats_per_lvl;
@@ -87,9 +87,12 @@ public class Stats
 		}
 		for (ItemStack item : equipements)
 		{
-			if (item.getItem() instanceof IItemStatable)
+			if (item != null && item.getItem() != null)
 			{
-				stats.combine(((IItemStatable)item.getItem()).get_stats());
+				if (item.getItem() instanceof IItemStatable)
+				{
+					stats.combine(((IItemStatable)item.getItem()).get_stats());
+				}
 			}
 		}
 		return (stats);

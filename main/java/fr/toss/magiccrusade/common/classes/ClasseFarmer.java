@@ -1,17 +1,28 @@
 package fr.toss.magiccrusade.common.classes;
 
-import fr.toss.magiccrusade.common.player.Stats;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
+import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
+import fr.toss.magiccrusade.common.player.Stats;
 
 public class ClasseFarmer implements IClasse
 {
+	private List<EnumSpell> spells;
 
+	public ClasseFarmer()
+	{
+		this.spells = new ArrayList<EnumSpell>();
+	}
+	
 	@Override
-	public EnumClasse get_enum_classe() {
-		// TODO Auto-generated method stub
-		return null;
+	public EnumClasse get_enum_classe()
+	{
+		return (EnumClasse.FARMER);
 	}
 
 	@Override
@@ -92,6 +103,19 @@ public class ClasseFarmer implements IClasse
 		stats.set_magic(0);
 		stats.set_mana(0);
 		return (stats);
+	}
+	
+
+	@Override
+	public ResourceLocation get_texture()
+	{
+		return (IClasse.CHAMPION_RES);
+	}
+
+	@Override
+	public List<EnumSpell> get_spells() 
+	{
+		return (this.spells);
 	}
 
 }

@@ -1,17 +1,28 @@
 package fr.toss.magiccrusade.common.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.player.Stats;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 
 public class ClassePriest implements IClasse
 {
-
+	private List<EnumSpell> spells;
+	
+	public ClassePriest()
+	{
+		this.spells = new ArrayList<EnumSpell>();
+	}
+	
 	@Override
-	public EnumClasse get_enum_classe() {
-		// TODO Auto-generated method stub
-		return null;
+	public EnumClasse get_enum_classe()
+	{
+		return (EnumClasse.PRIEST);
 	}
 
 	@Override
@@ -92,6 +103,19 @@ public class ClassePriest implements IClasse
 		stats.set_magic(2);
 		stats.set_mana(50);
 		return (stats);
+	}
+	
+
+	@Override
+	public ResourceLocation get_texture()
+	{
+		return (IClasse.PRIEST_RES);
+	}
+
+	@Override
+	public List<EnumSpell> get_spells()
+	{
+		return (this.spells);
 	}
 	
 }

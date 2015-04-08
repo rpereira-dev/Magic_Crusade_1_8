@@ -1,15 +1,26 @@
 package fr.toss.magiccrusade.common.classes;
 
-import fr.toss.magiccrusade.common.player.Stats;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiUtils;
+import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
+import fr.toss.magiccrusade.common.player.Stats;
 
 public class ClasseRogue implements IClasse
 {
-	private int	energy;
+	private int						energy;
+	private ArrayList<EnumSpell>	spells;
 
+	public ClasseRogue()
+	{
+		this.spells = new ArrayList<EnumSpell>();
+	}
+	
 	@Override
 	public EnumClasse get_enum_classe()
 	{
@@ -100,5 +111,17 @@ public class ClasseRogue implements IClasse
 		stats.set_magic(0);
 		stats.set_mana(0);
 		return (stats);
+	}
+	
+	@Override
+	public ResourceLocation get_texture()
+	{
+		return (IClasse.ROGUE_RES);
+	}
+
+	@Override
+	public List<EnumSpell> get_spells()
+	{
+		return (this.spells);
 	}
 }

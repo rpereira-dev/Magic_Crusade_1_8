@@ -34,6 +34,9 @@ stats.name.magic=Magical
 stats.name.damage=Damages
 stats.name.critic=Critical
 
+#   SPELL DESCRIPTION
+charge.description=The Champion charges forward&making an explosion&under his foot
+
 
 #   LANG SPELL
 spell.rogue.critic=(Passive) Acuteness
