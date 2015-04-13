@@ -23,6 +23,7 @@ required.level=Your level is too low for this
 #   Stats
 stats.conseil=Advices
 stats.name.hp=HP
+stats.name.endurance=Endurance
 stats.name.stamina=Stamina
 stats.name.strength=Strength
 stats.name.mana=Mana
@@ -35,7 +36,8 @@ stats.name.damage=Damages
 stats.name.critic=Critical
 
 #   SPELL DESCRIPTION
-charge.description=The Champion charges forward&making an explosion&under his foot
+charge.description=The Champion charges forward making an explosion under his foot
+shockwave.description=A Shockwave make the ground explode. Deals @D damages (+ @d ) to nearby ennemis # 2 # 0.5
 
 
 #   LANG SPELL

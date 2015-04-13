@@ -1,7 +1,11 @@
 package fr.toss.magiccrusade.common.classes.spell;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.resources.I18n;
 import fr.toss.magiccrusade.client.ClientPlayer;
+import fr.toss.magiccrusade.client.gui.ChatColor;
 import fr.toss.magiccrusade.common.classes.EnumClasse;
 import fr.toss.magiccrusade.common.classes.IClasse;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellCharge;
@@ -10,6 +14,7 @@ import fr.toss.magiccrusade.common.classes.spell.champion.SpellIronskin;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellShockwave;
 import fr.toss.magiccrusade.common.network.PacketSpellServer;
 import fr.toss.magiccrusade.common.network.Packets;
+import fr.toss.magiccrusade.common.player.Stats;
 import fr.toss.magiccrusade.utils.MagicLogger;
 
 public enum EnumSpell
@@ -90,15 +95,84 @@ public enum EnumSpell
 		return (this.spell_class);
 	}
 	
-	/** get spell description */
-	public static String[]	get_description(EnumSpell spell)
+		/** 
+	 * get spell description 
+	 * formatting example:
+	 * `Deals 5 (+%f)
+	 * */
+	public static String[]	get_description(EnumSpell spell) throws Exception
 	{
-		String	description;
-		
-		description = I18n.format(spell.name + "." + "description");
-		return (description.split("&"));
+		String			str;
+		String[] 		tab;
+		List<String>	lst;
+		String[]		format;
+		String[]		words;
+		StringBuffer	tmp;
+		Stats			stats;
+		int				j;
+
+		str = I18n.format(spell.name + "." + "description");
+		System.out.println(str);
+		lst = new ArrayList<String>();
+		words = str.split("\\s+");
+		format = str.split("#");
+		stats = ClientPlayer.instance().get_stats();
+		j = 1;
+		tmp = new StringBuffer();
+		for (int i = 0; i < words.length; i++)
+		{
+		    if (tmp.length() > 24)
+		    {
+		    	lst.add(tmp.toString());
+		    	tmp = new StringBuffer();
+		    }
+			if (words[i].charAt(0) == '@')
+			{
+				if (words[i].charAt(1) == 'd')
+				{
+					tmp.append(ChatColor.GOLD + String.valueOf(Float.valueOf(format[j]) * stats.get_strength()) + ChatColor.RESET);
+				}
+				else if (words[i].charAt(1) == 'D')
+				{
+					tmp.append(ChatColor.GOLD + String.valueOf(Float.valueOf(format[j])) + ChatColor.RESET);
+				}
+				else if (words[i].charAt(1) == 'm')
+				{
+					tmp.append(ChatColor.AQUA + String.valueOf(Float.valueOf(format[j]) * stats.get_clarity()) + ChatColor.RESET);
+				}
+				else if (words[i].charAt(1) == 'M')
+				{
+					tmp.append(ChatColor.AQUA + String.valueOf(Float.valueOf(format[j])) + ChatColor.RESET);
+				}
+				else if (words[i].charAt(1) == 'a')
+				{
+					tmp.append(ChatColor.GREEN + String.valueOf(Float.valueOf(format[j]) * stats.get_stamina()) + ChatColor.RESET);
+				}
+				else if (words[i].charAt(1) == 'A')
+				{
+					tmp.append(ChatColor.GREEN + String.valueOf(Float.valueOf(format[j])) + ChatColor.RESET);
+				}
+				j++;
+			}
+			else if (words[i].equals("#"))
+			{
+				break ;
+			}
+			else
+			{
+			    tmp.append(words[i]);
+			}
+			tmp.append(' ');
+		}
+		if (!tmp.toString().isEmpty())
+		{
+			lst.add(tmp.toString());
+		}
+		tab = new String[lst.size()];
+		tab = lst.toArray(tab);;
+		return (tab);
 	}
-	
+
 	/** get a spell from it unique id */
 	public static EnumSpell	get_spell_by_id(int id)
 	{

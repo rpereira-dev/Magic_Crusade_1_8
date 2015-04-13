@@ -6,6 +6,7 @@ import java.util.List;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.gui.ChatColor;
 import fr.toss.magiccrusade.common.entity.IMagicEntity;
 import fr.toss.magiccrusade.common.items.IItemStatable;
@@ -81,7 +82,7 @@ public class Stats
 		Stats	stats;
 		
 		stats = new Stats();
-		if (hand.getItem() instanceof IItemStatable)
+		if (hand != null && hand.getItem() instanceof IItemStatable)
 		{
 			stats.combine(((IItemStatable)hand.getItem()).get_stats());
 		}
@@ -95,6 +96,22 @@ public class Stats
 				}
 			}
 		}
+		return (stats);
+	}
+	
+	/**
+	 * Set player stats depending on equipements. Also call `set_default_stats`
+	 * @param equipements : player equipements
+	 * @see Stats.set_default_stats
+	 */
+	public static Stats	get_player_stats()
+	{
+		ClientPlayer	player;
+		Stats			stats;
+		
+		player = ClientPlayer.instance();
+		stats = Stats.get_default_stats(player);
+		stats.combine(Stats.get_equipement_stats(player.get_player().inventory.armorInventory, player.get_player().inventory.getCurrentItem()));
 		return (stats);
 	}
 	

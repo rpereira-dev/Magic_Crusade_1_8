@@ -1,21 +1,28 @@
 package fr.toss.magiccrusade.client.gui;
 
+import java.util.List;
+
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.common.classes.EnumClasse;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
-import fr.toss.magiccrusade.common.classes.spell.Spell;
 import fr.toss.magiccrusade.common.player.Stats;
-import fr.toss.magiccrusade.utils.MagicLogger;
 
 public class GuiStats extends GuiScreen
 {
 	public static final ResourceLocation GUI	= new ResourceLocation("magiccrusade:textures/gui/gui_stats.png");
 	
 	private Stats			stats;
+	private Stats			stats_default;
 	private SpellSlot		slots[];
+	private StatsLine		stats_line[];
 
 	private ClientPlayer	player;	
 	
@@ -24,13 +31,32 @@ public class GuiStats extends GuiScreen
 	{
 		super.initGui();
 		this.player = ClientPlayer.instance();
-		this.stats = Stats.get_default_stats(this.player);
-		this.stats.combine(Stats.get_equipement_stats(this.player.get_player().inventory.armorInventory, this.player.get_player().inventory.getCurrentItem()));
+		this.stats = Stats.get_player_stats();
+		this.stats_default = Stats.get_default_stats(this.player);
 		this.slots = new SpellSlot[this.player.get_classe().get_spells().size()];
+		this.stats_line = new StatsLine[7];
 		this.init_slots();
+		this.init_stats();
 	}
 
-    private void init_slots()
+    private void init_stats()
+    {
+    	int	x;
+    	int	y;
+    	
+    	x = this.width / 2 - 86;
+    	y =  this.height / 2 - 28;
+    	this.stats_line[0] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y);
+    	this.stats_line[1] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y + 16);
+    	this.stats_line[2] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y + 32);
+    	this.stats_line[3] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y + 48);
+    	this.stats_line[4] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y + 64);
+    	this.stats_line[5] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y + 80);
+    	this.stats_line[6] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y + 96);
+
+	}
+
+	private void init_slots()
     {
     	int	x;
     	int	y;
@@ -57,8 +83,76 @@ public class GuiStats extends GuiScreen
     	this.drawBackground();
         this.drawTitles();
         this.drawSlots();
+        this.drawStats();
         this.checkSpellHover(mouseX, mouseY);
+        this.checkStatsHover(mouseX, mouseY);
+    	this.renderPlayer(mouseX, mouseY);
     }
+
+	private void renderPlayer(int mouseX, int mouseY)
+	{
+		EnumClasse	classe;
+		String	str;
+		List 	lst;
+		
+		mouseX += this.width / 2;
+		mouseY -= this.height / 2;
+		
+		
+		classe = this.player.get_classe().get_enum_classe();
+        str = classe.get_chat_color() + classe.get_name() + ChatColor.RESET + " " + this.player.get_username();
+        this.drawCenteredString(this.fontRendererObj, str, 64, 50, 0xffffff);
+		
+        str = this.player.get_player().getHealth() + " / " + this.player.get_player().getMaxHealth();
+        this.drawCenteredString(this.fontRendererObj, str, 64, 64, 0xffffff);
+	        
+       	GuiInventory.drawEntityOnScreen(64, this.height / 2 + 86, 64, -mouseX * 16, -mouseY, this.player.get_player());
+
+		lst = this.player.get_player().worldObj.getEntitiesWithinAABBExcludingEntity(this.player.get_player(), this.player.get_player().getEntityBoundingBox().expand(64, 64, 64));
+		for (Object obj : lst)
+		{
+			if (obj instanceof EntityTameable)
+			{
+				if (((EntityTameable)obj).getOwnerEntity() == this.player.get_player())
+				{
+			        str = ((EntityTameable)obj).getName();
+			        this.drawCenteredString(this.fontRendererObj, str, this.width - 64, 50, 0xffffff);
+
+			        str = ((EntityTameable)obj).getHealth() + " / " + ((EntityTameable)obj).getMaxHealth();
+			        this.drawCenteredString(this.fontRendererObj, str, this.width - 64, 64, 0xffffff);
+			        
+					GuiInventory.drawEntityOnScreen(this.width - 64, this.height / 2 + 64, 64, mouseX / 2, -mouseY, (EntityLivingBase) obj);
+					break ;
+				}
+			}
+		}
+	}
+
+	private void checkStatsHover(int x, int y)
+    {
+		int	x_len;
+		
+    	for (StatsLine line : this.stats_line)
+    	{
+    		x_len = this.mc.fontRendererObj.getStringWidth(line.stat);
+
+    		if (x >= line.x && x <= line.x + x_len && y >= line.y - 4 && y <= line.y + 12)
+    		{
+        		this.drawRect(0, 0, this.width, this.height, Integer.MIN_VALUE);
+    			this.drawRect(x - x_len / 2 - 16, y - 18, x + x_len / 2 + 16, y, Integer.MAX_VALUE);
+				this.drawCenteredString(this.mc.fontRendererObj, ChatColor.UNDERLINE + line.details + ChatColor.RESET, x, y - 14, 0xffffff);
+    		}
+    	}
+    }
+    
+    private void drawStats()
+    {
+    	for (StatsLine s : this.stats_line)
+    	{
+    		this.drawString(this.mc.fontRendererObj, s.stat, s.x, s.y, 0xffffffff);
+    	}
+    }
+ 
     
     private void checkSpellHover(int x, int y)
     {
@@ -125,13 +219,9 @@ public class GuiStats extends GuiScreen
 	private void drawTitles()
     {
 		String		str;
-		EnumClasse	classe;
-		
-		classe = this.player.get_classe().get_enum_classe();
-        str = classe.get_chat_color() + classe.get_name() + ChatColor.RESET + " " + this.player.get_username();
-        this.drawCenteredString(this.fontRendererObj, str, this.width / 2, 14, Integer.MAX_VALUE);
-        str = ChatColor.YELLOW + "" + ChatColor.UNDERLINE  + "Level: " + this.player.get_level() + ChatColor.RESET;
-        this.drawCenteredString(this.fontRendererObj, str, this.width / 2 - 26, 50, Integer.MAX_VALUE);
+
+        str = ChatColor.AQUA + "" + ChatColor.UNDERLINE  + "Level: " + this.player.get_level() + ChatColor.RESET;
+        this.drawCenteredString(this.fontRendererObj, str, this.width / 2 - 26, 50, 0xffffff);
 	}
 
 	private void	drawBackground()
@@ -187,6 +277,50 @@ class SpellSlot
 		this.spell = p_enum;
 		this.x = p_x;
 		this.y = p_y;
-		this.description = EnumSpell.get_description(p_enum);
+		try
+		{
+			this.description = EnumSpell.get_description(p_enum);
+		}
+		catch (Exception e)
+		{
+			this.description = new String[1];
+			this.description[0] = "no description available :(";
+		}
+	}
+}
+
+
+class StatsLine
+{
+	public String	stat;
+	public String	details;
+	public int 		x;
+	public int 		y;
+	
+	public StatsLine(String p_stat, String p_details, float p_value, float p_default, int p_x, int p_y)
+	{
+		String	value;
+		
+		value = Float.toString(p_value);
+		if (value.length() > 5)
+		{
+			value = value.subSequence(0, 5).toString();
+		}
+		if (p_value > p_default)
+		{
+			this.stat = ChatColor.GREEN.toString();
+		}
+		else if (p_value < p_default)
+		{
+			this.stat = ChatColor.RED.toString();
+		}
+		else
+		{
+			stat = ChatColor.WHITE.toString();
+		}
+		this.stat += p_stat +  " : " + value  + ChatColor.RESET;
+		this.details = p_details;
+		this.x = p_x;
+		this.y = p_y;
 	}
 }

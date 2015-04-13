@@ -9,7 +9,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
-import fr.toss.magiccrusade.common.classes.spell.Spell;
 import fr.toss.magiccrusade.common.player.Stats;
 
 public class ClasseChampion implements IClasse

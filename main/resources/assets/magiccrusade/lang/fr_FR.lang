@@ -22,6 +22,7 @@ required.level=Ton niveau est trop faible
 #   Stats
 stats.conseil=Conseils
 stats.name.hp=PV
+stats.name.endurance=Endurance
 stats.name.stamina=Agilite
 stats.name.strength=Force
 stats.name.mana=Mana

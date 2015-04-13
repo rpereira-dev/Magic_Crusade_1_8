@@ -51,6 +51,7 @@ public class ClientPlayer extends ClientPlayerBase implements IMagicEntity
 	public void onUpdate()
 	{
 		super.onUpdate();
+		this.stats = Stats.get_player_stats();
 		this.classe.update();
 		if (this.experience_to_receive > 0)
 		{
@@ -61,6 +62,11 @@ public class ClientPlayer extends ClientPlayerBase implements IMagicEntity
 				this.on_level_up();
 			}
 		}
+	}
+	
+	public Stats	get_stats()
+	{
+		return (this.stats);
 	}
 	
 	private void	on_level_up()
