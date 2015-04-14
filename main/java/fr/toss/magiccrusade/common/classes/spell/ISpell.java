@@ -30,7 +30,7 @@ public interface ISpell
 	/** do spell, only executed server side */
 	public void			do_spell(Entity caster, Entity target);
 	
-	/** return entity target id */
+	/** return entity target id , -1 if theres no target*/
 	public int			get_target_id(ClientPlayer client);
 
 

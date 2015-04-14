@@ -35,6 +35,14 @@ stats.name.magic=Magical
 stats.name.damage=Damages
 stats.name.critic=Critical
 
+stats.desc.magic=+ 5 magics per point
+stats.desc.endurance=+ 1 hearth per 20 points (0.1f hp per point)
+stats.desc.strength=+ 1 damages per 20 points (0.05 damages per point)
+stats.desc.stamina=+ 1%% critic per 5 points (0.2 %% critic per point)
+stats.desc.clarity=+ 5 magic and 20 manas per point
+stats.desc.spirit=+ 1 mana regeneration / sec per 10 points (0.1 mana per point)
+stats.desc.mana=+ 1 mana per point
+
 #   SPELL DESCRIPTION
 charge.description=The Champion charges forward making an explosion under his foot
 shockwave.description=A Shockwave make the ground explode. Deals @D damages (+ @d ) to nearby ennemis # 2 # 0.5

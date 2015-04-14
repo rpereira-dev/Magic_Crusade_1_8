@@ -28,7 +28,7 @@ public class ClasseNecromancer implements IClasse
 	@Override
 	public int get_default_max_energy() {
 		// TODO Auto-generated method stub
-		return 0;
+		return (2000);
 	}
 
 	@Override
@@ -44,7 +44,8 @@ public class ClasseNecromancer implements IClasse
 	}
 
 	@Override
-	public void update() {
+	public void update()
+	{
 		// TODO Auto-generated method stub
 		
 	}

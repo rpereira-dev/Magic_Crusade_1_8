@@ -33,8 +33,6 @@ public class GuiStats extends GuiScreen
 		this.player = ClientPlayer.instance();
 		this.stats = Stats.get_player_stats();
 		this.stats_default = Stats.get_default_stats(this.player);
-		this.slots = new SpellSlot[this.player.get_classe().get_spells().size()];
-		this.stats_line = new StatsLine[7];
 		this.init_slots();
 		this.init_stats();
 	}
@@ -44,17 +42,17 @@ public class GuiStats extends GuiScreen
     	int	x;
     	int	y;
     	
+		this.stats_line = new StatsLine[7];    	
     	x = this.width / 2 - 86;
     	y =  this.height / 2 - 28;
-    	this.stats_line[0] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y);
-    	this.stats_line[1] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y + 16);
-    	this.stats_line[2] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y + 32);
-    	this.stats_line[3] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y + 48);
-    	this.stats_line[4] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y + 64);
-    	this.stats_line[5] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y + 80);
-    	this.stats_line[6] = new StatsLine(Stats.get_endurance_name(), "+ 1 hp per 10 points", this.stats.get_endurance(), this.stats_default.get_endurance(), x, y + 96);
-
-	}
+    	this.stats_line[0] = new StatsLine(Stats.get_endurance_name(), Stats.get_endurance_desc(), this.stats.get_endurance(), this.stats_default.get_endurance(), x, y);
+    	this.stats_line[1] = new StatsLine(Stats.get_strength_name(), Stats.get_strength_desc(), this.stats.get_strength(), this.stats_default.get_strength(), x, y + 16);
+    	this.stats_line[2] = new StatsLine(Stats.get_stamina_name(), Stats.get_stamina_desc(), this.stats.get_stamina(), this.stats_default.get_stamina(), x, y + 32);
+    	this.stats_line[3] = new StatsLine(Stats.get_clarity_name(), Stats.get_clarity_desc(), this.stats.get_clarity(), this.stats_default.get_clarity(), x, y + 48);
+    	this.stats_line[4] = new StatsLine(Stats.get_spirit_name(), Stats.get_spirit_desc(), this.stats.get_spirit(), this.stats_default.get_spirit(), x, y + 64);
+    	this.stats_line[5] = new StatsLine(Stats.get_magic_name(), Stats.get_magic_desc(), this.stats.get_magic(), this.stats_default.get_magic(), x, y + 80);
+    	this.stats_line[6] = new StatsLine(Stats.get_mana_name(), Stats.get_mana_desc(), this.stats.get_mana(), this.stats_default.get_mana(), x, y + 96);
+    }
 
 	private void init_slots()
     {
@@ -62,6 +60,7 @@ public class GuiStats extends GuiScreen
     	int	y;
     	int	i;
     	
+		this.slots = new SpellSlot[this.player.get_classe().get_spells().size()];
     	x = this.width / 2 + 78;
     	y = 47;
     	i = 0;
@@ -131,15 +130,17 @@ public class GuiStats extends GuiScreen
 	private void checkStatsHover(int x, int y)
     {
 		int	x_len;
+		int	x_len_details;
 		
     	for (StatsLine line : this.stats_line)
     	{
     		x_len = this.mc.fontRendererObj.getStringWidth(line.stat);
+    		x_len_details = this.mc.fontRendererObj.getStringWidth(line.details);
 
     		if (x >= line.x && x <= line.x + x_len && y >= line.y - 4 && y <= line.y + 12)
     		{
         		this.drawRect(0, 0, this.width, this.height, Integer.MIN_VALUE);
-    			this.drawRect(x - x_len / 2 - 16, y - 18, x + x_len / 2 + 16, y, Integer.MAX_VALUE);
+    			this.drawRect(x - 	x_len_details / 2 - 16, y - 18, x + 	x_len_details / 2 + 16, y, Integer.MAX_VALUE);
 				this.drawCenteredString(this.mc.fontRendererObj, ChatColor.UNDERLINE + line.details + ChatColor.RESET, x, y - 14, 0xffffff);
     		}
     	}
@@ -292,15 +293,17 @@ class SpellSlot
 
 class StatsLine
 {
-	public String	stat;
-	public String	details;
-	public int 		x;
-	public int 		y;
+	String	stat;
+	String	details;
+	String	str;
+	int 	x;
+	int 	y;
 	
 	public StatsLine(String p_stat, String p_details, float p_value, float p_default, int p_x, int p_y)
 	{
 		String	value;
 		
+		str = null;
 		value = Float.toString(p_value);
 		if (value.length() > 5)
 		{
@@ -308,17 +311,24 @@ class StatsLine
 		}
 		if (p_value > p_default)
 		{
+			str = "(+ " + (p_value - p_default);
 			this.stat = ChatColor.GREEN.toString();
 		}
 		else if (p_value < p_default)
 		{
+			str = "(- " + (p_default - p_value);
 			this.stat = ChatColor.RED.toString();
 		}
 		else
 		{
 			stat = ChatColor.WHITE.toString();
 		}
-		this.stat += p_stat +  " : " + value  + ChatColor.RESET;
+		this.stat += p_stat +  " : " + value;
+		if (str != null)
+		{
+			this.stat += str;
+		}
+		this.stat += ChatColor.RESET;
 		this.details = p_details;
 		this.x = p_x;
 		this.y = p_y;

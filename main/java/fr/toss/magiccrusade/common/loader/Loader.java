@@ -39,6 +39,6 @@ public class Loader
 	
 	public void	log(String msg)
 	{
-		Logger.getGlobal().fine("\t\t" + this.name + ": " + msg);
+		MagicLogger.log("\t\t" + this.name + ": " + msg);
 	}
 }

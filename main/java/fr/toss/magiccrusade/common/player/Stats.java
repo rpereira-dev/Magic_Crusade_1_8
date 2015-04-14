@@ -20,13 +20,13 @@ public class Stats
 	/** magic is increased by clarity. increase spells damages depending on it ratio*/
 	private float	magic;
 	
-	/** endurance increase player health; (+0.1f per endurance pofloats). Means 20 endurance == 1 hearth */
+	/** endurance increase player health; (+0.1f per endurance points). Means 20 endurance == 1 hearth */
 	private float	endurance;
 	
-	/** Strength increase player damages; (+0.1f per strength pofloats). Means 20 strength == 1 hearth */
+	/** Strength increase player damages; (+0.1f per strength points). Means 20 strength == 1 hearth */
 	private float	strength;
 	
-	/** stamina increase critical ratio: (+0.25% per pofloat) */
+	/** stamina increase critical ratio: (+0.25% per point) */
 	private float	stamina;
 	
 	/** increase magic and mana. 1 clarity = 10 magic. 1 clarity = 50 mana */
@@ -127,6 +127,51 @@ public class Stats
 		this.mana += stat.mana;
 	}
 	
+	
+	/** return desc for magic stat */
+	public static String	get_magic_desc()
+	{
+		return (I18n.format("stats.desc.magic"));
+	}
+	
+	/** return desc for strength stat */
+	public static String	get_strength_desc()
+	{
+		return (I18n.format("stats.desc.strength"));
+	}
+	
+	/** return desc for endurance stat */
+	public static String	get_endurance_desc()
+	{
+		return (I18n.format("stats.desc.endurance"));
+	}
+	
+	/** return desc for stamina stat */
+	public static String	get_stamina_desc()
+	{
+		return (I18n.format("stats.desc.stamina"));
+	}
+	
+	/** return desc for clarity stat */
+	public static String	get_clarity_desc()
+	{
+		return (I18n.format("stats.desc.clarity"));
+	}
+	
+	/** return desc for spirit stat */
+	public static String	get_spirit_desc()
+	{
+		return (I18n.format("stats.desc.spirit"));
+	}
+	
+	/** return desc for mana stat */
+	public static String get_mana_desc()
+	{
+		return (I18n.format("stats.desc.mana"));
+	}
+	
+	
+	
 
 	/** return name for magic stat */
 	public static String	get_magic_name()
@@ -176,7 +221,7 @@ public class Stats
 	/** return stats endurance */
 	public float	get_magic()
 	{
-		return (this.magic);
+		return (this.clarity * 5.0f);
 	}
 	
 	/** return stats endurance */
