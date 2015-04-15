@@ -7,13 +7,14 @@ import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import fr.toss.magiccrusade.client.ClientPlayer;
+import fr.toss.magiccrusade.client.gui.ChatColor;
 import fr.toss.magiccrusade.client.gui.GuiIngameOverlay;
 import fr.toss.magiccrusade.client.gui.GuiSelectClass;
 import fr.toss.magiccrusade.client.gui.GuiStats;
 import fr.toss.magiccrusade.client.gui.GuiString;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
-import fr.toss.magiccrusade.common.player.Stats;
+import fr.toss.magiccrusade.common.classes.spell.SpellException;
 import fr.toss.magiccrusade.utils.MagicLogger;
 
 public class KeyInputHandler {
@@ -25,6 +26,7 @@ public class KeyInputHandler {
     	ClientPlayer	player;
     	EnumSpell		enum_spell;
     	ISpell			spell;
+    	int				target_id;
     	
     	player = ClientPlayer.instance();
     	if(KeyBindingsLoader.KEY_SELECT_CLASSE.isPressed())
@@ -61,8 +63,16 @@ public class KeyInputHandler {
 	        				MagicLogger.log("Error while sending spell packet: wrong spell class type");
 	        				return ;
 	        			}
-	        			player.get_classe().set_energy(player.get_classe().get_energy() - enum_spell.get_spell_cost());
-	        			EnumSpell.send_spell_to_server(player, spell);
+	        			try
+	        			{
+	        				target_id = spell.get_target_id(player.get_player());
+	        				EnumSpell.send_spell_to_server(spell.get_enum_spell().ordinal(), player.get_player().getEntityId(), target_id);
+		        			player.get_classe().set_energy(player.get_classe().get_energy() - enum_spell.get_spell_cost());
+	        			}
+	        			catch (SpellException exception)
+	        			{
+	        				player.add_chat_message(ChatColor.RED + exception.getErrorMessage() + ChatColor.RESET);
+	        			}
                 	}
                 	else
                 	{

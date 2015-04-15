@@ -11,7 +11,7 @@ import fr.toss.magiccrusade.common.CommandLoader;
 import fr.toss.magiccrusade.common.CommonProxy;
 import fr.toss.magiccrusade.common.network.Packets;
 
-@Mod(modid = Main.MODID, version = Main.VERSION)
+@Mod(modid = Main.MODID, version = Main.VERSION, name = "Magic Crusade")
 public class Main
 {
 	@SidedProxy(clientSide="fr.toss.magiccrusade.client.ClientProxy", serverSide="fr.toss.magiccrusade.common.CommonProxy")

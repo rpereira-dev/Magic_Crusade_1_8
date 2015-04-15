@@ -23,10 +23,13 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 	/** Player classe */
 	private IClasse classe;
 	
+	/** player stats */
+	private Stats	stats;
+	
 	public ServerPlayer(ServerPlayerAPI playerapi)
 	{
 		super(playerapi);
-		this.classe = EnumClasse.load_classe_from_id(-1);
+		this.classe = EnumClasse.load_classe_from_ord(EnumClasse.FARMER.ordinal());
 		this.level = 1;
 		this.experience_to_next_level = this.calcul_next_level_experience();
 		this.experience = 0;
@@ -35,6 +38,7 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 	public void onUpdate()
 	{
 		super.onUpdate();
+		this.stats = Stats.get_player_stats(this); //can be optimize by filling the object instead of creating a new one
 		this.classe.update();
 	}
 
@@ -44,7 +48,7 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 		 super.readEntityFromNBT(nbt);
 		 this.level			= nbt.getInteger("level"); 
 		 this.experience	= nbt.getInteger("experience");
-		 this.classe		= EnumClasse.load_classe_from_id(nbt.getInteger("classe_id"));
+		 this.classe		= EnumClasse.load_classe_from_ord(nbt.getInteger("classe_id"));
 		 this.classe.read_from_nbt(nbt);
 	}
 		
@@ -54,6 +58,7 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 		 super.writeEntityToNBT(nbt);
 		 nbt.setInteger("level", this.level); 
 		 nbt.setInteger("experience", this.experience);
+		 nbt.setInteger("classe_id", this.classe.get_enum_classe().ordinal());
 		 this.classe.write_to_nbt(nbt);
 	 }
 	
@@ -98,6 +103,11 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 		}
 	}
 
+	public Stats	get_stats()
+	{
+		return (this.stats);
+	}
+	
 	/** return player current level */
 	public int get_level()
 	{
@@ -119,6 +129,6 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 	/** set playe current class */
 	public void set_classe(int id)
 	{
-		this.classe = EnumClasse.load_classe_from_id(id);
+		this.classe = EnumClasse.load_classe_from_ord(id);
 	}
 }

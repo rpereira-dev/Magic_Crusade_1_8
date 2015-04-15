@@ -17,7 +17,7 @@ public class PacketPlayerData implements IMessage
 
 	public PacketPlayerData()
 	{
-		this(1, 0, EnumClasse.FARMER.get_id());
+		this(1, 0, EnumClasse.FARMER.ordinal());
 	}
 	
 	public PacketPlayerData(int p_level, int p_experience, int p_classe_id)

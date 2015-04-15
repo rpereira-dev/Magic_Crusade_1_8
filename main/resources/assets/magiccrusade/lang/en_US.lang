@@ -36,17 +36,18 @@ stats.name.damage=Damages
 stats.name.critic=Critical
 
 stats.desc.magic=+ 5 magics per point
-stats.desc.endurance=+ 1 hearth per 20 points (0.1f hp per point)
-stats.desc.strength=+ 1 damages per 20 points (0.05 damages per point)
-stats.desc.stamina=+ 1%% critic per 5 points (0.2 %% critic per point)
+stats.desc.endurance=+ 1 hearth per 20 points
+stats.desc.strength=+ 1 damages per 20 points
+stats.desc.stamina=+ 1%% critic per 5 points
 stats.desc.clarity=+ 5 magic and 20 manas per point
-stats.desc.spirit=+ 1 mana regeneration / sec per 10 points (0.1 mana per point)
+stats.desc.spirit=+ 1 mana regen / sec per 10 points
 stats.desc.mana=+ 1 mana per point
 
 #   SPELL DESCRIPTION
-charge.description=The Champion charges forward making an explosion under his foot
-shockwave.description=A Shockwave make the ground explode. Deals @D damages (+ @d ) to nearby ennemis # 2 # 0.5
+spell.charge.description=The Champion charges forward making an explosion under his foot
+spell.shockwave.description=A Shockwave make the ground explode. Deals @D damages (+ @d ) to nearby ennemis # 2 # 0.5
 
+spell.drain.description=Drain target healths, causing @M (+ @m ) damages to it, and give you back @M ( + @m ) health # 2 # 0.01 # 1 # 0.0025
 
 #   LANG SPELL
 spell.rogue.critic=(Passive) Acuteness
@@ -91,75 +92,6 @@ spell.priest.purification=Purification
 spell.priest.healzone=Zone healing
 spell.priest.holyshield=Holyshield
 spell.priest.holy_explosion=Holy Explosion
-
-
-
-#   LANG SPELL DESCRIPTION
-spell.rogue.critic.line1=
-spell.rogue.critic.line2=
-
-
-spell.mage.cone.line1=
-spell.mage.cone.line2=
-spell.mage.field_destruction.line1=
-spell.mage.field_destruction.line2=
-spell.mage.freeze_cube.line1=
-spell.mage.freeze_cube.line2=
-spell.mage.transfert.line1=
-spell.mage.transfert.line2=
-
-spell.ranger.explode_shot.line1=
-spell.ranger.explode_shot.line2=
-spell.ranger.magic_shot.line1=
-spell.ranger.magic_shot.line2=
-spell.ranger.poison_shot.line1=
-spell.ranger.poison_shot.line2=
-spell.ranger.wolves.line1=
-spell.ranger.wolves.line2=
-spell.ranger.refinement.line1=
-spell.ranger.refinement.line2=
-
-spell.champion.arena.line1=
-spell.champion.arena.line2=
-spell.champion.charge.line1=
-spell.champion.charge.line2=
-spell.champion.grab.line1=
-spell.champion.grab.line2=
-spell.champion.ironskin.line1=
-spell.champion.ironskin.line2=
-spell.champion.shockwave.line1=
-spell.champion.shockwave.line2=
-spell.champion.earthshield.line1=
-spell.champion.earthshield.line2=
-
-spell.necromancer.corruption.line1=
-spell.necromancer.corruption.line2=
-spell.necromancer.drain.line1=
-spell.necromancer.drain.line2=
-spell.necromancer.fireland.line1=
-spell.necromancer.fireland.line2=
-spell.necromancer.necromancy.line1=
-spell.necromancer.necromancy.line2=
-spell.necromancer.witherskull.line1=
-spell.necromancer.witherskull.line2=
-spell.necromancer.zombie.line1=
-spell.necromancer.zombie.line2=
-
-spell.priest.buff.line1=
-spell.priest.buff.line2=
-spell.priest.god_touch.line1=
-spell.priest.god_touch.line2=
-spell.priest.heal.line1=
-spell.priest.heal.line2=
-spell.priest.purification.line1=
-spell.priest.purification.line2=
-spell.priest.healzone.line1=
-spell.priest.healzone.line2=
-spell.priest.holyshield.line1=
-spell.priest.holyshield.line2=
-spell.priest.holy_explosion.line1=
-spell.priest.holy_explosion.line2=
-
 
 #   LANG CLASSE
 classe.choose=Choose a classe to get more informations about it
@@ -299,7 +231,6 @@ item.ingot_titanium.name=Titanium Ingot
 item.ingot_silver.name=Silver Ingot
 item.ethernium.name=Ethernium
 item.combustium.name=Combustium
-item.arkavon_generator.name=Arkavon Dungeon Generator
 
 item.sulfuras.name=Sulfuras Hammer
 item.ashbringer.name=Ashbringer

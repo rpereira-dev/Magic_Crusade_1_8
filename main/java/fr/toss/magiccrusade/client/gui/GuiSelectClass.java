@@ -115,7 +115,7 @@ public class GuiSelectClass extends GuiScreen {
     		advices[1] = ChatColor.GREEN + "+ " + I18n.format("stats.strength");
     		advices[2] = ChatColor.GREEN + "+ " + I18n.format("stats.armor");
     		advices[3] = ChatColor.RED + "- " + I18n.format("stats.mana");
-    		gui = new GuiClasseInformation(classe, description, advices, 0, 0, 0xaaff1109, 0xeeaa4411, EnumClasse.CHAMPION.get_id());
+    		gui = new GuiClasseInformation(classe, description, advices, 0, 0, 0xaaff1109, 0xeeaa4411, EnumClasse.CHAMPION.ordinal());
     		this.mc.displayGuiScreen(gui);
     	}
     	else if (b.id == 43)
@@ -132,7 +132,7 @@ public class GuiSelectClass extends GuiScreen {
     		advices[1] = ChatColor.GREEN + "+ " + I18n.format("stats.agility");
     		advices[2] = ChatColor.RED + "- " + I18n.format("stats.mana");
     		advices[3] = ChatColor.RED + "- " + I18n.format("stats.clarity");
-    		gui = new GuiClasseInformation(classe, description, advices, 1, 0, 0xaaeeffee, 0xee118822, EnumClasse.ROGUE.get_id());
+    		gui = new GuiClasseInformation(classe, description, advices, 1, 0, 0xaaeeffee, 0xee118822, EnumClasse.ROGUE.ordinal());
     		this.mc.displayGuiScreen(gui);
     	}
     	else if (b.id == 44)
@@ -148,7 +148,7 @@ public class GuiSelectClass extends GuiScreen {
     		advices[1] = ChatColor.GREEN + "+ " + I18n.format("stats.clarity");
     		advices[2] = ChatColor.RED + "- " + I18n.format("stats.strength");
     		advices[3] = ChatColor.RED + "- " + I18n.format("stats.agility");
-    		gui = new GuiClasseInformation(classe, description, advices, 2, 0, 0xaa331133, 0xee771177,  EnumClasse.NECROMANCER.get_id());
+    		gui = new GuiClasseInformation(classe, description, advices, 2, 0, 0xaa331133, 0xee771177,  EnumClasse.NECROMANCER.ordinal());
     		this.mc.displayGuiScreen(gui);
     	}
     	else if (b.id == 45)
@@ -164,7 +164,7 @@ public class GuiSelectClass extends GuiScreen {
     		advices[1] = ChatColor.GREEN + "+ " + I18n.format("stats.strength");
     		advices[2] = ChatColor.RED + "- " + I18n.format("stats.mana");
     		advices[3] = ChatColor.RED + "- " + I18n.format("stats.clarity");
-    		gui = new GuiClasseInformation(classe, description, advices, 0, 1, 0xaa999911, 0xeecccc22, EnumClasse.RANGER.get_id());
+    		gui = new GuiClasseInformation(classe, description, advices, 0, 1, 0xaa999911, 0xeecccc22, EnumClasse.RANGER.ordinal());
     		this.mc.displayGuiScreen(gui);
     	}
     	else if (b.id == 46)
@@ -180,7 +180,7 @@ public class GuiSelectClass extends GuiScreen {
     		advices[1] = ChatColor.GREEN + "+ " + I18n.format("stats.clarity");
     		advices[2] = ChatColor.GREEN + "+ " + I18n.format("stats.mana_regen");
     		advices[3] = ChatColor.RED + "- " + I18n.format("stats.strength");
-    		gui = new GuiClasseInformation(classe, description, advices, 1, 1, 0xaaffffff, 0xee0522ff, EnumClasse.MAGE.get_id());
+    		gui = new GuiClasseInformation(classe, description, advices, 1, 1, 0xaaffffff, 0xee0522ff, EnumClasse.MAGE.ordinal());
     		this.mc.displayGuiScreen(gui);
     	}
     	else if (b.id == 47)
@@ -195,7 +195,7 @@ public class GuiSelectClass extends GuiScreen {
     		advices[1] = ChatColor.GREEN + "+ " + I18n.format("stats.clarity");
     		advices[2] = ChatColor.GREEN + "+" + I18n.format("stats.mana_regen");
     		advices[3] = ChatColor.RED + "- " + I18n.format("stats.strength");
-    		gui = new GuiClasseInformation(classe, description, advices, 2, 1, 0xaaffffff, 0xee05aaee,  EnumClasse.PRIEST.get_id());
+    		gui = new GuiClasseInformation(classe, description, advices, 2, 1, 0xaaffffff, 0xee05aaee,  EnumClasse.PRIEST.ordinal());
     		this.mc.displayGuiScreen(gui);
     	}
     }

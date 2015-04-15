@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.gui.ChatColor;
 import fr.toss.magiccrusade.common.classes.EnumClasse;
@@ -12,11 +16,10 @@ import fr.toss.magiccrusade.common.classes.spell.champion.SpellCharge;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellEarthShield;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellIronskin;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellShockwave;
-import fr.toss.magiccrusade.common.classes.spell.necromancer.SpellRaise;
+import fr.toss.magiccrusade.common.classes.spell.necromancer.SpellDrain;
 import fr.toss.magiccrusade.common.network.PacketSpellServer;
 import fr.toss.magiccrusade.common.network.Packets;
 import fr.toss.magiccrusade.common.player.Stats;
-import fr.toss.magiccrusade.utils.MagicLogger;
 
 public enum EnumSpell
 {	
@@ -24,11 +27,8 @@ public enum EnumSpell
 	IRONSKIN("ironskin", 1, 240, EnumClasse.CHAMPION, SpellIronskin.class),
 	EARTH_SHIELD("earth_shield", 4, 460, EnumClasse.CHAMPION, SpellEarthShield.class),
 	SHOCKWAVE("shockwave", 1, 180, EnumClasse.CHAMPION, SpellShockwave.class),
-	RAISE("raise", 1, 0, EnumClasse.NECROMANCER, SpellRaise.class);
+	DRAIN("drain", 1, 200, EnumClasse.NECROMANCER, SpellDrain.class);
 
-	
-	private int			id;
-	private int			spell_index;
 	private String		name;
 	private int			level;
 	private int			cost;
@@ -50,12 +50,6 @@ public enum EnumSpell
 		this.cost = p_cost;
 		this.classe = p_classe;
 		this.spell_class = spell;
-	}
-
-	/** return unique spell id */
-	public int	get_spell_id()
-	{
-		return (this.id);
 	}
 	
 	/** return spell name */
@@ -104,7 +98,7 @@ public enum EnumSpell
 		Stats			stats;
 		int				j;
 
-		str = I18n.format(spell.name + "." + "description");
+		str = I18n.format("spell." + spell.name + "." + "description");
 		System.out.println(str);
 		lst = new ArrayList<String>();
 		words = str.split("\\s+");
@@ -171,7 +165,7 @@ public enum EnumSpell
 	{
 		for (EnumSpell spell : ISpell.spell_list)
 		{
-			if (spell.id == id)
+			if (spell.ordinal() == id)
 				return (spell);
 		}
 		return (null);
@@ -188,11 +182,11 @@ public enum EnumSpell
 	}
 	
 	/** send spell to server */
-	public static void send_spell_to_server(ClientPlayer client, ISpell spell)
+	public static void send_spell_to_server(int spell_id, int caster_id, int target_id)
 	{
 		PacketSpellServer	packet;
-		
-		packet = new PacketSpellServer(spell.get_enum_spell().id, client.get_player().getEntityId(), spell.get_target_id(client));
+
+		packet = new PacketSpellServer(spell_id, caster_id, target_id);
 		Packets.network.sendToServer(packet);
 	}
 }

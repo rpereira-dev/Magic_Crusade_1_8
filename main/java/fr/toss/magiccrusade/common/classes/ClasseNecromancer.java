@@ -19,7 +19,7 @@ public class ClasseNecromancer implements IClasse
 	public ClasseNecromancer()
 	{
 		this.spells = new ArrayList<EnumSpell>();
-		this.spells.add(EnumSpell.RAISE);
+		this.spells.add(EnumSpell.DRAIN);
 	}
 	
 	@Override
@@ -37,7 +37,7 @@ public class ClasseNecromancer implements IClasse
 	@Override
 	public int get_energy()
 	{
-		return (0);
+		return (this.mana);
 	}
 
 	@Override
@@ -51,7 +51,11 @@ public class ClasseNecromancer implements IClasse
 	{
 		if (this.mana < this.get_default_max_energy())
 		{
-			//TODO
+			this.mana += 4;
+			if (this.mana > this.get_default_max_energy())
+			{
+				this.mana = this.get_default_max_energy();
+			}
 		}
 	}
 
@@ -61,10 +65,9 @@ public class ClasseNecromancer implements IClasse
 		String	str;
 		
 		str = (int) this.mana + "/" + (int)this.get_default_max_energy();
-    	GuiUtils.drawTexturedModalRect(x, y + 15, 0, 14, 65, 13, 0);
-    	GuiUtils.drawTexturedModalRect(x, y + 15, 65, 70, (int) (65.0f / this.get_default_max_energy() * this.mana), 13, 0);
+    	GuiUtils.drawTexturedModalRect(x, y + 15, 0, 0, 65, 13, 0);
+    	GuiUtils.drawTexturedModalRect(x, y + 15, 0, 98, (int) (65.0f / this.get_default_max_energy() * this.mana), 13, 0);
     	minecraft.fontRendererObj.drawStringWithShadow(str, x + 32 - minecraft.fontRendererObj.getStringWidth(str) / 2, y + 17, 0xffffffff);
-			
 	}
 
 	@Override

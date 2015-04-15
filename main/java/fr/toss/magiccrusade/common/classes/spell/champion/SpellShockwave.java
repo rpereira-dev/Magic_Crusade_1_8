@@ -3,14 +3,15 @@ package fr.toss.magiccrusade.common.classes.spell.champion;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.render.EntityFX_Colored;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
-import fr.toss.magiccrusade.common.network.PacketSpellServer;
-import fr.toss.magiccrusade.common.network.Packets;
+import fr.toss.magiccrusade.common.classes.spell.SpellException;
+import fr.toss.magiccrusade.common.player.Stats;
 
 public class SpellShockwave implements ISpell
 {
@@ -49,13 +50,13 @@ public class SpellShockwave implements ISpell
 	}
 	
 	@Override
-	public int	get_target_id(ClientPlayer client)
+	public int	get_target_id(EntityLivingBase caster) throws SpellException
 	{
 		return (-1);
 	}
 
 	@Override
-	public void do_spell(Entity caster, Entity target)
+	public void do_spell(Entity caster, Entity target, Stats stat)
 	{
 		for (int x = 0; x < 6; x++)
 		{

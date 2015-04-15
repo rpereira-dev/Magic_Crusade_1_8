@@ -1,6 +1,7 @@
 package fr.toss.magiccrusade.common.events;
 
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -32,6 +33,7 @@ public class AttackEventRegister
 		if (!event.target.isDead)
 		{
 			player.get_classe().hit_entity(event.target);
+			event.target.attackEntityFrom(DamageSource.causePlayerDamage(player.get_player()), player.get_stats().get_strength() / 20.0f);
 		}
 	}
 	

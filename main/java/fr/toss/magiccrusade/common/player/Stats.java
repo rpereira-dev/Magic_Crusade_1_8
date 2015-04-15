@@ -5,7 +5,11 @@ import java.util.Collection;
 import java.util.List;
 
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.gui.ChatColor;
 import fr.toss.magiccrusade.common.entity.IMagicEntity;
@@ -17,7 +21,7 @@ public class Stats
 	 * floateger package class to deal with stats
 	 */
 	
-	/** magic is increased by clarity. increase spells damages depending on it ratio*/
+	/** magic is increased by clarity. increase spells damages depending on it ratio. 100 magic = 1 damage, mean 1 magic == 0.01f damages*/
 	private float	magic;
 	
 	/** endurance increase player health; (+0.1f per endurance points). Means 20 endurance == 1 hearth */
@@ -49,67 +53,27 @@ public class Stats
 		this.mana = 0;
 	}
 	
-	/**
-	 * set player default stat for classe and level
-	 * 
-	 * @param classe:	player classe (for stats ratios*)
-	 * @param level	:	player level (to calcul per level stats)
-	 */
-	public static Stats	get_default_stats(IMagicEntity entity)
-	{
-		Stats	stats;
-		Stats	stats_per_lvl;
-		
-		stats = entity.get_classe().get_default_stats();
-		stats_per_lvl = entity.get_classe().get_stats_per_lvl();
-		stats.endurance += stats_per_lvl.endurance * entity.get_level();
-		stats.stamina += stats_per_lvl.stamina * entity.get_level();
-		stats.mana += stats_per_lvl.mana * entity.get_level();
-		stats.magic += stats_per_lvl.magic * entity.get_level();
-		stats.strength += stats_per_lvl.strength * entity.get_level();
-		stats.clarity += stats_per_lvl.clarity * entity.get_level();
-		stats.spirit += stats_per_lvl.spirit * entity.get_level();
-		return (stats);
-	}
 
 	/**
 	 * Set player stats depending on equipements. Also call `set_default_stats`
 	 * @param equipements : player equipements
 	 * @see Stats.set_default_stats
 	 */
-	public static Stats	get_equipement_stats(ItemStack equipements[], ItemStack hand)
+	@SideOnly(Side.CLIENT)
+	public static Stats	get_player_stats(ClientPlayer player)
 	{
 		Stats	stats;
 		
-		stats = new Stats();
-		if (hand != null && hand.getItem() instanceof IItemStatable)
-		{
-			stats.combine(((IItemStatable)hand.getItem()).get_stats());
-		}
-		for (ItemStack item : equipements)
-		{
-			if (item != null && item.getItem() != null)
-			{
-				if (item.getItem() instanceof IItemStatable)
-				{
-					stats.combine(((IItemStatable)item.getItem()).get_stats());
-				}
-			}
-		}
+		player = ClientPlayer.instance();
+		stats = Stats.get_default_stats(player);
+		stats.combine(Stats.get_equipement_stats(player.get_player().inventory.armorInventory, player.get_player().inventory.getCurrentItem()));
 		return (stats);
 	}
 	
-	/**
-	 * Set player stats depending on equipements. Also call `set_default_stats`
-	 * @param equipements : player equipements
-	 * @see Stats.set_default_stats
-	 */
-	public static Stats	get_player_stats()
+	public static Stats	get_player_stats(ServerPlayer player)
 	{
-		ClientPlayer	player;
-		Stats			stats;
+		Stats	stats;
 		
-		player = ClientPlayer.instance();
 		stats = Stats.get_default_stats(player);
 		stats.combine(Stats.get_equipement_stats(player.get_player().inventory.armorInventory, player.get_player().inventory.getCurrentItem()));
 		return (stats);
@@ -326,5 +290,81 @@ public class Stats
 			}
 		}
     	return (list);
+	}
+
+	
+	/**
+	 * set player default stat for classe and level
+	 * 
+	 * @param classe:	player classe (for stats ratios*)
+	 * @param level	:	player level (to calcul per level stats)
+	 */
+	public static Stats	get_default_stats(IMagicEntity entity)
+	{
+		Stats	stats;
+		Stats	stats_per_lvl;
+		
+		stats = entity.get_classe().get_default_stats();
+		stats_per_lvl = entity.get_classe().get_stats_per_lvl();
+		stats.endurance += stats_per_lvl.endurance * entity.get_level();
+		stats.stamina += stats_per_lvl.stamina * entity.get_level();
+		stats.mana += stats_per_lvl.mana * entity.get_level();
+		stats.magic += stats_per_lvl.magic * entity.get_level();
+		stats.strength += stats_per_lvl.strength * entity.get_level();
+		stats.clarity += stats_per_lvl.clarity * entity.get_level();
+		stats.spirit += stats_per_lvl.spirit * entity.get_level();
+		return (stats);
+	}
+
+	/**
+	 * Set player stats depending on equipements. Also call `set_default_stats`
+	 * @param equipements : player equipements
+	 * @see Stats.set_default_stats
+	 */
+	public static Stats	get_equipement_stats(ItemStack equipements[], ItemStack hand)
+	{
+		Stats	stats;
+		
+		stats = new Stats();
+		if (hand != null && hand.getItem() instanceof IItemStatable)
+		{
+			stats.combine(((IItemStatable)hand.getItem()).get_stats());
+		}
+		for (ItemStack item : equipements)
+		{
+			if (item != null && item.getItem() != null)
+			{
+				if (item.getItem() instanceof IItemStatable)
+				{
+					stats.combine(((IItemStatable)item.getItem()).get_stats());
+				}
+			}
+		}
+		return (stats);
+	}
+	
+	
+	/** Return stats for this entity */
+	public static Stats	get_entity_stats(EntityPlayer player)
+	{
+		return (get_equipement_stats(player.inventory.armorInventory, player.inventory.getCurrentItem()));
+	}
+	
+	/** Return stats for this entity */
+	public static Stats	get_entity_stats(EntityLivingBase entity)
+	{
+		Stats			stats;
+		IItemStatable	tmp;
+		
+		stats = new Stats();
+		for (ItemStack is : entity.getInventory())
+		{
+			if (is != null && is.getItem() instanceof IItemStatable)
+			{
+				tmp = (IItemStatable)is.getItem();
+				stats.combine(tmp.get_stats());
+			}
+		}
+		return (stats);
 	}
 }

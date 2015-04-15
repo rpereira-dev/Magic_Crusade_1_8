@@ -3,6 +3,7 @@ package fr.toss.magiccrusade.common.network;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.player.ServerPlayer;
+import fr.toss.magiccrusade.common.player.Stats;
 import fr.toss.magiccrusade.utils.MagicLogger;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.world.World;
@@ -13,6 +14,8 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class PacketSpellServer implements IMessage
 {
+	public static final double	ANIMATION_DISTANCE	= 64.0d;
+	
 	public int	id;
 	public int	caster;
 	public int	target;
@@ -78,9 +81,9 @@ public class PacketSpellServer implements IMessage
 					MagicLogger.log("Error while reading server packet: wrong spell class type");
 					return (null);
 				}
-				spell.do_spell(world.getEntityByID(message.caster), world.getEntityByID(message.target));
+				spell.do_spell(world.getEntityByID(message.caster), world.getEntityByID(message.target), Stats.get_entity_stats(player.get_player()));
 				player.get_classe().set_energy(player.get_classe().get_energy() - enum_spell.get_spell_cost());
-				point = new TargetPoint(player.get_player().dimension, player.get_player().posX, player.get_player().posY, player.get_player().posZ, 40.0D);
+				point = new TargetPoint(player.get_player().dimension, player.get_player().posX, player.get_player().posY, player.get_player().posZ, ANIMATION_DISTANCE);
 				Packets.network.sendToAllAround(new PacketSpellClient(message), point);
 				
 			}

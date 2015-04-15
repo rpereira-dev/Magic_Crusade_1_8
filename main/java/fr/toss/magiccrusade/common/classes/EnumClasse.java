@@ -7,20 +7,19 @@ import fr.toss.magiccrusade.client.gui.ChatColor;
 
 public enum EnumClasse
 {	
-	FARMER("Farmer", "Energy", ChatColor.WHITE, -1, ClasseFarmer.class),
-	CHAMPION("Champion", "Rage", ChatColor.RED, 0, ClasseChampion.class),
-	ROGUE("Rogue", "Energy", ChatColor.YELLOW, 1, ClasseRogue.class),
-	NECROMANCER("Necromancer", "Mana", ChatColor.DARK_PURPLE, 2, ClasseNecromancer.class),
-	RANGER("Ranger", "Energy", ChatColor.GOLD, 3, ClasseRanger.class),
-	MAGE("Mage", "Mana", ChatColor.BLUE, 4, ClasseMage.class),
-	PRIEST("Priest", "Mana", ChatColor.AQUA, 5, ClassePriest.class);
+	FARMER("Farmer", "Energy", ChatColor.WHITE, ClasseFarmer.class),
+	CHAMPION("Champion", "Rage", ChatColor.RED, ClasseChampion.class),
+	ROGUE("Rogue", "Energy", ChatColor.YELLOW, ClasseRogue.class),
+	NECROMANCER("Necromancer", "Mana", ChatColor.DARK_PURPLE, ClasseNecromancer.class),
+	RANGER("Ranger", "Energy", ChatColor.GOLD, ClasseRanger.class),
+	MAGE("Mage", "Mana", ChatColor.BLUE, ClasseMage.class),
+	PRIEST("Priest", "Mana", ChatColor.AQUA, ClassePriest.class);
 	
 	public static final List<IClasse>	list_classes = new ArrayList<IClasse>();
 
 	private String		name;
 	private String		energy;
 	private ChatColor	color;
-	private int			id;
 	private Class<?>	classe;
 	
 	/**
@@ -29,13 +28,12 @@ public enum EnumClasse
 	 * @param p_color		classe ChatColor
 	 * @param p_id			classe unique id
 	 */
-	EnumClasse(String p_name, String p_energy, ChatColor p_color, int p_id, Class<?> p_classe)
+	EnumClasse(String p_name, String p_energy, ChatColor p_color, Class<?> p_classe)
 	{
 		IClasse.list_class.add(this);
 		this.name = p_name;
 		this.energy = p_energy;
 		this.color = p_color;
-		this.id = p_id;
 		this.classe = p_classe;
 	}
 	
@@ -56,24 +54,18 @@ public enum EnumClasse
 	{
 		return (this.color);
 	}
-	
-	/** return classe unique id */
-	public int			get_id()
-	{
-		return (this.id);
-	}
-	
+
 	/** return classe's class file */
 	public Class	get_classe()
 	{
 		return (this.classe);
 	}
 	
-	public static IClasse	load_classe_from_id(int id)
+	public static IClasse	load_classe_from_ord(int ord)
 	{
 		for (EnumClasse enum_classe : IClasse.list_class)
 		{
-			if (enum_classe.get_id() == id)
+			if (enum_classe.ordinal() == ord)
 			{
 				try {
 					return ((IClasse) (enum_classe.get_classe().getConstructor().newInstance()));

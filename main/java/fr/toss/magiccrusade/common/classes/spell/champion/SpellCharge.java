@@ -3,18 +3,15 @@ package fr.toss.magiccrusade.common.classes.spell.champion;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.Packet;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
 import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.render.EntityFX_Colored;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
-import fr.toss.magiccrusade.common.network.PacketSpellServer;
-import fr.toss.magiccrusade.common.network.Packets;
-import fr.toss.magiccrusade.utils.MagicLogger;
+import fr.toss.magiccrusade.common.classes.spell.SpellException;
+import fr.toss.magiccrusade.common.player.Stats;
 
 public class SpellCharge implements ISpell
 {
@@ -32,7 +29,7 @@ public class SpellCharge implements ISpell
 		double			velx;
 		double			velz;
 		
-		this.do_spell(caster, target);
+		this.do_spell(caster, target, null);
 		world = Minecraft.getMinecraft().theWorld;
 		for (int i = 0; i < 100; i++)
         {
@@ -52,13 +49,13 @@ public class SpellCharge implements ISpell
 	}
 	
 	@Override
-	public int	get_target_id(ClientPlayer client)
+	public int	get_target_id(EntityLivingBase caster) throws SpellException
 	{
 		return (-1);
 	}
 
 	@Override
-	public void do_spell(Entity caster, Entity target)
+	public void do_spell(Entity caster, Entity target, Stats stat)
 	{
 		Vec3	vec;
 		

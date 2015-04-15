@@ -35,11 +35,11 @@ stats.name.damage=Degats
 stats.name.critic=Critique
 
 stats.desc.magic=+ 5 magics par point
-stats.desc.endurance=+ 1 coeur pour 20 points (0.1f sante par point)
-stats.desc.strength=+ 1 degats pour 20 points (0.05 degats par point)
-stats.desc.stamina=+ 1%% de critique pour 5 points (0.2 %% critique par point)
+stats.desc.endurance=+ 1 coeur pour 20 points
+stats.desc.strength=+ 1 degats pour 20 points
+stats.desc.stamina=+ 1%% de critique pour 5 points
 stats.desc.clarity=+ 5 puissances et 20 manas par point
-stats.desc.spirit=+ 1 mana regeneration / sec. pour 10 points (0.1 mana par sec. par point)
+stats.desc.spirit=+ 1 mana regen / sec. pour 10 points
 stats.desc.mana=+ 1 mana par point
 
 

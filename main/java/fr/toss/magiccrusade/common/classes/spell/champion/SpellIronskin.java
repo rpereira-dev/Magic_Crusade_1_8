@@ -9,6 +9,8 @@ import net.minecraft.potion.PotionEffect;
 import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
+import fr.toss.magiccrusade.common.classes.spell.SpellException;
+import fr.toss.magiccrusade.common.player.Stats;
 
 public class SpellIronskin implements ISpell
 {
@@ -22,7 +24,7 @@ public class SpellIronskin implements ISpell
 	public void animate(Entity caster, Entity target) {}
 
 	@Override
-	public void do_spell(Entity caster, Entity target)
+	public void do_spell(Entity caster, Entity target, Stats stat)
 	{
 		EntityLivingBase	entity;
 		
@@ -31,7 +33,7 @@ public class SpellIronskin implements ISpell
 	}
 
 	@Override
-	public int get_target_id(ClientPlayer client)
+	public int	get_target_id(EntityLivingBase caster) throws SpellException
 	{
 		return (-1);
 	}

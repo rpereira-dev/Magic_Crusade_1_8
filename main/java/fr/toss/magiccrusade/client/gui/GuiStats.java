@@ -31,7 +31,7 @@ public class GuiStats extends GuiScreen
 	{
 		super.initGui();
 		this.player = ClientPlayer.instance();
-		this.stats = Stats.get_player_stats();
+		this.stats = Stats.get_player_stats(this.player);
 		this.stats_default = Stats.get_default_stats(this.player);
 		this.init_slots();
 		this.init_stats();
@@ -311,12 +311,12 @@ class StatsLine
 		}
 		if (p_value > p_default)
 		{
-			str = "(+ " + (p_value - p_default);
+			str = "(+" + (p_value - p_default) + ")";
 			this.stat = ChatColor.GREEN.toString();
 		}
 		else if (p_value < p_default)
 		{
-			str = "(- " + (p_default - p_value);
+			str = "(-" + (p_default - p_value)  + ")";
 			this.stat = ChatColor.RED.toString();
 		}
 		else
