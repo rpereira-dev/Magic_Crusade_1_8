@@ -20,11 +20,11 @@ import fr.toss.magiccrusade.utils.MagicLogger;
 
 public enum EnumSpell
 {	
-	CHARGE(0, 0, "charge", 1, 100, EnumClasse.CHAMPION, SpellCharge.class),
-	IRONSKIN(1, 1, "ironskin", 1, 240, EnumClasse.CHAMPION, SpellIronskin.class),
-	EARTH_SHIELD(2, 2, "earth_shield", 4, 460, EnumClasse.CHAMPION, SpellEarthShield.class),
-	SHOCKWAVE(3, 3, "shockwave", 1, 180, EnumClasse.CHAMPION, SpellShockwave.class),
-	RAISE(4, 0, "raise", 1, 0, EnumClasse.NECROMANCER, SpellRaise.class);
+	CHARGE("charge", 1, 100, EnumClasse.CHAMPION, SpellCharge.class),
+	IRONSKIN("ironskin", 1, 240, EnumClasse.CHAMPION, SpellIronskin.class),
+	EARTH_SHIELD("earth_shield", 4, 460, EnumClasse.CHAMPION, SpellEarthShield.class),
+	SHOCKWAVE("shockwave", 1, 180, EnumClasse.CHAMPION, SpellShockwave.class),
+	RAISE("raise", 1, 0, EnumClasse.NECROMANCER, SpellRaise.class);
 
 	
 	private int			id;
@@ -36,19 +36,15 @@ public enum EnumSpell
 	private Class<?>	spell_class;
 
 	/**
-	 * @param p_id:				unique id of this spell
-	 * 	 * @param p_index			spell index for key bindings
 	 * @param str:				spell name
 	 * @param p_level:			level required for this spell
 	 * @param p_cost			spell cost in energy
 	 * @param p_classe			spell classe
 	 * @param spell				spell class (for animation and data handlings)
 	 */
-	EnumSpell(int p_id, int p_index, String str, int p_level, int p_cost, EnumClasse p_classe, Class<?> spell)
+	EnumSpell(String str, int p_level, int p_cost, EnumClasse p_classe, Class<?> spell)
 	{
 		ISpell.spell_list.add(this);
-		this.id = p_id;
-		this.spell_index = p_index;
 		this.name = str;
 		this.level = p_level;
 		this.cost = p_cost;
@@ -184,11 +180,9 @@ public enum EnumSpell
 	/** get a spell from it classe and classe id */
 	public static EnumSpell	get_spell_by_id_and_classe(IClasse classe, int id)
 	{
-		for (EnumSpell spell : ISpell.spell_list)
+		if (id >= 0 && id < classe.get_spells().size())
 		{
-			MagicLogger.log(id + " : " + spell.id);
-			if (classe.get_enum_classe().get_id() == spell.classe.get_id() && id == spell.id)
-				return (spell);
+			return (classe.get_spells().get(id));
 		}
 		return (null);
 	}

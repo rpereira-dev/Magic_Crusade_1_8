@@ -3,20 +3,23 @@ package fr.toss.magiccrusade.common.classes;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
-import fr.toss.magiccrusade.common.player.Stats;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.config.GuiUtils;
+import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
+import fr.toss.magiccrusade.common.player.Stats;
 
 public class ClasseNecromancer implements IClasse
 {
 	private List<EnumSpell> spells;
+	private int				mana;
 
 	public ClasseNecromancer()
 	{
 		this.spells = new ArrayList<EnumSpell>();
+		this.spells.add(EnumSpell.RAISE);
 	}
 	
 	@Override
@@ -26,52 +29,57 @@ public class ClasseNecromancer implements IClasse
 	}
 
 	@Override
-	public int get_default_max_energy() {
-		// TODO Auto-generated method stub
+	public int get_default_max_energy()
+	{
 		return (2000);
 	}
 
 	@Override
-	public int get_energy() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int get_energy()
+	{
+		return (0);
 	}
 
 	@Override
-	public void set_energy(int value) {
-		// TODO Auto-generated method stub
-		
+	public void set_energy(int value)
+	{
+		this.mana = value;
 	}
 
 	@Override
 	public void update()
 	{
-		// TODO Auto-generated method stub
-		
+		if (this.mana < this.get_default_max_energy())
+		{
+			//TODO
+		}
 	}
 
 	@Override
-	public void render_energy_bar(Minecraft minecraft, int x, int y) {
-		// TODO Auto-generated method stub
+	public void render_energy_bar(Minecraft minecraft, int x, int y)
+	{
+		String	str;
 		
+		str = (int) this.mana + "/" + (int)this.get_default_max_energy();
+    	GuiUtils.drawTexturedModalRect(x, y + 15, 0, 14, 65, 13, 0);
+    	GuiUtils.drawTexturedModalRect(x, y + 15, 65, 70, (int) (65.0f / this.get_default_max_energy() * this.mana), 13, 0);
+    	minecraft.fontRendererObj.drawStringWithShadow(str, x + 32 - minecraft.fontRendererObj.getStringWidth(str) / 2, y + 17, 0xffffffff);
+			
 	}
 
 	@Override
-	public void hit_entity(Entity target) {
-		// TODO Auto-generated method stub
-		
+	public void hit_entity(Entity target) {}
+
+	@Override
+	public void write_to_nbt(NBTTagCompound nbt)
+	{
+		nbt.setInteger("mana", this.mana);
 	}
 
 	@Override
-	public void write_to_nbt(NBTTagCompound nbt) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void read_from_nbt(NBTTagCompound nbt) {
-		// TODO Auto-generated method stub
-		
+	public void read_from_nbt(NBTTagCompound nbt)
+	{
+		this.mana = nbt.getInteger("mana");
 	}
 	
 	@Override
