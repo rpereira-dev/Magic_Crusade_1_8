@@ -131,4 +131,9 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 	{
 		this.classe = EnumClasse.load_classe_from_ord(id);
 	}
+
+	public int get_experience()
+	{
+		return (this.experience);
+	}
 }

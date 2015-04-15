@@ -18,6 +18,7 @@ public class EventLoader extends Loader
 	{
 		this.register_event(new EntityKilledRegister());
 		this.register_event(new AttackEventRegister());
+		this.register_event(new PlayerConnectRegister());
 	}
 	
 	public void	register_event(Object event)

@@ -55,8 +55,6 @@ public class ClientPlayer extends ClientPlayerBase implements IMagicEntity
 		this.classe.update();
 		if (this.experience_to_receive > 0)
 		{
-			System.out.println("ici: " + Math.min(this.experience_to_receive, 8));
-
 			this.experience += Math.min(this.experience_to_receive, 8);
 			this.experience_to_receive -= Math.min(this.experience_to_receive, 8);
 			if (this.experience >= this.experience_to_next_level)
