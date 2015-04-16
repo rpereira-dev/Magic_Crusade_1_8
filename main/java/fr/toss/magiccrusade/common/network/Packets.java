@@ -19,7 +19,6 @@ public class Packets extends Loader
     	network = NetworkRegistry.INSTANCE.newSimpleChannel("MagicCrusade");
     	
     	
-    	network.registerMessage(PacketExperience.Handler.class, PacketExperience.class, Packets.packet_id.PACKET_EXPERIENCE.ordinal(), Side.CLIENT);
     	network.registerMessage(PacketLevel.Handler.class, PacketLevel.class, Packets.packet_id.PACKET_LEVEL.ordinal(), Side.CLIENT);
     	network.registerMessage(PacketSpellClient.Handler.class, PacketSpellClient.class, Packets.packet_id.PACKET_SPELL_CLIENT.ordinal(), Side.CLIENT);
     	network.registerMessage(PacketPlayerData.Handler.class, PacketPlayerData.class, Packets.packet_id.PACKET_PLAYER_DATA.ordinal(), Side.CLIENT);
@@ -30,7 +29,6 @@ public class Packets extends Loader
 	
 	enum packet_id
 	{
-		PACKET_EXPERIENCE,
 		PACKET_LEVEL,
 		PACKET_SPELL_CLIENT,
 		PACKET_PLAYER_DATA,

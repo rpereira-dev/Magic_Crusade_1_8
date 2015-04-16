@@ -1,16 +1,21 @@
 package fr.toss.magiccrusade.common.classes.spell.champion;
 
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.render.EntityFX_Colored;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;
+import fr.toss.magiccrusade.common.classes.spell.SpellUtils;
+import fr.toss.magiccrusade.common.player.ServerPlayer;
 import fr.toss.magiccrusade.common.player.Stats;
 
 public class SpellShockwave implements ISpell
@@ -58,11 +63,27 @@ public class SpellShockwave implements ISpell
 	@Override
 	public void do_spell(Entity caster, Entity target, Stats stat)
 	{
-		for (int x = 0; x < 6; x++)
+		List			lst;
+		ServerPlayer	player;
+		float			damages;
+		
+		caster.worldObj.createExplosion(caster, caster.posX + 3, caster.posY, caster.posZ + 3, 0.5f, true);	
+		caster.worldObj.createExplosion(caster, caster.posX - 3, caster.posY, caster.posZ + 3, 0.5f, true);	
+		caster.worldObj.createExplosion(caster, caster.posX + 3, caster.posY, caster.posZ - 3, 0.5f, true);	
+		caster.worldObj.createExplosion(caster, caster.posX - 3, caster.posY, caster.posZ - 3, 0.5f, true);
+		lst = SpellUtils.getEntitiesAround(caster, 8.0d, 8.0d, 8.0d);
+		if (lst == null)
 		{
-			for (int z = 0; z < 6; z++)
+			return ;
+		}
+		if (caster instanceof EntityPlayerMP)
+		{
+			player = ServerPlayer.from_player_mp((EntityPlayerMP)caster);
+			damages = 1.0f + player.get_stats().get_strength() * 0.015f;
+			for (Object obj : lst)
 			{
-				caster.worldObj.createExplosion(caster, caster.posX + x - 3, caster.posY, caster.posZ + z - 3, 0.5f, true);	
+				((Entity)obj).attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) caster), 1);
+				((Entity)obj).attackEntityFrom(DamageSource.magic, damages);
 			}
 		}
 	}

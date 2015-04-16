@@ -60,7 +60,7 @@ public class GuiIngameOverlay
 	        this.render_player_icon(x, y);
 	        this.mc.mcProfiler.endSection();
 	        
-	        this.mc.mcProfiler.startSection("render_health_bar");
+	        this.mc.mcProfiler.startSection("render_messages");
 	        this.render_messages(event.resolution);
 	        this.mc.mcProfiler.endSection();
 

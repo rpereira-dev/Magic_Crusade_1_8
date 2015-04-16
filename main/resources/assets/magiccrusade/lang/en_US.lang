@@ -45,8 +45,8 @@ stats.desc.mana=+ 1 mana per point
 
 #   SPELL DESCRIPTION
 spell.charge.description=The Champion charges forward making an explosion under his foot
-spell.shockwave.description=A Shockwave make the ground explode. Deals @D  to nearby ennemis # 2
-spell.drain.description=Drain target healths, causing @M (+ @m ) damages to it, and give you back @M ( + @m ) health # 2 # 0.01 # 1 # 0.0025
+spell.shockwave.description=A Shockwave make the ground explode. Deals @D (+ @d ) to 4 nearby ennemis maximum # 2 # 0.015
+spell.drain.description=Drain target healths, causing @M (+ @m ) damages to it, and give you back @M ( + @m ) health # 2 # 0.01 # 1 # 0.015
 
 #   LANG SPELL
 spell.rogue.critic=(Passive) Acuteness

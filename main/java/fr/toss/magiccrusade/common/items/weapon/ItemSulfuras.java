@@ -42,15 +42,27 @@ public class ItemSulfuras extends ItemWeapon
      */
     public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player)
     {
-    	Entity e;
+    	BlockPos	pos;
+    	Entity 		e;
     	
     	e = SpellUtils.getLookingEntity(player, 20.0d);
     	if (e != null)
     	{
-    		world.setBlockState(new BlockPos(e.posX, e.posY, e.posZ), Blocks.fire.getStateFromMeta(0));
+    		world.setBlockState(new BlockPos(world.getTopSolidOrLiquidBlock(e.getPosition())).east(), Blocks.fire.getStateFromMeta(0));
+    		world.setBlockState(new BlockPos(world.getTopSolidOrLiquidBlock(e.getPosition())).west(), Blocks.fire.getStateFromMeta(0));
+    		world.setBlockState(new BlockPos(world.getTopSolidOrLiquidBlock(e.getPosition())).north(), Blocks.fire.getStateFromMeta(0));
+    		world.setBlockState(new BlockPos(world.getTopSolidOrLiquidBlock(e.getPosition())).south(), Blocks.fire.getStateFromMeta(0));
     	}
-
+    	player.extinguish();
     	return (super.onItemRightClick(is, world, player));
+    }
+    
+    @Override
+    public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
+    {
+    	entity.setFire(1);
+    	player.extinguish();
+    	return (true);
     }
 
 }

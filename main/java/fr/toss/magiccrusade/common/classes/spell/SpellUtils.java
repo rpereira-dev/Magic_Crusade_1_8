@@ -16,6 +16,15 @@ public class SpellUtils
 		target.attackEntityFrom(DamageSource.magic, 0.0f);
 	}
 	
+	/** Get entity this Entity around caster */
+	public static List getEntitiesAround(Entity caster, double rangex, double rangey, double rangez)
+	{
+		List	lst;
+		
+		lst = caster.worldObj.getEntitiesWithinAABBExcludingEntity(caster, caster.getEntityBoundingBox().expand(rangex, rangey, rangez));
+		return (lst);
+	}
+	
 	/** Get entity this EntityLivingBase is looking at */
 	public static Entity getLookingEntity(EntityLivingBase caster, double range)
 	{

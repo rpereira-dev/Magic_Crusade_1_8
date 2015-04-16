@@ -108,7 +108,7 @@ public enum EnumSpell
 		tmp = new StringBuffer();
 		for (int i = 0; i < words.length; i++)
 		{
-		    if (tmp.length() > 24)
+		    if (tmp.length() > 22)
 		    {
 		    	lst.add(tmp.toString());
 		    	tmp = new StringBuffer();
@@ -117,15 +117,24 @@ public enum EnumSpell
 			{
 				if (words[i].charAt(1) == 'd')
 				{
-					tmp.append(ChatColor.GOLD + String.valueOf(Float.valueOf(format[j]) * stats.get_strength()) + ChatColor.RESET);
+					str =  String.valueOf(Float.valueOf(format[j]) * stats.get_strength());
+					if (str.length() > 4)
+						str = str.subSequence(0, 4).toString();
+					tmp.append(ChatColor.GOLD + str + ChatColor.RESET);
 				}
 				else if (words[i].charAt(1) == 'D')
 				{
+					str =  String.valueOf(Float.valueOf(format[j]) * stats.get_strength());
+					if (str.length() > 4)
+						str = str.subSequence(0, 4).toString();
 					tmp.append(ChatColor.GOLD + String.valueOf(Float.valueOf(format[j])) + ChatColor.RESET);
 				}
 				else if (words[i].charAt(1) == 'm')
 				{
-					tmp.append(ChatColor.AQUA + String.valueOf(Float.valueOf(format[j]) * stats.get_magic()) + ChatColor.RESET);
+					str =  String.valueOf(Float.valueOf(format[j]) * stats.get_magic());
+					if (str.length() > 4)
+						str = str.subSequence(0, 4).toString();
+					tmp.append(ChatColor.AQUA + str + ChatColor.RESET);
 				}
 				else if (words[i].charAt(1) == 'M')
 				{
@@ -133,7 +142,10 @@ public enum EnumSpell
 				}
 				else if (words[i].charAt(1) == 'a')
 				{
-					tmp.append(ChatColor.GREEN + String.valueOf(Float.valueOf(format[j]) * stats.get_stamina()) + ChatColor.RESET);
+					str =  String.valueOf(Float.valueOf(format[j]) * stats.get_stamina());
+					if (str.length() > 4)
+						str = str.subSequence(0, 4).toString();
+					tmp.append(ChatColor.GREEN + str + ChatColor.RESET);
 				}
 				else if (words[i].charAt(1) == 'A')
 				{

@@ -1,6 +1,8 @@
 package fr.toss.magiccrusade.common.player;
 
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import api.player.server.IServerPlayerAPI;
 import api.player.server.ServerPlayerAPI;
@@ -8,6 +10,9 @@ import api.player.server.ServerPlayerBase;
 import fr.toss.magiccrusade.common.classes.EnumClasse;
 import fr.toss.magiccrusade.common.classes.IClasse;
 import fr.toss.magiccrusade.common.entity.IMagicEntity;
+import fr.toss.magiccrusade.common.network.PacketPlayerData;
+import fr.toss.magiccrusade.common.network.Packets;
+import fr.toss.magiccrusade.utils.MagicLogger;
 
 public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 {
@@ -26,6 +31,9 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 	/** player stats */
 	private Stats	stats;
 	
+	/** update packet */
+	private PacketPlayerData	packet;
+	
 	public ServerPlayer(ServerPlayerAPI playerapi)
 	{
 		super(playerapi);
@@ -33,6 +41,7 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 		this.level = 1;
 		this.experience_to_next_level = this.calcul_next_level_experience();
 		this.experience = 0;
+		this.packet = new PacketPlayerData();
 	}
 	
 	public void onUpdate()
@@ -40,26 +49,39 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 		super.onUpdate();
 		this.stats = Stats.get_player_stats(this); //can be optimize by filling the object instead of creating a new one
 		this.classe.update();
+		this.player.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0d + this.stats.get_endurance() / 20.0f);
+		if (MinecraftServer.getServer().getTickCounter() % 20 == 0)
+		{
+			this.sendPlayerData();
+		}
+	}
+	
+	private void	sendPlayerData()
+	{
+		this.packet.from_player(this);
+		Packets.network.sendTo(this.packet, this.player);
 	}
 
 	 @Override
 	public void readEntityFromNBT(net.minecraft.nbt.NBTTagCompound nbt)
 	{
-		 super.readEntityFromNBT(nbt);
-		 this.level			= nbt.getInteger("level"); 
-		 this.experience	= nbt.getInteger("experience");
-		 this.classe		= EnumClasse.load_classe_from_ord(nbt.getInteger("classe_id"));
-		 this.classe.read_from_nbt(nbt);
+		super.readEntityFromNBT(nbt);
+		this.level			= nbt.getInteger("level"); 
+		this.experience	= nbt.getInteger("experience");
+		this.classe		= EnumClasse.load_classe_from_ord(nbt.getInteger("classe_id"));
+		this.classe.read_from_nbt(nbt);
+		this.experience_to_next_level = this.calcul_next_level_experience();
 	}
 		
 	 @Override
 	 public void writeEntityToNBT(net.minecraft.nbt.NBTTagCompound nbt)
 	 {
-		 super.writeEntityToNBT(nbt);
-		 nbt.setInteger("level", this.level); 
-		 nbt.setInteger("experience", this.experience);
-		 nbt.setInteger("classe_id", this.classe.get_enum_classe().ordinal());
-		 this.classe.write_to_nbt(nbt);
+		super.writeEntityToNBT(nbt);
+		nbt.setInteger("level", this.level); 
+		nbt.setInteger("experience", this.experience);
+		nbt.setInteger("classe_id", this.classe.get_enum_classe().ordinal());
+		this.classe.write_to_nbt(nbt);
+		this.experience_to_next_level = this.calcul_next_level_experience();
 	 }
 	
 	public void		add_chat_message(String str)
@@ -67,7 +89,7 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 		this.player.addChatMessage(new ChatComponentText(str));
 	}
 
-	private int	calcul_next_level_experience()
+	public int	calcul_next_level_experience()
 	{
 		return (this.level * 20 * (this.level + 1));
 	}
@@ -135,5 +157,10 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 	public int get_experience()
 	{
 		return (this.experience);
+	}
+	
+	public int	get_experience_to_next_level()
+	{
+		return (this.experience_to_next_level);
 	}
 }

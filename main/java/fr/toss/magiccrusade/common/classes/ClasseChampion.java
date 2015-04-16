@@ -70,7 +70,7 @@ public class ClasseChampion implements IClasse
 	@Override
 	public void	hit_entity(Entity target)
 	{
-		this.rage = this.rage + 1000;
+		this.rage += target.worldObj.rand.nextInt(100) + 40;
 		this.rage = (this.rage >= this.get_default_max_energy()) ? this.get_default_max_energy() : this.rage;
 		this.last_hit = System.currentTimeMillis();
 	}
@@ -108,9 +108,9 @@ public class ClasseChampion implements IClasse
 		stats = new Stats();
 		stats.set_endurance(50);
 		stats.set_strength(20);
-		stats.set_stamina(0);
-		stats.set_spirit(20);
-		stats.set_clarity(25);
+		stats.set_stamina(8);
+		stats.set_spirit(0);
+		stats.set_clarity(10);
 		stats.set_magic(0);
 		return (stats);
 	}
@@ -121,11 +121,11 @@ public class ClasseChampion implements IClasse
 		Stats	stats;
 
 		stats = new Stats();
-		stats.set_endurance(5);
+		stats.set_endurance(20);
 		stats.set_strength(2);
 		stats.set_stamina(1);
-		stats.set_spirit(1);
-		stats.set_clarity(1);
+		stats.set_spirit(0.5f);
+		stats.set_clarity(0.7f);
 		stats.set_magic(0);
 		return (stats);
 	}
