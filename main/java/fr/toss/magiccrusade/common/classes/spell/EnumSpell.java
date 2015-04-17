@@ -23,10 +23,11 @@ import fr.toss.magiccrusade.common.player.Stats;
 
 public enum EnumSpell
 {	
-	CHARGE("charge", 1, 100, EnumClasse.CHAMPION, SpellCharge.class),
-	IRONSKIN("ironskin", 1, 240, EnumClasse.CHAMPION, SpellIronskin.class),
-	EARTH_SHIELD("earth_shield", 4, 460, EnumClasse.CHAMPION, SpellEarthShield.class),
-	SHOCKWAVE("shockwave", 1, 180, EnumClasse.CHAMPION, SpellShockwave.class),
+	CHARGE("charge", 1, 1, EnumClasse.CHAMPION, SpellCharge.class),
+	IRONSKIN("ironskin", 1, 1, EnumClasse.CHAMPION, SpellIronskin.class),
+	EARTH_SHIELD("earth_shield", 1, 1, EnumClasse.CHAMPION, SpellEarthShield.class),
+	SHOCKWAVE("shockwave", 1, 1, EnumClasse.CHAMPION, SpellShockwave.class),
+	
 	DRAIN("drain", 1, 200, EnumClasse.NECROMANCER, SpellDrain.class);
 
 	private String		name;
@@ -145,11 +146,18 @@ public enum EnumSpell
 					str =  String.valueOf(Float.valueOf(format[j]) * stats.get_stamina());
 					if (str.length() > 4)
 						str = str.subSequence(0, 4).toString();
-					tmp.append(ChatColor.GREEN + str + ChatColor.RESET);
+					tmp.append(ChatColor.YELLOW + str + ChatColor.RESET);
 				}
 				else if (words[i].charAt(1) == 'A')
 				{
-					tmp.append(ChatColor.GREEN + String.valueOf(Float.valueOf(format[j])) + ChatColor.RESET);
+					tmp.append(ChatColor.YELLOW + String.valueOf(Float.valueOf(format[j])) + ChatColor.RESET);
+				}
+				else if (words[i].charAt(1) == 'e')
+				{
+					str =  String.valueOf(Float.valueOf(format[j]) * stats.get_endurance());
+					if (str.length() > 4)
+						str = str.subSequence(0, 4).toString();
+					tmp.append(ChatColor.GREEN + str + ChatColor.RESET);
 				}
 				j++;
 			}

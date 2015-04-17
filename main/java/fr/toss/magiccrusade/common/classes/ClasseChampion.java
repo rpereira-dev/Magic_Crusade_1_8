@@ -70,7 +70,8 @@ public class ClasseChampion implements IClasse
 	@Override
 	public void	hit_entity(Entity target)
 	{
-		this.rage += target.worldObj.rand.nextInt(100) + 40;
+		//this.rage += target.worldObj.rand.nextInt(100) + 40;
+		this.rage = 1000;
 		this.rage = (this.rage >= this.get_default_max_energy()) ? this.get_default_max_energy() : this.rage;
 		this.last_hit = System.currentTimeMillis();
 	}

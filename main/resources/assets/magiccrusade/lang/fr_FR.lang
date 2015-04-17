@@ -47,6 +47,10 @@ stats.desc.mana=+ 1 mana par point
 #   SPELL DESCRIPTION
 spell.charge.description=Le Champion charge et crée une explosion sous ses pieds
 spell.shockwave.description=Une onde de choc est crée. Crée une explosion infligeant @D (+ @d ) de degats jusqua 4 ennemis proches # 2 # 0.005
+spell.ironskin.description=Vous confere resistance 2 pendant 30 secondes
+spell.earth_shield.description=Vous offre un bouclier absorbant 2 (+ @e ) points de degats pendant 2 secondes # 0.02
+
+
 spell.drain.description=Draine la santé de votre cible, infligeant @M (+ @m ) de degats, et vous soignant de @M ( + @m ) pv # 2 # 0.01 # 1 # 0.0025
 
 
@@ -77,7 +81,7 @@ spell.champion.charge=Charge
 spell.champion.grab=Attraction
 spell.champion.ironskin=Peau de fer
 spell.champion.shockwave=Vague d'eclair
-spell.champion.earthshield=Bouclier terrestre
+spell.champion.earth_shield=Bouclier terrestre
 
 spell.necromancer.corruption=Corruption
 spell.necromancer.drain=Drain

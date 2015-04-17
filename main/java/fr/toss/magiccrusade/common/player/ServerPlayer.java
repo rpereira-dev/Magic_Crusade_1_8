@@ -52,6 +52,7 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 		this.player.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0d + this.stats.get_endurance() / 20.0f);
 		if (MinecraftServer.getServer().getTickCounter() % 20 == 0)
 		{
+			System.out.println("sent");
 			this.sendPlayerData();
 		}
 	}
