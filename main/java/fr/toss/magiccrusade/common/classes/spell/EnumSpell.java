@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.DamageSource;
 import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.gui.ChatColor;
 import fr.toss.magiccrusade.common.classes.EnumClasse;
@@ -16,7 +12,9 @@ import fr.toss.magiccrusade.common.classes.spell.champion.SpellCharge;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellEarthShield;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellIronskin;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellShockwave;
+import fr.toss.magiccrusade.common.classes.spell.mage.SpellFireball;
 import fr.toss.magiccrusade.common.classes.spell.necromancer.SpellDrain;
+import fr.toss.magiccrusade.common.classes.spell.priest.SpellSelfHeal;
 import fr.toss.magiccrusade.common.network.PacketSpellServer;
 import fr.toss.magiccrusade.common.network.Packets;
 import fr.toss.magiccrusade.common.player.Stats;
@@ -28,7 +26,11 @@ public enum EnumSpell
 	EARTH_SHIELD("earth_shield", 1, 1, EnumClasse.CHAMPION, SpellEarthShield.class),
 	SHOCKWAVE("shockwave", 1, 1, EnumClasse.CHAMPION, SpellShockwave.class),
 	
-	DRAIN("drain", 1, 200, EnumClasse.NECROMANCER, SpellDrain.class);
+	DRAIN("drain", 1, 200, EnumClasse.NECROMANCER, SpellDrain.class), 
+	
+	//Test de Nolan-XX
+	FIREBALL_LOW("fireball_low", 2, 0, EnumClasse.MAGE, SpellFireball.class), 
+	SELFHEAL_LOW("SelfHeal_Low", 1, 200, EnumClasse.PRIEST, SpellSelfHeal.class);
 
 	private String		name;
 	private int			level;
