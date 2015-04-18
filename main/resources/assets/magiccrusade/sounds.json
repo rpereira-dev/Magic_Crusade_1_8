@@ -9,6 +9,13 @@
   "centaure_live1": {"category": "master","sounds": [{"name": "centaure_live1","stream": false}]},
   "centaure_live2": {"category": "master","sounds": [{"name": "centaure_live2","stream": false}]},
   
+  "orc_hurt":{"category": "master","sounds": [{"name": "orc_hurt","stream": false}]},
+  "orc_hurt_2":{"category": "master","sounds": [{"name": "orc_hurt_2","stream": false}]},
+  "orc_hurt_3":{"category": "master","sounds": [{"name": "orc_hurt_3","stream": false}]},
+  "orc_live": {"category": "master","sounds": [{"name": "orc_live","stream": false}]},
+  "orc_live_2": {"category": "master","sounds": [{"name": "orc_live_2","stream": false}]},
+  "orc_burp": {"category": "master","sounds": [{"name": "orc_burp","stream": false}]},
+  
   "stymph_death": {"category": "master","sounds": [{"name": "stymph_death","stream": false}]},
   "stymph_live1": {"category": "master","sounds": [{"name": "stymph_live1","stream": false}]},
   "stymph_live2": {"category": "master","sounds": [{"name": "stymph_live2","stream": false}]},

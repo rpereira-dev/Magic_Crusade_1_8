@@ -1,4 +1,4 @@
-package fr.toss.magiccrusade.client.render;
+package fr.toss.magiccrusade.client.entity;
 
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.world.World;

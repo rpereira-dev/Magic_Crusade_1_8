@@ -10,7 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import fr.toss.magiccrusade.client.render.EntityFX_Colored;
+import fr.toss.magiccrusade.client.entity.EntityFX_Colored;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;

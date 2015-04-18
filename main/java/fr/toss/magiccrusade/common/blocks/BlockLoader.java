@@ -9,8 +9,8 @@ public class BlockLoader extends Loader
 		super("Blocks");
 	}
 
-	public void	load()
+	@Override
+	public void	on_load()
 	{
-		super.load();
 	}
 }

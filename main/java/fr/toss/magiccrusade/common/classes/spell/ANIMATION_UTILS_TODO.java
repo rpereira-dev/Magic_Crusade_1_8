@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
-import fr.toss.magiccrusade.client.render.EntityFX_Colored;
+import fr.toss.magiccrusade.client.entity.EntityFX_Colored;
 
 public class ANIMATION_UTILS_TODO {
 /* NODA DE FEU MAGE

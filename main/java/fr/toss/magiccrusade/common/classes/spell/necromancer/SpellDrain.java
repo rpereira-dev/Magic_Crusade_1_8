@@ -7,7 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import fr.toss.magiccrusade.client.render.EntityFX_Colored;
+import fr.toss.magiccrusade.client.entity.EntityFX_Colored;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;

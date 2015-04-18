@@ -1,5 +1,6 @@
 package fr.toss.magiccrusade.common;
 
+import fr.toss.magiccrusade.client.entity.EntityLoader;
 import fr.toss.magiccrusade.common.achievement.AchievementLoader;
 import fr.toss.magiccrusade.common.blocks.BlockLoader;
 import fr.toss.magiccrusade.common.events.EventLoader;
@@ -10,6 +11,7 @@ import fr.toss.magiccrusade.common.player.PlayerLoader;
 public class CommonProxy
 {
 	public BlockLoader			blocks_loader;
+	public EntityLoader			entity_loader;
 	public ItemLoader			items_loader;
 	public AchievementLoader	achivement_loader;
 	public PlayerLoader			player_loader;
@@ -25,11 +27,13 @@ public class CommonProxy
 		this.player_loader			= new PlayerLoader();
 		this.creative_tabs_loader	= new CreativeTabsLoader();
 		this.event_loader			= new EventLoader();
+		this.entity_loader			= new EntityLoader();
 	}
 	
 	public void load()
 	{
 		this.event_loader.load();
+		this.entity_loader.load();
 		this.blocks_loader.load();
 		this.items_loader.load();
 		this.achivement_loader.load();
