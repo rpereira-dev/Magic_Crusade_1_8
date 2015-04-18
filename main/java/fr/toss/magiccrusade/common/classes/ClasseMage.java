@@ -9,14 +9,17 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.config.GuiUtils;
 
 public class ClasseMage implements IClasse
 {
 	private List<EnumSpell> spells;
+	private int mana;
 
 	public ClasseMage()
 	{
 		this.spells = new ArrayList<EnumSpell>();
+		this.spells.add(EnumSpell.FIREBALL_LOW);
 	}
 
 	@Override
@@ -28,50 +31,59 @@ public class ClasseMage implements IClasse
 	@Override
 	public int get_default_max_energy() {
 		// TODO Auto-generated method stub
-		return 0;
+		return (2000);
 	}
 
 	@Override
 	public int get_energy() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (this.mana);
 	}
 
 	@Override
 	public void set_energy(int value) {
-		// TODO Auto-generated method stub
+		this.mana = value;
 		
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		if (this.mana < this.get_default_max_energy())
+		{
+			this.mana += 4;
+			if (this.mana > this.get_default_max_energy())
+			{
+				this.mana = this.get_default_max_energy();
+			}
+		}
 		
 	}
 
 	@Override
-	public void render_energy_bar(Minecraft minecraft, int x, int y) {
-		// TODO Auto-generated method stub
+	public void render_energy_bar(Minecraft minecraft, int x, int y)
+	{
+		String	str;
 		
+		str = (int) this.mana + "/" + (int)this.get_default_max_energy();
+    	GuiUtils.drawTexturedModalRect(x, y + 15, 0, 0, 65, 13, 0);
+    	GuiUtils.drawTexturedModalRect(x, y + 15, 0, 98, (int) (65.0f / this.get_default_max_energy() * this.mana), 13, 0);
+    	minecraft.fontRendererObj.drawStringWithShadow(str, x + 32 - minecraft.fontRendererObj.getStringWidth(str) / 2, y + 17, 0xffffffff);
 	}
 
 	@Override
-	public void hit_entity(Entity target) {
-		// TODO Auto-generated method stub
-		
+	public void hit_entity(Entity target) {}
+
+	@Override
+	public void write_to_nbt(NBTTagCompound nbt)
+	{
+		nbt.setInteger("mana", this.mana);
 	}
 
 	@Override
-	public void write_to_nbt(NBTTagCompound nbt) {
-		// TODO Auto-generated method stub
-		
+	public void read_from_nbt(NBTTagCompound nbt)
+	{
+		this.mana = nbt.getInteger("mana");
 	}
-
-	@Override
-	public void read_from_nbt(NBTTagCompound nbt) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 	@Override
 	public Stats get_default_stats()
