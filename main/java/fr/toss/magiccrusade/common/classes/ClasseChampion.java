@@ -120,7 +120,7 @@ public class ClasseChampion implements IClasse
 	public Stats get_stats_per_lvl()
 	{
 		Stats	stats;
-//voila
+//voila je l'ai modifie
 		stats = new Stats();
 		stats.set_endurance(20);
 		stats.set_strength(2);
