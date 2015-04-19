@@ -13,6 +13,7 @@ import fr.toss.magiccrusade.common.classes.spell.champion.SpellEarthShield;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellIronskin;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellShockwave;
 import fr.toss.magiccrusade.common.classes.spell.mage.SpellFireball;
+import fr.toss.magiccrusade.common.classes.spell.mage.SpellSummonSnowcube;
 import fr.toss.magiccrusade.common.classes.spell.necromancer.SpellDrain;
 import fr.toss.magiccrusade.common.classes.spell.priest.SpellSelfHeal;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellDodge;
@@ -29,7 +30,10 @@ public enum EnumSpell
 	EARTH_SHIELD("earth_shield", 1, 1, EnumClasse.CHAMPION, SpellEarthShield.class),
 	SHOCKWAVE("shockwave", 1, 1, EnumClasse.CHAMPION, SpellShockwave.class),
 	
-	DRAIN("drain", 1, 200, EnumClasse.NECROMANCER, SpellDrain.class), 
+	DRAIN("drain", 1, 200, EnumClasse.NECROMANCER, SpellDrain.class),
+
+	SUMMON_SNOWCUBE("summon_snowcube", 1, 200, EnumClasse.MAGE, SpellSummonSnowcube.class),
+
 	
 	//Test de Nolan-XX
 	FIREBALL_LOW("fireball_low", 2, 0, EnumClasse.MAGE, SpellFireball.class), 
@@ -37,7 +41,7 @@ public enum EnumSpell
 	DODGE("Dodge", 1, 25, EnumClasse.ROGUE, SpellDodge.class),
 	SMOKESCREEN("Smokescreen", 1, 75, EnumClasse.ROGUE, SpellSmokeScreen.class),
 	INSTINCT("Instinct", 2, 50, EnumClasse.ROGUE, SpellInstinct.class);
-
+	
 	private String		name;
 	private int			level;
 	private int			cost;

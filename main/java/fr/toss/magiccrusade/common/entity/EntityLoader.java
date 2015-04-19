@@ -1,4 +1,4 @@
-package fr.toss.magiccrusade.client.entity;
+package fr.toss.magiccrusade.common.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -27,11 +27,14 @@ public class EntityLoader extends Loader
 
 	public void	on_load()
 	{
-		registerEntity(EntityOrc.class, "Orc");
+		registerEntity(EntityOrc.class, "Orc",  0xeaff00, 0x888888);
+		registerEntity(EntityBelier.class, "Belier", 0xffffff, 0xaa11ff);
+		registerEntity(EntitySnowCube.class, "SnowCube", 0xffffff, 0xaaaaaa);
 	}
 	
-	public static void registerEntity(Class <? extends Entity > entityClass, String string)
+	public static void registerEntity(Class <? extends Entity > entityClass, String string, int bg, int fg)
 	{
-        EntityRegistry.registerGlobalEntityID(entityClass, string, EntityRegistry.findGlobalUniqueEntityId(), 0xeaff00, 0x888888);
+        EntityRegistry.registerGlobalEntityID(entityClass, string, EntityRegistry.findGlobalUniqueEntityId(), bg, fg);
+        EntityRegistry.registerGlobalEntityID(entityClass, string, EntityRegistry.findGlobalUniqueEntityId(), bg, fg);
 	}
 }

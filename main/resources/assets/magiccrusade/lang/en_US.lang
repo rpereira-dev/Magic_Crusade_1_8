@@ -44,12 +44,27 @@ stats.desc.spirit=+ 1 mana regen / sec per 10 points
 stats.desc.mana=+ 1 mana per point
 
 #   SPELL DESCRIPTION
+# HOW IT WORKS:         this is a test %D ( + %d ) # 2 # 0.1
+# %D == default strength damages
+# %d == strength ratio
+# %E == default endurance stat
+# %e == endurance ratio
+# %M == default magic damages
+# %m == magic ratio
+# %A == default stamina damages
+# %a == stamina ratio
+# here, the description say that the spell has 2 + 0.1 * PLAYER.STRENGTH damages
+
 spell.charge.description=The Champion charges forward making an explosion under his foot
 spell.ironskin.description=Give you a resistance 2 buff for 30 seconds
 spell.shockwave.description=A Shockwave make the ground explode. Deals @D (+ @d ) to 4 nearby ennemis maximum # 2 # 0.015
 spell.earth_shield.description=Give you a 6 hit points (+ @e ) absorption shield for 2 second # 0.02
-spell.SelfHeal_Low.description=Heals you by @d HP.
+
+spell.SelfHeal_Low.description=Heals you by @d HP # 2
+
 spell.drain.description=Drain target healths, causing @M (+ @m ) damages to it, and give you back @M ( + @m ) health # 2 # 0.01 # 1 # 0.015
+
+spell.summon_snowcube.description=Summon a Snowcube which attack your ennemis
 
 #   LANG SPELL
 spell.rogue.critic=(Passive) Acuteness
@@ -65,6 +80,7 @@ spell.mage.freeze_cube=Frozen cube
 spell.mage.transfert=Transfert
 spell.mage.arcane_pillow=Arcane pillow
 spell.mage.fireball=Fireball
+spell.mage.summon_snowcube=Summon Snowcube
 
 spell.ranger.explode_shot=Exploding Shot
 spell.ranger.magic_shot=Magical shot

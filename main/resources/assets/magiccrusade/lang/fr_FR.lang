@@ -50,6 +50,7 @@ spell.shockwave.description=Une onde de choc est crée. Crée une explosion inflig
 spell.ironskin.description=Vous confere resistance 2 pendant 30 secondes
 spell.earth_shield.description=Vous offre un bouclier absorbant 2 (+ @e ) points de degats pendant 2 secondes # 0.02
 
+spell.summon_snowcube.description=Invoque un cube de neige qui combat à vos cotés
 
 spell.drain.description=Draine la santé de votre cible, infligeant @M (+ @m ) de degats, et vous soignant de @M ( + @m ) pv # 2 # 0.01 # 1 # 0.0025
 
@@ -68,6 +69,7 @@ spell.mage.freeze_cube=Gele
 spell.mage.transfert=Transfert
 spell.mage.arcane_pillow=Pillier des arcanes
 spell.mage.fireball=Fireball
+spell.mage.summon_snowcube=Snowcube
 
 spell.ranger.explode_shot=Tir explosif
 spell.ranger.magic_shot=Tir magique

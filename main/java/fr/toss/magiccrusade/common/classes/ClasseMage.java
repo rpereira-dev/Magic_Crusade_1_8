@@ -20,6 +20,7 @@ public class ClasseMage implements IClasse
 	{
 		this.spells = new ArrayList<EnumSpell>();
 		this.spells.add(EnumSpell.FIREBALL_LOW);
+		this.spells.add(EnumSpell.SUMMON_SNOWCUBE);
 	}
 
 	@Override

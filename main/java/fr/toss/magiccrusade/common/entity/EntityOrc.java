@@ -1,4 +1,4 @@
-package fr.toss.magiccrusade.client.entity;
+package fr.toss.magiccrusade.common.entity;
 
 import fr.toss.magiccrusade.utils.MagicLogger;
 import net.minecraft.block.Block;
