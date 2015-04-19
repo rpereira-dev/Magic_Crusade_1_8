@@ -1,12 +1,12 @@
 package fr.toss.magiccrusade.common.items;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import fr.toss.magiccrusade.Main;
+import fr.toss.magiccrusade.common.items.weapon.ItemFlamberge;
 import fr.toss.magiccrusade.common.items.weapon.ItemFrostmourne;
 import fr.toss.magiccrusade.common.items.weapon.ItemShadowmourne;
 import fr.toss.magiccrusade.common.items.weapon.ItemSulfuras;
@@ -41,6 +41,7 @@ public class ItemLoader extends Loader
 		registerItem(ItemFrostmourne.class, "frostmourne");
         registerItem(ItemSulfuras.class, "sulfuras");
         registerItem(ItemShadowmourne.class, "shadowmourne");
+        registerItem(ItemFlamberge.class, "flamberge");
         registerAll();
 	}
 	

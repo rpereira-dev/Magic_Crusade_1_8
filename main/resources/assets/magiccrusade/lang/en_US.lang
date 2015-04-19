@@ -10,6 +10,7 @@ item.description.lame_tonerre=There's electrial particles around it...
 item.description.shadowmourne=This axe has a strange aura...
 item.description.frostmourne=The blade seems deeply frozen
 item.description.sulfuras=This hammer is burning!
+item.description.flamberge=Holding this weapon makes me smarter. Sqrt(9) = 3
 
 #   LANG
 button.selection=Select
@@ -269,6 +270,7 @@ item.ingot_silver.name=Silver Ingot
 item.ethernium.name=Ethernium
 item.combustium.name=Combustium
 
+item.flamberge.name=Flamberge
 item.sulfuras.name=Sulfuras Hammer
 item.ashbringer.name=Ashbringer
 item.ashbringercorrupted.name=Poison Dagger

@@ -3,7 +3,6 @@ package fr.toss.magiccrusade.common.classes.spell.rogue;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
@@ -11,7 +10,7 @@ import net.minecraft.world.World;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;
-import fr.toss.magiccrusade.common.entity.EntityDoppleganger;
+import fr.toss.magiccrusade.common.entity.EntityKnife;
 import fr.toss.magiccrusade.common.player.Stats;
 
 public class SpellKnife implements ISpell
@@ -52,12 +51,12 @@ public class SpellKnife implements ISpell
 	@Override
 	public void do_spell(Entity caster, Entity target, Stats stat)
 	{
-        EntityArrow	entity;
+        EntityKnife	entity;
         Vec3	vec;
 		
 		vec = caster.getLookVec();
 		
-		entity = new EntityArrow(caster.worldObj);
+		entity = new EntityKnife(caster.worldObj);
 		entity.setLocationAndAngles(caster.posX,  caster.posY +1 , caster.posZ, 0.1f, 0.1f);
 		
 		caster.worldObj.spawnEntityInWorld(entity);		
