@@ -19,6 +19,7 @@ import fr.toss.magiccrusade.common.classes.spell.priest.SpellSelfHeal;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellDodge;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellInstinct;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellJump;
+import fr.toss.magiccrusade.common.classes.spell.rogue.SpellKnife;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellPoison;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellShadowClones;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellSmokeScreen;
@@ -55,7 +56,7 @@ public enum EnumSpell
 	INSTINCT("Instinct", 2, 50, EnumClasse.ROGUE, SpellInstinct.class),
 	JUMP("jump", 2, 10, EnumClasse.ROGUE, SpellJump.class),
 	POISON("poison", 3, 50, EnumClasse.ROGUE, SpellPoison.class),
-	//KNIFE("knife", 3, 75, EnumClasse.ROGUE, SpellSmokeScreen.class),
+	KNIFE("knife", 3, 75, EnumClasse.ROGUE, SpellKnife.class),
 	SHADOWCLONES("Shadowclones", 10, 100, EnumClasse.ROGUE, SpellShadowClones.class);
 	//CHINSTRAP("chinstrap", 10, 100, EnumClasse.ROGUE, SpellSmokeScreen.class);
 	
