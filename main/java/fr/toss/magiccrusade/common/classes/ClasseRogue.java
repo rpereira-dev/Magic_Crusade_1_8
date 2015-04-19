@@ -24,6 +24,7 @@ public class ClasseRogue implements IClasse
 		this.spells.add(EnumSpell.INSTINCT);
 		this.spells.add(EnumSpell.JUMP);
 		this.spells.add(EnumSpell.POISON);
+		this.spells.add(EnumSpell.SHADOWCLONES);
 	}
 	
 	@Override

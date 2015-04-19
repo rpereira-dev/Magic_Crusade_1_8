@@ -18,6 +18,7 @@
   
 "snowcube_live":{"category": "master","sounds": [{"name": "snowcube_live","stream": false}]},
 "snowcube_live_2":{"category": "master","sounds": [{"name": "snowcube_live_2","stream": false}]},
+"dopple_laughs":{"category": "master","sounds": [{"name": "dopple_laughs","stream": false}]},
   
   "stymph_death": {"category": "master","sounds": [{"name": "stymph_death","stream": false}]},
   "stymph_live1": {"category": "master","sounds": [{"name": "stymph_live1","stream": false}]},

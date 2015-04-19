@@ -20,6 +20,7 @@ import fr.toss.magiccrusade.common.classes.spell.rogue.SpellDodge;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellInstinct;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellJump;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellPoison;
+import fr.toss.magiccrusade.common.classes.spell.rogue.SpellShadowClones;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellSmokeScreen;
 import fr.toss.magiccrusade.common.network.PacketSpellServer;
 import fr.toss.magiccrusade.common.network.Packets;
@@ -48,25 +49,15 @@ public enum EnumSpell
 	SELFHEAL_LOW("SelfHeal_Low", 1, 200, EnumClasse.PRIEST, SpellSelfHeal.class),
 	
 	//Sorts du Rogue
-	/*
-spell.rogue.smokescreen=Smoke Screen
-spell.rogue.instinct=Instinct
-spell.rogue.dodge=Dodge
-spell.rogue.knife=Knife Throwing
-spell.rogue.jump=High Rush
-spell.rogue.poison=Poison Knife
-spell.rogue.Shadowclones=Shadow Clones
-spell.rogue.powerEyes=Eyes of judgment
-	 */
 	
 	DODGE("Dodge", 1, 25, EnumClasse.ROGUE, SpellDodge.class),
 	SMOKESCREEN("Smokescreen", 1, 75, EnumClasse.ROGUE, SpellSmokeScreen.class),
 	INSTINCT("Instinct", 2, 50, EnumClasse.ROGUE, SpellInstinct.class),
 	JUMP("jump", 2, 10, EnumClasse.ROGUE, SpellJump.class),
-	POISON("poison", 3, 50, EnumClasse.ROGUE, SpellPoison.class);
+	POISON("poison", 3, 50, EnumClasse.ROGUE, SpellPoison.class),
 	//KNIFE("knife", 3, 75, EnumClasse.ROGUE, SpellSmokeScreen.class),
-	//SHADOWCLONES("Shadowclones", 10, 100, EnumClasse.ROGUE, SpellSmokeScreen.class),
-	//POWEREYES("powerEyes", 10, 100, EnumClasse.ROGUE, SpellSmokeScreen.class);
+	SHADOWCLONES("Shadowclones", 10, 100, EnumClasse.ROGUE, SpellShadowClones.class);
+	//CHINSTRAP("chinstrap", 10, 100, EnumClasse.ROGUE, SpellSmokeScreen.class);
 	
 	private String		name;
 	private int			level;

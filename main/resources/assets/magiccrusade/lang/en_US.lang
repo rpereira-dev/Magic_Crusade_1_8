@@ -64,6 +64,13 @@ spell.SelfHeal_Low.description=Heals you by @d HP # 2
 spell.Dodge.description=The rogue jumps backwards.
 spell.Instinct.description=Gives you a night vision and a movement bonus.
 spell.Smokescreen.description=Become invisible !
+
+spell.knife.description=Throw some knife, dealing damages with high crit chance
+spell.jump.description=Jump to get out of some tight situation
+spell.poison.description=Poison your target.
+spell.Shadowclones.description=Summon your dopllegangers !
+spell.chinstrap.description=The rogue aims for the chinstrap, dealing high damages.
+
 spell.drain.description=Drain target healths, causing @M (+ @m ) damages to it, and give you back @M ( + @m ) health # 2 # 0.01 # 1 # 0.015
 
 spell.summon_snowcube.description=Summon a Snowcube which attack your ennemis
@@ -83,7 +90,7 @@ spell.rogue.knife=Knife Throwing
 spell.rogue.jump=High Rush
 spell.rogue.poison=Poison Knife
 spell.rogue.Shadowclones=Shadow Clones
-spell.rogue.powerEyes=Eyes of judgment
+spell.rogue.chinstrap=Aim the chinstrap
 
 spell.mage.cone=Fire cone
 spell.mage.field_destruction=Field destruction

@@ -30,6 +30,8 @@ public class EntityLoader extends Loader
 		registerEntity(EntityOrc.class, "Orc",  0xeaff00, 0x888888);
 		registerEntity(EntityBelier.class, "Belier", 0xffffff, 0xaa11ff);
 		registerEntity(EntitySnowCube.class, "SnowCube", 0xffffff, 0xaaaaaa);
+		registerEntity(EntityDoppleganger.class, "Doplleganger", 0xffffff, 0xaaaaaa);
+	
 	}
 	
 	public static void registerEntity(Class <? extends Entity > entityClass, String string, int bg, int fg)
