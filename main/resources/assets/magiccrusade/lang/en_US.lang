@@ -61,7 +61,9 @@ spell.shockwave.description=A Shockwave make the ground explode. Deals @D (+ @d 
 spell.earth_shield.description=Give you a 6 hit points (+ @e ) absorption shield for 2 second # 0.02
 
 spell.SelfHeal_Low.description=Heals you by @d HP # 2
-
+spell.Dodge.description=The rogue jumps backwards.
+spell.Instinct.description=Gives you a night vision and a movement bonus.
+spell.Smokescreen.description=Become invisible !
 spell.drain.description=Drain target healths, causing @M (+ @m ) damages to it, and give you back @M ( + @m ) health # 2 # 0.01 # 1 # 0.015
 
 spell.summon_snowcube.description=Summon a Snowcube which attack your ennemis
@@ -73,6 +75,15 @@ spell.rogue.speed=Speed
 spell.rogue.invisible=Invisibility
 spell.rogue.vision=Nocturn vision
 spell.rogue.feather_falling=Feather falling
+
+spell.rogue.smokescreen=Smoke Screen
+spell.rogue.instinct=Instinct
+spell.rogue.dodge=Dodge
+spell.rogue.knife=Knife Throwing
+spell.rogue.jump=High Rush
+spell.rogue.poison=Poison Knife
+spell.rogue.Shadowclones=Shadow Clones
+spell.rogue.powerEyes=Eyes of judgment
 
 spell.mage.cone=Fire cone
 spell.mage.field_destruction=Field destruction

@@ -18,6 +18,8 @@ import fr.toss.magiccrusade.common.classes.spell.necromancer.SpellDrain;
 import fr.toss.magiccrusade.common.classes.spell.priest.SpellSelfHeal;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellDodge;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellInstinct;
+import fr.toss.magiccrusade.common.classes.spell.rogue.SpellJump;
+import fr.toss.magiccrusade.common.classes.spell.rogue.SpellPoison;
 import fr.toss.magiccrusade.common.classes.spell.rogue.SpellSmokeScreen;
 import fr.toss.magiccrusade.common.network.PacketSpellServer;
 import fr.toss.magiccrusade.common.network.Packets;
@@ -25,22 +27,46 @@ import fr.toss.magiccrusade.common.player.Stats;
 
 public enum EnumSpell
 {	
+	//Sorts du Champion
+	
 	CHARGE("charge", 1, 1, EnumClasse.CHAMPION, SpellCharge.class),
 	IRONSKIN("ironskin", 1, 1, EnumClasse.CHAMPION, SpellIronskin.class),
 	EARTH_SHIELD("earth_shield", 1, 1, EnumClasse.CHAMPION, SpellEarthShield.class),
 	SHOCKWAVE("shockwave", 1, 1, EnumClasse.CHAMPION, SpellShockwave.class),
 	
-	DRAIN("drain", 1, 200, EnumClasse.NECROMANCER, SpellDrain.class),
-
-	SUMMON_SNOWCUBE("summon_snowcube", 1, 200, EnumClasse.MAGE, SpellSummonSnowcube.class),
-
+	//Sorts du Necromancer
 	
-	//Test de Nolan-XX
+	DRAIN("drain", 1, 200, EnumClasse.NECROMANCER, SpellDrain.class),
+	
+	//Sorts du Mage
 	FIREBALL_LOW("fireball_low", 2, 0, EnumClasse.MAGE, SpellFireball.class), 
+	SUMMON_SNOWCUBE("summon_snowcube", 1, 200, EnumClasse.MAGE, SpellSummonSnowcube.class),
+	
+	
+	//Sorts du Priest
+	
 	SELFHEAL_LOW("SelfHeal_Low", 1, 200, EnumClasse.PRIEST, SpellSelfHeal.class),
+	
+	//Sorts du Rogue
+	/*
+spell.rogue.smokescreen=Smoke Screen
+spell.rogue.instinct=Instinct
+spell.rogue.dodge=Dodge
+spell.rogue.knife=Knife Throwing
+spell.rogue.jump=High Rush
+spell.rogue.poison=Poison Knife
+spell.rogue.Shadowclones=Shadow Clones
+spell.rogue.powerEyes=Eyes of judgment
+	 */
+	
 	DODGE("Dodge", 1, 25, EnumClasse.ROGUE, SpellDodge.class),
 	SMOKESCREEN("Smokescreen", 1, 75, EnumClasse.ROGUE, SpellSmokeScreen.class),
-	INSTINCT("Instinct", 2, 50, EnumClasse.ROGUE, SpellInstinct.class);
+	INSTINCT("Instinct", 2, 50, EnumClasse.ROGUE, SpellInstinct.class),
+	JUMP("jump", 2, 10, EnumClasse.ROGUE, SpellJump.class),
+	POISON("poison", 3, 50, EnumClasse.ROGUE, SpellPoison.class);
+	//KNIFE("knife", 3, 75, EnumClasse.ROGUE, SpellSmokeScreen.class),
+	//SHADOWCLONES("Shadowclones", 10, 100, EnumClasse.ROGUE, SpellSmokeScreen.class),
+	//POWEREYES("powerEyes", 10, 100, EnumClasse.ROGUE, SpellSmokeScreen.class);
 	
 	private String		name;
 	private int			level;
