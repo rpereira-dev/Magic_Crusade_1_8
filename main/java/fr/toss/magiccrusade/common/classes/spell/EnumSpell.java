@@ -15,6 +15,9 @@ import fr.toss.magiccrusade.common.classes.spell.champion.SpellShockwave;
 import fr.toss.magiccrusade.common.classes.spell.mage.SpellFireball;
 import fr.toss.magiccrusade.common.classes.spell.necromancer.SpellDrain;
 import fr.toss.magiccrusade.common.classes.spell.priest.SpellSelfHeal;
+import fr.toss.magiccrusade.common.classes.spell.rogue.SpellDodge;
+import fr.toss.magiccrusade.common.classes.spell.rogue.SpellInstinct;
+import fr.toss.magiccrusade.common.classes.spell.rogue.SpellSmokeScreen;
 import fr.toss.magiccrusade.common.network.PacketSpellServer;
 import fr.toss.magiccrusade.common.network.Packets;
 import fr.toss.magiccrusade.common.player.Stats;
@@ -30,7 +33,10 @@ public enum EnumSpell
 	
 	//Test de Nolan-XX
 	FIREBALL_LOW("fireball_low", 2, 0, EnumClasse.MAGE, SpellFireball.class), 
-	SELFHEAL_LOW("SelfHeal_Low", 1, 200, EnumClasse.PRIEST, SpellSelfHeal.class);
+	SELFHEAL_LOW("SelfHeal_Low", 1, 200, EnumClasse.PRIEST, SpellSelfHeal.class),
+	DODGE("Dodge", 1, 25, EnumClasse.ROGUE, SpellDodge.class),
+	SMOKESCREEN("Smokescreen", 1, 75, EnumClasse.ROGUE, SpellSmokeScreen.class),
+	INSTINCT("Instinct", 2, 50, EnumClasse.ROGUE, SpellInstinct.class);
 
 	private String		name;
 	private int			level;

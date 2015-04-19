@@ -48,7 +48,7 @@ spell.charge.description=The Champion charges forward making an explosion under 
 spell.ironskin.description=Give you a resistance 2 buff for 30 seconds
 spell.shockwave.description=A Shockwave make the ground explode. Deals @D (+ @d ) to 4 nearby ennemis maximum # 2 # 0.015
 spell.earth_shield.description=Give you a 6 hit points (+ @e ) absorption shield for 2 second # 0.02
-
+spell.SelfHeal_Low.description=Heals you by @d HP.
 spell.drain.description=Drain target healths, causing @M (+ @m ) damages to it, and give you back @M ( + @m ) health # 2 # 0.01 # 1 # 0.015
 
 #   LANG SPELL
@@ -88,6 +88,7 @@ spell.necromancer.witherskull=Wither Skull
 spell.necromancer.zombie=Zombie summoning
 
 spell.priest.buff=Growth
+spell.priest.SelfHeal_Low=Low Heal (self)
 spell.priest.god_touch=God touch
 spell.priest.heal=Heal
 spell.priest.purification=Purification

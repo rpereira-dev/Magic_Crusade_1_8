@@ -1,4 +1,4 @@
-package fr.toss.magiccrusade.common.classes.spell.mage;
+package fr.toss.magiccrusade.common.classes.spell.rogue;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
@@ -6,18 +6,19 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.entity.EntityFX_Colored;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;
 import fr.toss.magiccrusade.common.player.Stats;
 
-public class SpellFireball implements ISpell
+public class SpellDodge implements ISpell
 {
 	@Override
 	public EnumSpell get_enum_spell()
 	{
-		return (EnumSpell.CHARGE);
+		return (EnumSpell.DODGE);
 	}
 	
 	@Override
@@ -59,8 +60,8 @@ public class SpellFireball implements ISpell
 		Vec3	vec;
 		
 		vec = caster.getLookVec();
-		caster.motionX = vec.xCoord * 3.5d;
-		caster.motionY += 1.2d;
-		caster.motionZ = vec.zCoord * 3.5d;
+		caster.motionX = vec.xCoord * -1.5d;
+		caster.motionY += 0.5d;
+		caster.motionZ = vec.zCoord * -1.5d;
 	}
 }

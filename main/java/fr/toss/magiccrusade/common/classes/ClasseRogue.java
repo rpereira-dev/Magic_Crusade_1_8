@@ -19,6 +19,9 @@ public class ClasseRogue implements IClasse
 	public ClasseRogue()
 	{
 		this.spells = new ArrayList<EnumSpell>();
+		this.spells.add(EnumSpell.DODGE);
+		this.spells.add(EnumSpell.SMOKESCREEN);
+		this.spells.add(EnumSpell.INSTINCT);
 	}
 	
 	@Override
