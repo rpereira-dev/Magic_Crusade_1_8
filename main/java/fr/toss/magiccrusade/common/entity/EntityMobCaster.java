@@ -64,18 +64,20 @@ public class EntityMobCaster extends EntityMob implements IMagicEntity
     	TargetPoint	point;
     	int	total;
     	int	cost;
+    	int	target_id;
     	
     	total = entity.get_classe().get_energy();
     	cost = enumspell.get_spell_cost();
     	if (total < cost)
     	{
-    		throw (new SpellException("Entity has not enough energy"));
+    		return ;
     	}
 		spell = (ISpell) enumspell.get_spell_class().getConstructor().newInstance();
-		target = entity.getEntity().worldObj.getEntityByID(spell.get_target_id(entity.getEntity()));
+		target_id = spell.get_target_id(entity.getEntity());
+		target = entity.getEntity().worldObj.getEntityByID(target_id);
 		spell.do_spell(entity, target, entity.getStats());
 		point = new TargetPoint(entity.getEntity().dimension, entity.getEntity().posX, entity.getEntity().posY, entity.getEntity().posZ, PacketSpellServer.ANIMATION_DISTANCE);
-		Packets.network.sendToAllAround(new PacketSpellClient(enumspell.ordinal(), entity.getEntity().getEntityId(), target.getEntityId()), point);
+		Packets.network.sendToAllAround(new PacketSpellClient(enumspell.ordinal(), entity.getEntity().getEntityId(), target_id), point);
 		entity.get_classe().set_energy(total - cost);
 	}
 	

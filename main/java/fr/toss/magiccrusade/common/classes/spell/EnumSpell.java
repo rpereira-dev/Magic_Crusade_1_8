@@ -30,10 +30,10 @@ public enum EnumSpell
 {	
 	//Sorts du Champion
 	
-	CHARGE("charge", 1, 1, EnumClasse.CHAMPION, SpellCharge.class),
-	IRONSKIN("ironskin", 1, 1, EnumClasse.CHAMPION, SpellIronskin.class),
-	EARTH_SHIELD("earth_shield", 1, 1, EnumClasse.CHAMPION, SpellEarthShield.class),
-	SHOCKWAVE("shockwave", 1, 1, EnumClasse.CHAMPION, SpellShockwave.class),
+	CHARGE("charge", 1, 140, EnumClasse.CHAMPION, SpellCharge.class),
+	IRONSKIN("ironskin", 1, 250, EnumClasse.CHAMPION, SpellIronskin.class),
+	EARTH_SHIELD("earth_shield", 1, 240, EnumClasse.CHAMPION, SpellEarthShield.class),
+	SHOCKWAVE("shockwave", 1, 180, EnumClasse.CHAMPION, SpellShockwave.class),
 	
 	//Sorts du Necromancer
 	

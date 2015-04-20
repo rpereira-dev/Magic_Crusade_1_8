@@ -1,7 +1,5 @@
 package fr.toss.magiccrusade.common.entity;
 
-import fr.toss.magiccrusade.utils.MagicLogger;
-import net.minecraft.block.Block;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -13,16 +11,16 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityIronGolem;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import fr.toss.magiccrusade.common.classes.ClasseRage;
+import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 
-public class EntityOrc extends EntityMob
+public class EntityOrc extends EntityMobCaster
 {
 	public EntityOrc(World worldIn)
 	{
@@ -48,7 +46,8 @@ public class EntityOrc extends EntityMob
 		this.setEquipmentDropChance(2, 0.25f);
 		this.setEquipmentDropChance(3, 0.25f);
 		this.setEquipmentDropChance(4, 0.25f);
-
+		this.classe = new ClasseRage();
+		this.classe.addSpell(EnumSpell.SHOCKWAVE);
 	}
 	
 	private void setEquipement()
@@ -89,10 +88,9 @@ public class EntityOrc extends EntityMob
     public void onUpdate()
     {
         super.onUpdate();
-        if (this.worldObj.rand.nextInt(100) == 0)
-        {
-        	this.motionY += 0.2f;
-        }
+        this.classe.update();
+        this.classe.set_energy(this.classe.get_energy() + this.rand.nextInt(8));
+        this.launch_spells_randomly();
     }
 
     /**
