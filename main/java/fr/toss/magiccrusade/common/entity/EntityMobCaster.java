@@ -73,7 +73,7 @@ public class EntityMobCaster extends EntityMob implements IMagicEntity
     	}
 		spell = (ISpell) enumspell.get_spell_class().getConstructor().newInstance();
 		target = entity.getEntity().worldObj.getEntityByID(spell.get_target_id(entity.getEntity()));
-		spell.do_spell(entity.getEntity(), target, entity.getStats());
+		spell.do_spell(entity, target, entity.getStats());
 		point = new TargetPoint(entity.getEntity().dimension, entity.getEntity().posX, entity.getEntity().posY, entity.getEntity().posZ, PacketSpellServer.ANIMATION_DISTANCE);
 		Packets.network.sendToAllAround(new PacketSpellClient(enumspell.ordinal(), entity.getEntity().getEntityId(), target.getEntityId()), point);
 		entity.get_classe().set_energy(total - cost);
@@ -106,5 +106,11 @@ public class EntityMobCaster extends EntityMob implements IMagicEntity
 	public int get_level()
 	{
 		return (30);
+	}
+
+	@Override
+	public World getWorld()
+	{
+		return (this.worldObj);
 	}
 }

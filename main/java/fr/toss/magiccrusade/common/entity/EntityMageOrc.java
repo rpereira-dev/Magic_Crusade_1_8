@@ -45,6 +45,7 @@ public class EntityMageOrc extends EntityMobCaster
 		this.stats = new Stats();
 		this.classe = new ClasseMana();
 		this.addSpell(EnumSpell.DRAIN);
+		this.addSpell(EnumSpell.SHADOWCLONES);
 	}
 
 	@Override
