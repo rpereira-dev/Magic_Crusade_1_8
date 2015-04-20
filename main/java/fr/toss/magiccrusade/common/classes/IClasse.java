@@ -61,4 +61,7 @@ public interface IClasse
 
 	/** a list of every classes spells */
 	public List<EnumSpell>	get_spells();
+
+	/** ajoute un spell à la classe */
+	public void addSpell(EnumSpell spell);
 }

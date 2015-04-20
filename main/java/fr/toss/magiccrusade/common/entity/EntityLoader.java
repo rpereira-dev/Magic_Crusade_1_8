@@ -28,6 +28,7 @@ public class EntityLoader extends Loader
 	public void	on_load()
 	{
 		registerEntity(EntityOrc.class, "Orc",  0xeaff00, 0x888888);
+		registerEntity(EntityMageOrc.class, "MageOrc",  0xeaff00, 0x888888);
 		registerEntity(EntityBelier.class, "Belier", 0xffffff, 0xaa11ff);
 		registerEntity(EntitySnowCube.class, "SnowCube", 0xffffff, 0xaaaaaa);
 		registerEntity(EntityDoppleganger.class, "Doplleganger", 0xffffff, 0xaaaaaa);

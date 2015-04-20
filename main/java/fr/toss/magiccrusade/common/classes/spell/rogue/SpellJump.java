@@ -11,6 +11,7 @@ import fr.toss.magiccrusade.client.entity.EntityFX_Colored;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
 import fr.toss.magiccrusade.common.player.Stats;
 
 public class SpellJump implements ISpell
@@ -22,7 +23,7 @@ public class SpellJump implements ISpell
 	}
 	
 	@Override
-	public void animate(Entity caster, Entity target)
+	public void animate(IMagicEntity caster, Entity target)
 	{
 		World 			world;
 		EntityFX		particles;
@@ -43,7 +44,7 @@ public class SpellJump implements ISpell
 			{
 				velz = -velz;
 			}
-    		particles = new EntityFX_Colored(world, caster.posX, caster.posY, caster.posZ, velx, 0, velz, 2.5f, 0, 1.0f, 5.0f);
+    		particles = new EntityFX_Colored(world, caster.getEntity().posX,  caster.getEntity().posY,  caster.getEntity().posZ, velx, 0, velz, 2.5f, 0, 1.0f, 5.0f);
     		Minecraft.getMinecraft().effectRenderer.addEffect(particles);
         }
 	}
@@ -55,13 +56,10 @@ public class SpellJump implements ISpell
 	}
 
 	@Override
-	public void do_spell(Entity caster, Entity target, Stats stat)
+	public void do_spell(IMagicEntity caster, Entity target, Stats stat)
 	{
-		caster.motionY += 1.5d;
-		
-		EntityLivingBase	entity;
-		entity = (EntityLivingBase)caster;
-		entity.addPotionEffect(new PotionEffect(Potion.resistance.id, 5 * 20, 5));
+		caster.getEntity().motionY += 1.5d;
+		caster.getEntity().addPotionEffect(new PotionEffect(Potion.resistance.id, 5 * 20, 5));
 
 	}
 }

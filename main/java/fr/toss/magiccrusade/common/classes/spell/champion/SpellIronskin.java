@@ -12,6 +12,7 @@ import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
 import fr.toss.magiccrusade.common.player.Stats;
 
 public class SpellIronskin implements ISpell
@@ -23,7 +24,7 @@ public class SpellIronskin implements ISpell
 	}
 
 	@Override
-	public void animate(Entity caster, Entity target)
+	public void animate(IMagicEntity caster, Entity target)
 	{
 		float	rayon;
 		float	v_x;
@@ -33,32 +34,29 @@ public class SpellIronskin implements ISpell
 		rayon = 4.0f;
 		for (int i = 0; i < 100; i++)
 		{
-			v_x = caster.worldObj.rand.nextFloat();
-			v_y = caster.worldObj.rand.nextFloat();
-			v_z = caster.worldObj.rand.nextFloat();
-			if (caster.worldObj.rand.nextInt(2) == 0)
+			v_x = caster.getWorld().rand.nextFloat();
+			v_y = caster.getWorld().rand.nextFloat();
+			v_z = caster.getWorld().rand.nextFloat();
+			if (caster.getWorld().rand.nextInt(2) == 0)
 			{
 				v_x = -v_x;
 			}
-			else if (caster.worldObj.rand.nextInt(2) == 0)
+			else if (caster.getWorld().rand.nextInt(2) == 0)
 			{
 				v_y = -v_y;
 			}
-			else if (caster.worldObj.rand.nextInt(2) == 0)
+			else if (caster.getWorld().rand.nextInt(2) == 0)
 			{
 				v_z = -v_z;
 			}
-			caster.worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB_AMBIENT, caster.posX, caster.posY, caster.posZ, v_x , v_y, v_z, 10);
+			caster.getWorld().spawnParticle(EnumParticleTypes.SPELL_MOB_AMBIENT, caster.getEntity().posX, caster.getEntity().posY, caster.getEntity().posZ, v_x , v_y, v_z, 10);
 		}
 	}
 
 	@Override
-	public void do_spell(Entity caster, Entity target, Stats stat)
+	public void do_spell(IMagicEntity caster, Entity target, Stats stat)
 	{
-		EntityLivingBase	entity;
-		
-		entity = (EntityLivingBase)caster;
-		entity.addPotionEffect(new PotionEffect(Potion.resistance.id, 30 * 20, 1));
+		caster.getEntity().addPotionEffect(new PotionEffect(Potion.resistance.id, 30 * 20, 1));
 	}
 
 	@Override

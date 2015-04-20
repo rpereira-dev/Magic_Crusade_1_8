@@ -12,7 +12,6 @@ import fr.toss.magiccrusade.common.classes.spell.champion.SpellCharge;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellEarthShield;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellIronskin;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellShockwave;
-import fr.toss.magiccrusade.common.classes.spell.mage.SpellFireball;
 import fr.toss.magiccrusade.common.classes.spell.mage.SpellSummonSnowcube;
 import fr.toss.magiccrusade.common.classes.spell.necromancer.SpellDrain;
 import fr.toss.magiccrusade.common.classes.spell.priest.SpellSelfHeal;
@@ -41,7 +40,6 @@ public enum EnumSpell
 	DRAIN("drain", 1, 200, EnumClasse.NECROMANCER, SpellDrain.class),
 	
 	//Sorts du Mage
-	FIREBALL_LOW("fireball_low", 2, 0, EnumClasse.MAGE, SpellFireball.class), 
 	SUMMON_SNOWCUBE("summon_snowcube", 1, 200, EnumClasse.MAGE, SpellSummonSnowcube.class),
 	
 	
@@ -64,7 +62,7 @@ public enum EnumSpell
 	private int			level;
 	private int			cost;
 	private EnumClasse	classe;
-	private Class<?>	spell_class;
+	private Class<? extends ISpell>	spell_class;
 
 	/**
 	 * @param str:				spell name
@@ -73,7 +71,7 @@ public enum EnumSpell
 	 * @param p_classe			spell classe
 	 * @param spell				spell class (for animation and data handlings)
 	 */
-	EnumSpell(String str, int p_level, int p_cost, EnumClasse p_classe, Class<?> spell)
+	EnumSpell(String str, int p_level, int p_cost, EnumClasse p_classe, Class<? extends ISpell> spell)
 	{
 		ISpell.spell_list.add(this);
 		this.name = str;
@@ -108,7 +106,7 @@ public enum EnumSpell
 	}
 	
 	/** return spell corresponding class (for animation and packets), implementing ISpell */
-	public Class	get_spell_class()
+	public Class<? extends ISpell>	get_spell_class()
 	{
 		return (this.spell_class);
 	}

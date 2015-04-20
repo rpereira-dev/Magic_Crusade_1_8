@@ -1,8 +1,10 @@
 package fr.toss.magiccrusade.client;
 
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.world.World;
 import api.player.client.ClientPlayerAPI;
 import api.player.client.ClientPlayerBase;
 import fr.toss.magiccrusade.client.gui.GuiIngameOverlay;
@@ -198,5 +200,23 @@ public class ClientPlayer extends ClientPlayerBase implements IMagicEntity
 		this.experience_to_next_level = message.experience_to_next_level;
 		this.set_classe(message.classe_id);
 		this.get_classe().set_energy(message.energy);
+	}
+
+	@Override
+	public EntityLivingBase getEntity()
+	{
+		return (this.get_player());
+	}
+
+	@Override
+	public Stats getStats()
+	{
+		return (this.stats);
+	}
+
+	@Override
+	public World getWorld()
+	{
+		return (this.get_player().worldObj);
 	}
 }

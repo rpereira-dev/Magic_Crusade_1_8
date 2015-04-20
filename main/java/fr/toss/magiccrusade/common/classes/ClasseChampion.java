@@ -120,7 +120,7 @@ public class ClasseChampion implements IClasse
 	public Stats get_stats_per_lvl()
 	{
 		Stats	stats;
-//voila je l'ai modifie
+
 		stats = new Stats();
 		stats.set_endurance(20);
 		stats.set_strength(2);
@@ -141,5 +141,11 @@ public class ClasseChampion implements IClasse
 	public List<EnumSpell> get_spells() 
 	{
 		return (this.spells);
+	}
+
+	@Override
+	public void addSpell(EnumSpell spell)
+	{
+		this.spells.add(spell);
 	}
 }

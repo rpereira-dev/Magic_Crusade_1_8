@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
 import fr.toss.magiccrusade.common.player.Stats;
 
 /**
@@ -39,12 +40,12 @@ public interface ISpell
 	public EnumSpell	get_enum_spell();
 	
 	/** play spell animation */
-	public void			animate(Entity caster, Entity target);
+	public void			animate(IMagicEntity caster, Entity target);
 	
 	/** do spell, only executed server side */
-	public void			do_spell(Entity caster, Entity target, Stats stat);
+	public void			do_spell(IMagicEntity caster, Entity target, Stats stat);
 	
-	/** return entity target id , -1 if theres no target
+	/** return entity target id , should -1 if theres no target, else way, if a random id is sent, unhandle cases may append
 	 * @throws SpellException */
 	public int			get_target_id(EntityLivingBase caster) throws SpellException;
 

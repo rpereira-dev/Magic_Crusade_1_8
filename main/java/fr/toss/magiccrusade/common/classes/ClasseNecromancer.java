@@ -11,14 +11,11 @@ import net.minecraftforge.fml.client.config.GuiUtils;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.player.Stats;
 
-public class ClasseNecromancer implements IClasse
+public class ClasseNecromancer extends ClasseMana
 {
-	private List<EnumSpell> spells;
-	private int				mana;
-
 	public ClasseNecromancer()
 	{
-		this.spells = new ArrayList<EnumSpell>();
+		super();
 		this.spells.add(EnumSpell.DRAIN);
 	}
 	
@@ -27,38 +24,6 @@ public class ClasseNecromancer implements IClasse
 	{
 		return (EnumClasse.NECROMANCER);
 	}
-
-	@Override
-	public int get_default_max_energy()
-	{
-		return (2000);
-	}
-
-	@Override
-	public int get_energy()
-	{
-		return (this.mana);
-	}
-
-	@Override
-	public void set_energy(int value)
-	{
-		this.mana = value;
-	}
-
-	@Override
-	public void update()
-	{
-		if (this.mana < this.get_default_max_energy())
-		{
-			this.mana += 4;
-			if (this.mana > this.get_default_max_energy())
-			{
-				this.mana = this.get_default_max_energy();
-			}
-		}
-	}
-
 	@Override
 	public void render_energy_bar(Minecraft minecraft, int x, int y)
 	{
@@ -70,21 +35,6 @@ public class ClasseNecromancer implements IClasse
     	minecraft.fontRendererObj.drawStringWithShadow(str, x + 32 - minecraft.fontRendererObj.getStringWidth(str) / 2, y + 17, 0xffffffff);
 	}
 
-	@Override
-	public void hit_entity(Entity target) {}
-
-	@Override
-	public void write_to_nbt(NBTTagCompound nbt)
-	{
-		nbt.setInteger("mana", this.mana);
-	}
-
-	@Override
-	public void read_from_nbt(NBTTagCompound nbt)
-	{
-		this.mana = nbt.getInteger("mana");
-	}
-	
 	@Override
 	public Stats get_default_stats()
 	{
@@ -121,11 +71,5 @@ public class ClasseNecromancer implements IClasse
 	public ResourceLocation get_texture()
 	{
 		return (IClasse.NECROMANCER_RES);
-	}
-
-	@Override
-	public List<EnumSpell> get_spells()
-	{
-		return (this.spells);
 	}
 }

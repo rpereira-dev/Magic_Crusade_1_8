@@ -1,9 +1,11 @@
 package fr.toss.magiccrusade.common.player;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.world.World;
 import api.player.server.IServerPlayerAPI;
 import api.player.server.ServerPlayerAPI;
 import api.player.server.ServerPlayerBase;
@@ -47,6 +49,8 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 	public void onUpdate()
 	{
 		super.onUpdate();
+		this.level = 10;
+
 		this.stats = Stats.get_player_stats(this); //can be optimize by filling the object instead of creating a new one
 		this.classe.update();
 		this.player.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0d + this.stats.get_endurance() / 20.0f);
@@ -162,5 +166,24 @@ public class ServerPlayer extends ServerPlayerBase implements IMagicEntity
 	public int	get_experience_to_next_level()
 	{
 		return (this.experience_to_next_level);
+	}
+	
+
+	@Override
+	public EntityLivingBase getEntity()
+	{
+		return (this.get_player());
+	}
+
+	@Override
+	public Stats getStats()
+	{
+		return (this.stats);
+	}
+
+	@Override
+	public World getWorld()
+	{
+		return (this.get_player().worldObj);
 	}
 }

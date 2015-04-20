@@ -15,6 +15,7 @@ import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;
 import fr.toss.magiccrusade.common.classes.spell.SpellUtils;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
 import fr.toss.magiccrusade.common.player.ServerPlayer;
 import fr.toss.magiccrusade.common.player.Stats;
 
@@ -27,7 +28,7 @@ public class SpellShockwave implements ISpell
 	}
 
 	@Override
-	public void animate(Entity caster, Entity target)
+	public void animate(IMagicEntity caster, Entity target)
 	{
 		World 			world;
 		EntityPlayer	player;
@@ -49,7 +50,7 @@ public class SpellShockwave implements ISpell
 			{
 				velz = -velz;
 			}
-    		particles = new EntityFX_Colored(world, caster.posX, caster.posY, caster.posZ, velx, 0, velz, 2.5f, 0, 2.5f, 5.0f);
+    		particles = new EntityFX_Colored(world, caster.getEntity().posX, caster.getEntity().posY, caster.getEntity().posZ, velx, 0, velz, 2.5f, 0, 2.5f, 5.0f);
     		Minecraft.getMinecraft().effectRenderer.addEffect(particles);
         }
 	}
@@ -61,12 +62,14 @@ public class SpellShockwave implements ISpell
 	}
 
 	@Override
-	public void do_spell(Entity caster, Entity target, Stats stat)
+	public void do_spell(IMagicEntity magic_caster, Entity target, Stats stat)
 	{
+		Entity			caster;
 		List			lst;
 		ServerPlayer	player;
 		float			damages;
 		
+		caster = magic_caster.getEntity();
 		caster.worldObj.createExplosion(caster, caster.posX + 3, caster.posY, caster.posZ + 3, 0.5f, true);	
 		caster.worldObj.createExplosion(caster, caster.posX - 3, caster.posY, caster.posZ + 3, 0.5f, true);	
 		caster.worldObj.createExplosion(caster, caster.posX + 3, caster.posY, caster.posZ - 3, 0.5f, true);	

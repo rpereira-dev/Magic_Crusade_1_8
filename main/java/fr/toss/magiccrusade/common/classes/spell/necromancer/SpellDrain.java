@@ -5,13 +5,14 @@ import java.util.Random;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import fr.toss.magiccrusade.client.entity.EntityFX_Colored;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;
 import fr.toss.magiccrusade.common.classes.spell.SpellUtils;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
 import fr.toss.magiccrusade.common.player.Stats;
 
 public class SpellDrain implements ISpell
@@ -23,7 +24,7 @@ public class SpellDrain implements ISpell
 	}
 
 	@Override
-	public void animate(Entity caster, Entity target)
+	public void animate(IMagicEntity caster, Entity target)
 	{
 		Random				rand;
 		EntityFX_Colored	particles;
@@ -32,8 +33,8 @@ public class SpellDrain implements ISpell
 		float				v_y;
 		float				v_z;
 		
-		rand = caster.worldObj.rand;
-		world = caster.worldObj;
+		rand = caster.getWorld().rand;
+		world = caster.getWorld();
 		for (int i = 0; i < 100; i++)
 		{
 			v_x = rand.nextFloat();
@@ -59,20 +60,17 @@ public class SpellDrain implements ISpell
 	}
 
 	@Override
-	public void do_spell(Entity caster, Entity target, Stats stat)
+	public void do_spell(IMagicEntity caster, Entity target, Stats stat)
 	{
 		float	damages;
 		float	heal;
 		
 		if (target instanceof EntityLivingBase)
 		{
-			if (caster instanceof EntityPlayer)
-			{
-				damages = 2 + stat.get_magic() * 0.01f;
-				heal = 1 + stat.get_magic()* 0.025f;
-				SpellUtils.deal_player_magic_damages((EntityPlayer)caster, (EntityLivingBase)target, damages);
-				((EntityLivingBase) caster).heal(heal);
-			}
+			damages = 2 + stat.get_magic() * 0.01f;
+			heal = 1 + stat.get_magic()* 0.025f;
+			target.attackEntityFrom(DamageSource.magic, damages);
+			((EntityLivingBase) caster).heal(heal);
 		}
 	}
 

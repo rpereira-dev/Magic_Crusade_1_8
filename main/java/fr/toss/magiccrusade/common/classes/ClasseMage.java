@@ -11,14 +11,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiUtils;
 
-public class ClasseMage implements IClasse
+public class ClasseMage extends ClasseMana
 {
-	private List<EnumSpell> spells;
-	private int mana;
-
 	public ClasseMage()
 	{
-		this.spells = new ArrayList<EnumSpell>();
+		super();
 		this.spells.add(EnumSpell.FIREBALL_LOW);
 		this.spells.add(EnumSpell.SUMMON_SNOWCUBE);
 	}
@@ -29,35 +26,6 @@ public class ClasseMage implements IClasse
 		return (EnumClasse.MAGE);
 	}
 
-	@Override
-	public int get_default_max_energy() {
-		// TODO Auto-generated method stub
-		return (2000);
-	}
-
-	@Override
-	public int get_energy() {
-		return (this.mana);
-	}
-
-	@Override
-	public void set_energy(int value) {
-		this.mana = value;
-		
-	}
-
-	@Override
-	public void update() {
-		if (this.mana < this.get_default_max_energy())
-		{
-			this.mana += 4;
-			if (this.mana > this.get_default_max_energy())
-			{
-				this.mana = this.get_default_max_energy();
-			}
-		}
-		
-	}
 
 	@Override
 	public void render_energy_bar(Minecraft minecraft, int x, int y)
@@ -69,22 +37,6 @@ public class ClasseMage implements IClasse
     	GuiUtils.drawTexturedModalRect(x, y + 15, 0, 98, (int) (65.0f / this.get_default_max_energy() * this.mana), 13, 0);
     	minecraft.fontRendererObj.drawStringWithShadow(str, x + 32 - minecraft.fontRendererObj.getStringWidth(str) / 2, y + 17, 0xffffffff);
 	}
-
-	@Override
-	public void hit_entity(Entity target) {}
-
-	@Override
-	public void write_to_nbt(NBTTagCompound nbt)
-	{
-		nbt.setInteger("mana", this.mana);
-	}
-
-	@Override
-	public void read_from_nbt(NBTTagCompound nbt)
-	{
-		this.mana = nbt.getInteger("mana");
-	}
-	
 	
 	@Override
 	public Stats get_default_stats()

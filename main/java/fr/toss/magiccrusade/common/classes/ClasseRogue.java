@@ -132,4 +132,10 @@ public class ClasseRogue implements IClasse
 	{
 		return (this.spells);
 	}
+
+	@Override
+	public void addSpell(EnumSpell spell)
+	{
+		this.spells.add(spell);
+	}
 }

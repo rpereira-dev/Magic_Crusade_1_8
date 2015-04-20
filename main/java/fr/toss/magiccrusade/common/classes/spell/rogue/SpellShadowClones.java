@@ -9,6 +9,7 @@ import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;
 import fr.toss.magiccrusade.common.classes.spell.SpellUtils;
 import fr.toss.magiccrusade.common.entity.EntityDoppleganger;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
 import fr.toss.magiccrusade.common.player.Stats;
 
 public class SpellShadowClones implements ISpell
@@ -20,9 +21,24 @@ public class SpellShadowClones implements ISpell
 	}
 	
 	@Override
-	public void animate(Entity caster, Entity target)
+	public void animate(IMagicEntity caster, Entity target)
 	{
 		//TODO
+	}
+
+	@Override
+	public void do_spell(IMagicEntity magic_caster, Entity target, Stats stat)
+	{
+		EntityDoppleganger	entity;
+		Entity	caster;
+		
+		caster = magic_caster.getEntity();
+		entity = new EntityDoppleganger(caster.worldObj, caster);
+		entity.setLocationAndAngles(caster.posX + 1,  caster.posY , caster.posZ, 0.1f, 0.1f);
+		caster.worldObj.spawnEntityInWorld(entity);
+		entity = new EntityDoppleganger(caster.worldObj, caster);
+		entity.setLocationAndAngles(caster.posX - 1,  caster.posY , caster.posZ, 0.1f, 0.1f);
+		caster.worldObj.spawnEntityInWorld(entity);
 	}
 	
 	@Override
@@ -50,16 +66,4 @@ public class SpellShadowClones implements ISpell
 		return (-1);
 	}
 
-	@Override
-	public void do_spell(Entity caster, Entity target, Stats stat)
-	{
-		EntityDoppleganger	entity;
-		
-		entity = new EntityDoppleganger(caster.worldObj, caster);
-		entity.setLocationAndAngles(caster.posX + 1,  caster.posY , caster.posZ, 0.1f, 0.1f);
-		caster.worldObj.spawnEntityInWorld(entity);
-		entity = new EntityDoppleganger(caster.worldObj, caster);
-		entity.setLocationAndAngles(caster.posX - 1,  caster.posY , caster.posZ, 0.1f, 0.1f);
-		caster.worldObj.spawnEntityInWorld(entity);
-	}
 }

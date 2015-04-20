@@ -9,6 +9,7 @@ import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;
 import fr.toss.magiccrusade.common.classes.spell.SpellUtils;
 import fr.toss.magiccrusade.common.entity.EntitySnowCube;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
 import fr.toss.magiccrusade.common.player.Stats;
 
 public class SpellSummonSnowcube implements ISpell
@@ -20,7 +21,7 @@ public class SpellSummonSnowcube implements ISpell
 	}
 	
 	@Override
-	public void animate(Entity caster, Entity target)
+	public void animate(IMagicEntity caster, Entity target)
 	{
 		//TODO
 	}
@@ -51,12 +52,12 @@ public class SpellSummonSnowcube implements ISpell
 	}
 
 	@Override
-	public void do_spell(Entity caster, Entity target, Stats stat)
+	public void do_spell(IMagicEntity caster, Entity target, Stats stat)
 	{
 		EntitySnowCube	entity;
 		
-		entity = new EntitySnowCube(caster.worldObj, caster);
-		entity.setLocationAndAngles(caster.posX + 1,  caster.posY + 1, caster.posZ, 0.1f, 0.1f);
-		caster.worldObj.spawnEntityInWorld(entity);
+		entity = new EntitySnowCube(caster.getEntity().worldObj, caster.getEntity());
+		entity.setLocationAndAngles(caster.getEntity().posX + 1,  caster.getEntity().posY + 1, caster.getEntity().posZ, 0.1f, 0.1f);
+		caster.getEntity().worldObj.spawnEntityInWorld(entity);
 	}
 }

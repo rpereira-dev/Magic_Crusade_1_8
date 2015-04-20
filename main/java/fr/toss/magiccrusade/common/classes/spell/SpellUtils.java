@@ -1,5 +1,6 @@
 package fr.toss.magiccrusade.common.classes.spell;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
@@ -7,6 +8,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
+import fr.toss.magiccrusade.common.network.PacketSpellClient;
+import fr.toss.magiccrusade.common.network.PacketSpellServer;
+import fr.toss.magiccrusade.common.network.Packets;
 
 public class SpellUtils
 {
@@ -50,7 +57,6 @@ public class SpellUtils
          		   d1 = vec3d.dotProduct(vec3d1);
          	       if (d1 > 1.0D - 0.0250001D / d)
          	       {
-         	    	   System.out.println("Looking at " + entity);
          	    	   return (entity);
          	       }
          	   }
@@ -58,6 +64,7 @@ public class SpellUtils
 		}
 		return (null);
 	}
+
 
 
 }

@@ -6,11 +6,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import fr.toss.magiccrusade.client.ClientPlayer;
 import fr.toss.magiccrusade.client.entity.EntityFX_Colored;
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
 import fr.toss.magiccrusade.common.player.Stats;
 
 public class SpellCharge implements ISpell
@@ -22,13 +22,13 @@ public class SpellCharge implements ISpell
 	}
 	
 	@Override
-	public void animate(Entity caster, Entity target)
+	public void animate(IMagicEntity caster, Entity target)
 	{
 		World 			world;
 		EntityFX		particles;
 		double			velx;
 		double			velz;
-		
+
 		this.do_spell(caster, target, null);
 		world = Minecraft.getMinecraft().theWorld;
 		for (int i = 0; i < 100; i++)
@@ -43,7 +43,7 @@ public class SpellCharge implements ISpell
 			{
 				velz = -velz;
 			}
-    		particles = new EntityFX_Colored(world, caster.posX, caster.posY, caster.posZ, velx, 0, velz, 2.5f, 0, 1.0f, 5.0f);
+    		particles = new EntityFX_Colored(world, caster.getEntity().posX, caster.getEntity().posY, caster.getEntity().posZ, velx, 0, velz, 2.5f, 0, 1.0f, 5.0f);
     		Minecraft.getMinecraft().effectRenderer.addEffect(particles);
         }
 	}
@@ -55,13 +55,13 @@ public class SpellCharge implements ISpell
 	}
 
 	@Override
-	public void do_spell(Entity caster, Entity target, Stats stat)
+	public void do_spell(IMagicEntity caster, Entity target, Stats stat)
 	{
 		Vec3	vec;
 		
-		vec = caster.getLookVec();
-		caster.motionX = vec.xCoord * 3.5d;
-		caster.motionY += 1.2d;
-		caster.motionZ = vec.zCoord * 3.5d;
+		vec = caster.getEntity().getLookVec();
+		caster.getEntity().motionX = vec.xCoord * 3.5d;
+		caster.getEntity().motionY += 1.2d;
+		caster.getEntity().motionZ = vec.zCoord * 3.5d;
 	}
 }

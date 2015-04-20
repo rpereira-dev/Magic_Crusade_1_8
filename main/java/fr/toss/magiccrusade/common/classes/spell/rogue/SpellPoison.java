@@ -13,6 +13,7 @@ import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
 import fr.toss.magiccrusade.common.classes.spell.SpellException;
 import fr.toss.magiccrusade.common.classes.spell.SpellUtils;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
 import fr.toss.magiccrusade.common.player.Stats;
 
 public class SpellPoison implements ISpell
@@ -24,7 +25,7 @@ public class SpellPoison implements ISpell
 	}
 
 	@Override
-	public void animate(Entity caster, Entity target)
+	public void animate(IMagicEntity caster, Entity target)
 	{
 		Random				rand;
 		EntityFX_Colored	particles;
@@ -33,8 +34,8 @@ public class SpellPoison implements ISpell
 		float				v_y;
 		float				v_z;
 		
-		rand = caster.worldObj.rand;
-		world = caster.worldObj;
+		rand = caster.getWorld().rand;
+		world = caster.getWorld();
 		for (int i = 0; i < 100; i++)
 		{
 			v_x = rand.nextFloat();
@@ -60,15 +61,11 @@ public class SpellPoison implements ISpell
 	}
 
 	@Override
-	public void do_spell(Entity caster, Entity target, Stats stat)
+	public void do_spell(IMagicEntity caster, Entity target, Stats stat)
 	{
-
-		
 		if (target instanceof EntityLivingBase)
 		{
-			EntityLivingBase	entity;
-			entity = (EntityLivingBase)target;
-			entity.addPotionEffect(new PotionEffect(Potion.poison.id, 10 * 20));
+			((EntityLivingBase) target).addPotionEffect(new PotionEffect(Potion.poison.id, 10 * 20));
 		}
 	}
 
