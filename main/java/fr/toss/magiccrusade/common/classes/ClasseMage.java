@@ -16,7 +16,6 @@ public class ClasseMage extends ClasseMana
 	public ClasseMage()
 	{
 		super();
-		this.spells.add(EnumSpell.FIREBALL_LOW);
 		this.spells.add(EnumSpell.SUMMON_SNOWCUBE);
 	}
 

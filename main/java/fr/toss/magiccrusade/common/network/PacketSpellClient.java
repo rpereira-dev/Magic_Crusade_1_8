@@ -2,6 +2,7 @@ package fr.toss.magiccrusade.common.network;
 
 import fr.toss.magiccrusade.common.classes.spell.EnumSpell;
 import fr.toss.magiccrusade.common.classes.spell.ISpell;
+import fr.toss.magiccrusade.common.entity.IMagicEntity;
 import fr.toss.magiccrusade.utils.MagicLogger;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
@@ -71,7 +72,7 @@ public class PacketSpellClient implements IMessage
 				return (null);
 			}
 			world = Minecraft.getMinecraft().theWorld;
-			spell.animate(world.getEntityByID(message.caster), world.getEntityByID(message.target));
+			spell.animate((IMagicEntity)world.getEntityByID(message.caster), world.getEntityByID(message.target));
 			return (null);
 		}
    }
