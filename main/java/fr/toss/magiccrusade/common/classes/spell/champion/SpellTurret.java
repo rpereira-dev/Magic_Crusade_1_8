@@ -36,7 +36,7 @@ public class SpellTurret implements ISpell
 		EntityTurret	entity;
 		
 		entity = new EntityTurret(caster.getEntity().worldObj, caster.getEntity());
-		entity.setLocationAndAngles(caster.getEntity().posX + 1,  caster.getEntity().posY + 1, caster.getEntity().posZ, 0.1f, 0.1f);
+		entity.setLocationAndAngles(caster.getEntity().posX + 1,  caster.getEntity().posY + 2, caster.getEntity().posZ, 0.1f, 0.1f);
 		caster.getEntity().worldObj.spawnEntityInWorld(entity);
 	}
 }
