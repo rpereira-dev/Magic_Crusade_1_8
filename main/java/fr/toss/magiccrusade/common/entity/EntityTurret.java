@@ -26,11 +26,12 @@ import net.minecraft.world.World;
 
 public class EntityTurret extends EntityTameable implements IRangedAttackMob
 {
+	private long	timer;
+	
     public EntityTurret(World w)
     {
     	this(w, null);
     }
-    
     
     public EntityTurret(World world, Entity caster)
     {
@@ -52,8 +53,18 @@ public class EntityTurret extends EntityTameable implements IRangedAttackMob
 			this.setOwnerId(caster.getUniqueID().toString());
 			this.worldObj.setEntityState(this, (byte)7);
 	    }
+	    timer = System.currentTimeMillis();
     }
    
+    @Override
+    public void onUpdate()
+    {
+    	super.onUpdate();
+    	if (System.currentTimeMillis() - this.timer > 5000)
+    	{
+    		this.setDead();
+    	}
+    }
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
