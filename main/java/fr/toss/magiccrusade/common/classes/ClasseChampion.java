@@ -19,6 +19,7 @@ public class ClasseChampion extends ClasseRage
 		this.addSpell(EnumSpell.IRONSKIN);
 		this.addSpell(EnumSpell.EARTH_SHIELD);
 		this.addSpell(EnumSpell.SHOCKWAVE);
+		this.addSpell(EnumSpell.TURRET);
 	}
 	
 	@Override

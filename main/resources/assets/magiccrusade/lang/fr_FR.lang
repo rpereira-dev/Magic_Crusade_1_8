@@ -49,6 +49,7 @@ spell.charge.description=Le Champion charge et crée une explosion sous ses pieds
 spell.shockwave.description=Une onde de choc est crée. Crée une explosion infligeant @D (+ @d ) de degats jusqua 4 ennemis proches # 2 # 0.005
 spell.ironskin.description=Vous confere resistance 2 pendant 30 secondes
 spell.earth_shield.description=Vous offre un bouclier absorbant 2 (+ @e ) points de degats pendant 2 secondes # 0.02
+spell.charge.turret=Cree une tourelle qui vous protege des ennemis
 
 spell.summon_snowcube.description=Invoque un cube de neige qui combat à vos cotés
 
@@ -364,6 +365,7 @@ item.heal_boots.name=Magic Boots
 
 #   ENTITIES
 entity.Haunter.name=Haunter
+entity.Turret.name=Turret
 entity.VillagerDim.name=Sky Villager
 entity.SnowCube.name=Snow Cube
 entity.SlimeFrozen.name=Frozen Slime

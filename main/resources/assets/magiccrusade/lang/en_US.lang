@@ -60,6 +60,8 @@ spell.charge.description=The Champion charges forward making an explosion under 
 spell.ironskin.description=Give you a resistance 2 buff for 30 seconds
 spell.shockwave.description=A Shockwave make the ground explode. Deals @D (+ @d ) to 4 nearby ennemis maximum # 2 # 0.015
 spell.earth_shield.description=Give you a 6 hit points (+ @e ) absorption shield for 2 second # 0.02
+spell.charge.description=The Champion charges forward making an explosion under his foot
+spell.charge.turret=Summon a turret which last for few seconds and hit your ennemis
 
 spell.SelfHeal_Low.description=Heals you by @d HP # 2
 spell.Dodge.description=The rogue jumps backwards.
@@ -389,6 +391,7 @@ item.heal_boots.name=Magic Boots
 
 
 #   ENTITIES
+entity.Turret.name=Turret
 entity.Haunter.name=Haunter
 entity.VillagerDim.name=Sky Villager
 entity.SnowCube.name=Snow Cube

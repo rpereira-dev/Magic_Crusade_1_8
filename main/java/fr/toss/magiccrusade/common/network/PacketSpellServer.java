@@ -82,7 +82,7 @@ public class PacketSpellServer implements IMessage
 					MagicLogger.log("Error while reading server packet: wrong spell class type");
 					return (null);
 				}
-				spell.do_spell((IMagicEntity)world.getEntityByID(message.caster), world.getEntityByID(message.target), Stats.get_entity_stats(player.get_player()));
+				spell.do_spell(player, world.getEntityByID(message.target), Stats.get_entity_stats(player.get_player()));
 				player.get_classe().set_energy(player.get_classe().get_energy() - enum_spell.get_spell_cost());
 				point = new TargetPoint(player.get_player().dimension, player.get_player().posX, player.get_player().posY, player.get_player().posZ, ANIMATION_DISTANCE);
 				Packets.network.sendToAllAround(new PacketSpellClient(message), point);

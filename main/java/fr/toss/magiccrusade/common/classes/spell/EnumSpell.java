@@ -12,6 +12,7 @@ import fr.toss.magiccrusade.common.classes.spell.champion.SpellCharge;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellEarthShield;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellIronskin;
 import fr.toss.magiccrusade.common.classes.spell.champion.SpellShockwave;
+import fr.toss.magiccrusade.common.classes.spell.champion.SpellTurret;
 import fr.toss.magiccrusade.common.classes.spell.mage.SpellSummonSnowcube;
 import fr.toss.magiccrusade.common.classes.spell.necromancer.SpellDrain;
 import fr.toss.magiccrusade.common.classes.spell.priest.SpellSelfHeal;
@@ -34,6 +35,7 @@ public enum EnumSpell
 	IRONSKIN("ironskin", 1, 250, EnumClasse.CHAMPION, SpellIronskin.class),
 	EARTH_SHIELD("earth_shield", 1, 240, EnumClasse.CHAMPION, SpellEarthShield.class),
 	SHOCKWAVE("shockwave", 1, 180, EnumClasse.CHAMPION, SpellShockwave.class),
+	TURRET("turret", 1, 180, EnumClasse.CHAMPION, SpellTurret.class),
 	
 	//Sorts du Necromancer
 	

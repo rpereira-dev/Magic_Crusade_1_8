@@ -37,7 +37,6 @@ import com.google.common.base.Predicate;
 
 public class EntitySnowCube extends EntityTameable implements IRangedAttackMob
 {
-
     public EntitySnowCube(World w)
     {
     	this(w, null);
@@ -64,14 +63,6 @@ public class EntitySnowCube extends EntityTameable implements IRangedAttackMob
 			this.setOwnerId(caster.getUniqueID().toString());
 			this.worldObj.setEntityState(this, (byte)7);
 	    }
-    }
-    
-    /**
-     * Returns true if the newer Entity AI code should be run
-     */
-    public boolean isAIEnabled()
-    {
-        return true;
     }
 
     protected void applyEntityAttributes()

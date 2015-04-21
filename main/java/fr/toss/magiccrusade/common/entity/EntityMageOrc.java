@@ -45,7 +45,6 @@ public class EntityMageOrc extends EntityMobCaster
 		this.stats = new Stats();
 		this.classe = new ClasseMana();
 		this.addSpell(EnumSpell.DRAIN);
-		this.addSpell(EnumSpell.EARTH_SHIELD);
 	}
 
 	@Override
@@ -76,7 +75,7 @@ public class EntityMageOrc extends EntityMobCaster
     public void onUpdate()
     {
         super.onUpdate();
-        if (this.getRNG().nextInt(10) == 0)
+        if (this.getRNG().nextInt(100) == 0)
         {
         	this.launch_spells_randomly();
         }

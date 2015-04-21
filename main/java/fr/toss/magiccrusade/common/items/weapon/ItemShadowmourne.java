@@ -24,7 +24,6 @@ public class ItemShadowmourne extends ItemWeapon implements IItemStatable
 		this.setUnlocalizedName("shadowmourne");
 		this.setHasEffect();
 		this.stats.set_strength(60.0f);
-		this.stats.set_endurance(2500.0f);
 	}
 	
 	 /**

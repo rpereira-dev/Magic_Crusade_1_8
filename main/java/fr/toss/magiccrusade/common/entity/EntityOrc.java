@@ -11,6 +11,7 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityIronGolem;
+import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -39,7 +40,7 @@ public class EntityOrc extends EntityMobCaster
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
-        this.setSize(0.8F, 1.95F);
+        this.setSize(1.2F, 1.95F);
         this.setEquipement();
 		this.setEquipmentDropChance(0, 1.0f);
 		this.setEquipmentDropChance(1, 0.25f);
@@ -68,17 +69,17 @@ public class EntityOrc extends EntityMobCaster
         switch (this.worldObj.rand.nextInt(3))
         {
 	        case 0:
-	            this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.18f);
+	            this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.22f);
 	            break ;
 	            
 	        case 1:
-	            this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.23f);
+	            this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25f);
 	            break ;
 	            
 	        case 2:
 	            this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.29f);
         }
-        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(20.0d);
+        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(32.0d);
     }
 	
 	@Override
@@ -89,7 +90,6 @@ public class EntityOrc extends EntityMobCaster
     {
         super.onUpdate();
         this.classe.update();
-        this.classe.set_energy(this.classe.get_energy() + this.rand.nextInt(8));
         this.launch_spells_randomly();
     }
 

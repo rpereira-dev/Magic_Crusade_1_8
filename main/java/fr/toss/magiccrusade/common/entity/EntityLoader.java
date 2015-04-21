@@ -29,6 +29,7 @@ public class EntityLoader extends Loader
 	{
 		registerEntity(EntityOrc.class, "Orc",  0xeaff00, 0x888888);
 		registerEntity(EntityMageOrc.class, "MageOrc",  0xeaff00, 0x888888);
+		registerEntity(EntityTurret.class, "Turret",  0xeaff00, 0x888888);
 		registerEntity(EntityBelier.class, "Belier", 0xffffff, 0xaa11ff);
 		registerEntity(EntitySnowCube.class, "SnowCube", 0xffffff, 0xaaaaaa);
 		registerEntity(EntityDoppleganger.class, "Doplleganger", 0xffffff, 0xaaaaaa);
@@ -37,7 +38,6 @@ public class EntityLoader extends Loader
 	
 	public static void registerEntity(Class <? extends Entity > entityClass, String string, int bg, int fg)
 	{
-        EntityRegistry.registerGlobalEntityID(entityClass, string, EntityRegistry.findGlobalUniqueEntityId(), bg, fg);
         EntityRegistry.registerGlobalEntityID(entityClass, string, EntityRegistry.findGlobalUniqueEntityId(), bg, fg);
 	}
 }
