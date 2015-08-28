@@ -219,4 +219,16 @@ public class ClientPlayer extends ClientPlayerBase implements IMagicEntity
 	{
 		return (this.get_player().worldObj);
 	}
+
+	public String getRoundedHealth()
+	{
+		String	str;
+		
+		str = String.valueOf(this.player.getHealth());
+		if (str.length() > 4)
+		{
+			return (str.substring(0, 4));
+		}
+		return (str);
+	}
 }

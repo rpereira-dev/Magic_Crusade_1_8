@@ -102,7 +102,7 @@ public class GuiStats extends GuiScreen
         str = classe.get_chat_color() + classe.get_name() + ChatColor.RESET + " " + this.player.get_username();
         this.drawCenteredString(this.fontRendererObj, str, 64, 50, 0xffffff);
 		
-        str = this.player.get_player().getHealth() + " / " + this.player.get_player().getMaxHealth();
+        str = this.player.getRoundedHealth() + " / " + this.player.get_player().getMaxHealth();
         this.drawCenteredString(this.fontRendererObj, str, 64, 64, 0xffffff);
 	        
        	GuiInventory.drawEntityOnScreen(64, this.height / 2 + 86, 64, -mouseX * 16, -mouseY, this.player.get_player());
@@ -121,7 +121,7 @@ public class GuiStats extends GuiScreen
 			        this.drawCenteredString(this.fontRendererObj, str, this.width - 64, 64, 0xffffff);
 			        
 					GuiInventory.drawEntityOnScreen(this.width - 64, this.height / 2 + 64, 64, mouseX / 2, -mouseY, (EntityLivingBase) obj);
-					break ;
+					return ;
 				}
 			}
 		}

@@ -110,7 +110,7 @@ public class GuiIngameOverlay
     	this.mc.getTextureManager().bindTexture(CHARGE_BARRE);
     	GuiUtils.drawTexturedModalRect(x, y, 0, 0, 65, 13, 0);
     	GuiUtils.drawTexturedModalRect(x, y, 65, 0, (int) (65 / this.player.getMaxHealth() * this.player.getHealth()), 13, 0);
-		health = this.player.getHealth() + "/" + this.player.getMaxHealth();
+		health = this.player.getRoundedHealth() + "/" + this.player.getMaxHealth();
         this.mc.fontRendererObj.drawStringWithShadow(health, 34 + x - this.mc.fontRendererObj.getStringWidth(health) / 2, y + 2,  0xffffffff);
 	}
 	
